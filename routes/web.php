@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BitacoraController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,7 +13,9 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::view('/personalizar', 'personalizar')->name('personalizar');
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/bitacora',[BitacoraController::class, 'index']);

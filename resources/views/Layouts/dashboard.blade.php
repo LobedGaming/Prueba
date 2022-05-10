@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Laravel</title>
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{{'estilos/estilos.css'}}">
+    </head>
+    <body>
+        <div class="contenedor-grid">
+            <nav>
+                <ul>
+                    <li>Opcion 1</li>
+                    <li>Opcion 2</li>
+                    <li>Opcion 3</li>
+                    <li>Opcion 4</li>
+                    <li>Opcion 5</li>
+                </ul>
+            </nav>
+            <aside>
+                <ul>
+                    <li>Opcion 1</li>
+                    <li>Opcion 2</li>
+                    <li>Opcion 3</li>
+                    <li>Opcion 4</li>
+                    <li><a href="{{ route('personalizar') }}">Personalizar</a></li>
+                </ul>
+            </aside>
+            <main>
+                @yield('contenido')
+
+
+                <script src="{{ asset('scripts/main.js') }}"></script>
+                @yield('script')
+                
+            </main>
+        </div>
+    </body>
+</html>
+
