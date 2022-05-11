@@ -21,6 +21,7 @@ return new class extends Migration
             $table->integer('phone');
             $table->string('email')->unique();
             $table->string('password');
+            $table->date('fecha_nacimiento');
             $table->rememberToken();
             $table->timestamps();
         });
