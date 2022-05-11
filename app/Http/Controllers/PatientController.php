@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Secretarie;
 use Illuminate\Http\Request;
 
-class SecretarioController extends Controller
+class PatientController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +40,10 @@ class SecretarioController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Secretario  $secretario
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Secretarie $secretario)
+    public function show($id)
     {
         //
     }
@@ -52,10 +51,10 @@ class SecretarioController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Secretario  $secretario
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Secretarie $secretario)
+    public function edit($id)
     {
         //
     }
@@ -64,10 +63,10 @@ class SecretarioController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Secretario  $secretario
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Secretarie $secretario)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -75,10 +74,10 @@ class SecretarioController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Secretario  $secretario
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Secretarie $secretario)
+    public function destroy($id)
     {
         //
     }

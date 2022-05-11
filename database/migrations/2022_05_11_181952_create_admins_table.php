@@ -13,9 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('secretarios', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+        Schema::create('admins', function (Blueprint $table) {
+            $table->unsignedBigInteger('id_user')->nullable(false);
+            $table->primary('id_user');
+            $table->foreign('id_user')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
@@ -26,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('secretarios');
+        Schema::dropIfExists('admins');
     }
 };
