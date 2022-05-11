@@ -11,26 +11,22 @@
         <div class="contenedor-grid">
             <nav>
                 <ul>
-                    <li>Opcion 1</li>
-                    <li>Opcion 2</li>
-                    <li>Opcion 3</li>
-                    <li>Opcion 4</li>
-                    <li>Opcion 5</li>
+                    <li>Dashboard</li>
                 </ul>
             </nav>
-            <aside>
+            <aside class="aside-dasboard">
                 <ul>
-                    <li>Opcion 1</li>
-                    <li>Opcion 2</li>
-                    <li>Opcion 3</li>
-                    <li>Opcion 4</li>
+                    <li><a href="">Gestion Doctores </a> </li>
+                    <li><a href="">Gestion Secretarios </a> </li>
+                    <li><a href="">Gestion Pacientes</a> </li>
+                    <li><a href="">Historicos</a></li>
                     <li><a href="{{ route('personalizar') }}">Personalizar</a></li>
+                    <li><a href="">Mis citas</a></li>
+                    <li><a href=""></a></li>
                 </ul>
             </aside>
             <main>
                 @yield('contenido')
-
-
                 <script src="{{ asset('scripts/main.js') }}"></script>
                 @yield('script')
                 
