@@ -8,7 +8,6 @@
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="{{ asset('estilos/estilos.css') }}">
         @yield('css')
-        
     </head>
     <body>
         <div class="contenedor-grid">
@@ -20,7 +19,7 @@
             <aside class="aside-dasboard">
                 <ul>
                     <li><a href="{{route('doctors.index')}}">Gestion Doctores </a> </li>
-                    <li><a href="">Gestion Secretarios </a> </li>
+                    <li><a href="{{ route('secretario.index')}}">Gestion Secretarios </a> </li>
                     <li><a href="">Gestion Pacientes</a> </li>
                     <li><a href="">Historicos</a></li>
                     <li><a href="{{ route('personalizar') }}">Personalizar</a></li>

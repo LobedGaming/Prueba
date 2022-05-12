@@ -9,5 +9,9 @@ class Secretarie extends Model
 {
     use HasFactory;
     public $timestamps = false;
-    protected $primaryKey = 'id_user';
+    protected $primaryKey = 'id';
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }
