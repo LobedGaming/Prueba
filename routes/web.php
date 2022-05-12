@@ -2,7 +2,9 @@
 
 
 use App\Http\Controllers\BitacoraController;
+use App\Http\Controllers\DoctorController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +22,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/bitacora',[BitacoraController::class, 'index']);
+
 
 
 Route::get('/', function () {
@@ -31,3 +33,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/bitacora',[BitacoraController::class, 'index']);
+Route::resource('doctors', DoctorController::class)->names('doctors');
+
