@@ -17,13 +17,13 @@ return new class extends Migration
             $table->id();
             $table->timestamp('fecha_hora', 1)->nullable(false);
             $table->text('description')->nullable(false);
-            $table->unsignedBigInteger('id_doctor')->nullable(false);
-            $table->unsignedBigInteger('id_secretarie')->nullable(false);
-            $table->unsignedBigInteger('id_patient')->nullable(false);
+            $table->unsignedBigInteger('doctor_id')->nullable(false);
+            $table->unsignedBigInteger('secretarie_id')->nullable(false);
+            $table->unsignedBigInteger('patient_id')->nullable(false);
 
-            $table->foreign('id_doctor')->references('id')->on('doctors')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('id_secretarie')->references('id_user')->on('secretaries')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('id_patient')->references('id_user')->on('patients')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('doctor_id')->references('id')->on('doctors')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('secretarie_id')->references('id')->on('secretaries')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('patient_id')->references('id')->on('patients')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

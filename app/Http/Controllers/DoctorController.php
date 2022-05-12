@@ -63,9 +63,11 @@ class DoctorController extends Controller
      * @param  \App\Models\Doctor  $doctor
      * @return \Illuminate\Http\Response
      */
-    public function show(Doctor $doctor)
+    public function show($id)
     {
-        //
+        $doctor = Doctor::findorFail($id);
+        $doctor->load('user');
+        return view('doctor.show',['doctor' => $doctor]);
     }
 
     /**
@@ -74,9 +76,11 @@ class DoctorController extends Controller
      * @param  \App\Models\Doctor  $doctor
      * @return \Illuminate\Http\Response
      */
-    public function edit(Doctor $doctor)
+    public function edit($id)
     {
-        //
+        $doctor = Doctor::findorFail($id);
+        $doctor->load('user');
+        return view('doctor.edit',['doctor' => $doctor]);
     }
 
     /**
@@ -86,9 +90,24 @@ class DoctorController extends Controller
      * @param  \App\Models\Doctor  $doctor
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Doctor $doctor)
+    public function update(Request $request, $id)
     {
-        //
+        $user                   = User::findorFail($id);
+        $user->name             = $request->input('name');
+        $user->ci               = $request->input('ci');
+        $user->address          = $request->input('address');
+        $user->phone            = $request->input('phone');
+        $user->email            = $request->input('email');
+        $user->password         = $request->input('password');
+        $user->fecha_nacimiento = $request->input('fecha_nacimiento');
+        $user->save();
+
+        $doctor = $user->doctor;
+        $doctor->especialidad = $request->input('especialidad');
+        $doctor->user_id = $user->id;
+        $doctor->save();
+
+        return redirect()->route('doctors.index');
     }
 
     /**
@@ -97,8 +116,14 @@ class DoctorController extends Controller
      * @param  \App\Models\Doctor  $doctor
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Doctor $doctor)
+    public function destroy($id)
     {
-        //
+        $doctor = Doctor::findorFail($id);
+        $user   = User::findorFail($doctor->user_id);
+        $doctor->delete();
+        $user->delete();
+
+        return redirect()->route('doctors.index');
+
     }
 }

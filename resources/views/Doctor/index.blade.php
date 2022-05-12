@@ -15,7 +15,7 @@
         </tr>
         @foreach($doctors as $doctor)
         <tr>
-            <td>{{ $doctor->user->id}}</td>
+            <td>{{ $doctor->id}}</td>
             <td>{{ $doctor->user->name}}</td>
             <td>{{ $doctor->user->ci}}</td>
             <td>{{ $doctor->user->address}}</td>
@@ -25,7 +25,8 @@
 
             <td>     
                   <form action="{{route ('doctors.destroy',$doctor->id)}}" method="POST">
-                    <a class="btn btn-info btn-sm" href="{{route('doctors.edit',$doctor->id)}}">Editar</a>  
+                    <a class="btn btn-primary btn-sm" href="{{route('doctors.edit',$doctor->id)}}">Editar</a>  
+                    <a class="btn btn-info btn-sm" href="{{route('doctors.show',$doctor->id)}}">Ver</a>  
                     @csrf
                     @method('DELETE')
 
