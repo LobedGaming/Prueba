@@ -24,5 +24,10 @@ Route::get('/bitacora',[BitacoraController::class, 'index']);
 
 
 Route::get('/', function () {
-    return view('welcome');
+    // return view('welcome');
+    return "Page not found :(";
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
