@@ -108,6 +108,18 @@ class UserSeeder extends Seeder
          Patient::create([
             'user_id'=>'7'
          ]);
+         User::create([
+            'name'=>'Prueba Paciente',
+            'ci'=>'5555555',
+            'address'=>'no se we',
+            'phone'=>'Prueba',
+            'email'=>'prueba@prueba.com',
+            'password'=>bcrypt('Pruebagit'),
+            'fecha_nacimiento'=>'19/05/1999',
+         ]);
+         Patient::create([
+            'user_id'=>'8'
+         ]);
 
     }
 }

@@ -7,7 +7,7 @@
     --font-color-nav: #ffffff;
     --font-color-aside: #080808;
 }
-p{
+.p{
     font-size: var(--font-size);
 }
 *{
@@ -31,28 +31,37 @@ body{
     grid-template-columns: 20% auto;
     grid-template-rows: 10% auto;
 }
-nav{
+.nav{
     position: relative;
     z-index: 10;
 
+<<<<<<< HEAD
     background-color: var(--navbar-color);
+=======
+    background-color:#6183f5;
+>>>>>>> 2b0fc75bf39cfd2e020532cce247332c1b7ef4e1
     box-shadow: 0 0 5px 0 black;
     color: var(--font-color-nav);
     grid-column: 1 / span 2;
     grid-row: 1/ span 1;
 }
-aside{
+.aside{
     background: var(--aside-color);
     box-shadow: 0 2px 5px 0 black;
     grid-column: 1 /span 1;
     grid-row: 2 / span 1;
     color: var(--font-color-aside);
 }
+<<<<<<< HEAD
 nav,aside{
     font-size: 25px;
+=======
+.nav,.aside{
+    font-size: 18px;
+>>>>>>> 2b0fc75bf39cfd2e020532cce247332c1b7ef4e1
     font-weight: 700;
 }
-nav>ul{
+.nav>.ul{
     width: 100%;
     height: 100%;
     display: flex;
@@ -61,8 +70,16 @@ nav>ul{
     justify-content: space-around;
     align-items: center;
 }
+<<<<<<< HEAD
 
 aside>ul{
+=======
+.titulo-rol
+{
+    color: #6183f5;
+}
+.aside>.ul{
+>>>>>>> 2b0fc75bf39cfd2e020532cce247332c1b7ef4e1
     height: 100%;
     
 
@@ -71,17 +88,23 @@ aside>ul{
     align-items: flex-start;
     list-style: none;
 }
-aside>ul>li{
+.aside>.ul>.li{
     width: 100%;
     border-bottom: 2px solid var(--font-color-aside);
     padding: 1.5rem 0;
     padding-left: 1.2rem;
+<<<<<<< HEAD
+=======
+    color: #000000;
+    border-style: solid;
+    border-color: rgb(0, 0, 0);
+>>>>>>> 2b0fc75bf39cfd2e020532cce247332c1b7ef4e1
 }
-a{
+.a{
     text-decoration: none;
     color: inherit;
 }
-main{
+.main{
     width: 100%;
     height: 100%;
     padding: 2rem;
@@ -96,20 +119,13 @@ main{
     align-items: flex-start;
     justify-content: flex-start;
 }
-
-table{
-    
-    
+.table{
     display: flex;
     align-items: center;
     justify-content: center;
-    
     border-collapse: collapse;
-    
-    
 }
-td,th{
-    
+.td,.th{
     border: 1px solid var(--font-color);
     font-size: var(--font-size);
     padding: 1rem;
@@ -118,13 +134,13 @@ td,th{
 input[type="number"]{    
     font-size: 20px;
 }
-input,label{
+.input,.label{
     font-size: 20px;
 }
-label{
+.label{
     margin-right: 0.5em;
 }
-select{
+.select{
     border-radius: 5px;
     font-size: 20px;
 }
@@ -155,7 +171,6 @@ button{
     padding: 0.5em;
     border-radius: 15px;
     color: white;
-
 }
 form{
     width: 100%;

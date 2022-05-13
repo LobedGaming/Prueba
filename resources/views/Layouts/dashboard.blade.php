@@ -14,36 +14,31 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <div class="contenedor-grid">
-            <nav>
-                <ul>
-                    <li>Dashboard</li>
+            <nav class="nav">
+                <ul class="ul">
+                    <li class="li">Dashboard</li>
                 </ul>
             </nav>
-            <aside class="aside-dasboard">
-                <ul>
-                    <li>Mi Perfil</li>
+            <aside class="aside">
+                <ul class="ul">
+                    <li class="li">Mi Perfil</li>
                     <li class="titulo-rol">ADMINSTRADOR</li>
-                    <li><a href="{{route('doctors.index')}}">Gestion Doctores</a> </li>
-                    <li><a href="{{ route('secretario.index')}}">Gestion Secretarios</a> </li>
-                    <li><a href="">Gestion Pacientes</a> </li>
-                    <li><a href="">Historicos Clinicos</a></li>
+                    <li class="li"><a class="a" href="{{ route('doctors.index') }}">Gestion Doctores</a> </li>
+                    <li class="li"><a class="a" href="{{ route('secretario.index') }}">Gestion Secretarios</a> </li>
+                    <li class="li"><a class="a" href="">Gestion Pacientes</a> </li>
+                    <li class="li"><a class="a" href="">Historicos Clinicos</a></li>
                    {{-- <li><a href="{{ route('personalizar') }}">Personalizar</a></li>--}}
-                    <li><a href="">Gestionar citas</a></li>
                     <li class="titulo-rol">SECRETARIO</li>
-                    <li><a href="">Gestionar citas</a></li>
-                    <li><a href="">Crear Paciente</a></li>
-                    <li><a href="{{route('citas.index')}}">Crear Cita</a></li>
+                    <li class="li"><a class="a" href="{{ route('citas.index') }}">Gestionar citas</a></li>
+                    <li class="li"><a class="a" href="">Crear Paciente</a></li>
                     <li class="titulo-rol">DOCTOR</li>
-                    <li><a href="">Mis citas</a></li>
-                    <li></li>
-                    <li class="titulo-rol">PACIENTE</li>
-                    <li><a href="">Mis citas</a></li>
-
-
-                    <li><a href=""></a></li>
+                    <li class="li"><a class="a" href="">Mis citas</a></li>
+                    <li class="titulo-rol li">PACIENTE</li>
+                    <li class="li"><a class="a" href="">Mis citas</a></li>
+                    <li class="li"><a class="a" href=""></a></li>
                 </ul>
             </aside>
-            <main>
+            <main class="main">
                 @yield('contenido')
                 <script src="{{ asset('scripts/main.js') }}"></script>
             </main>
