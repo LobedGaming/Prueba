@@ -3,19 +3,26 @@
 <a href="citas/create" class="btn btn-info mb-3">Nueva Cita</a>
 <table style="width:100%">
         <tr>
-
             <th>Nombre Paciente</th>
             <th>Fecha y Hora</th>
             <th>Descripción</th>
             <th>Acciones</th>
-            
         </tr>
         @foreach($citas as $cita)
         <tr>
-            <td>{{ $cita->paciente->user->name}}</td>
+
+            <?php
+            $patients=DB::table('patients')->select('patients.*')->where('id',$cita->patient_id)->get();
+            foreach ($patients as $patient) {
+               $users=DB::table('users')->select('users.*')->where('id',$patient->user_id)->get();
+            }
+            foreach ($users as $user ) {
+                $name=$user->name;
+            }
+            ?>
+            <td>{{ $name}}</td>
             <td>{{ $cita->fecha_hora}}</td>
             <td>{{ $cita->description}}</td>
-            
             <td>     
                   <form action="{{route ('citas.destroy',$cita->id)}}" method="POST">
                     <a class="btn btn-primary btn-sm" href="{{route('citas.edit',$cita->id)}}">Editar</a>  

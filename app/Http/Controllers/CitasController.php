@@ -8,6 +8,7 @@ use App\Models\Cita;
 use App\Models\Secretarie;
 use Illuminate\Http\Request;
 
+
 class CitasController extends Controller
 {
     /**
@@ -32,7 +33,8 @@ class CitasController extends Controller
     {
         $doctors=Doctor::all();
         $pacientes=Patient::all();
-        return view('citas.create',['doctors'=>$doctors,'patients'=>$pacientes]);
+        $citas=Cita::all();
+        return view('citas.create',['citas'=>$citas,'doctors'=>$doctors,'patients'=>$pacientes]);
     }
 
     /**
@@ -43,14 +45,6 @@ class CitasController extends Controller
      */
     public function store(Request $request)
     {
-    //    Cita::create([
-    //         'fecha_hora'=>$request->fecha_hora,
-    //         'patient_id'=>$request->patient_id,
-    //         'doctor_id'=>$request->doctor_id,
-    //         'description'=>$request->description,
-    //         'secretarie_id'=>1,
-    //     ]);
-    //     return redirect()->route('citas.index');
     $cita       = new Cita();
     $cita->fecha_hora    = $request->input('fecha_hora');
     $cita->description   = $request->input('description');
@@ -71,6 +65,7 @@ class CitasController extends Controller
     public function show($id)
     {
         //
+
     }
 
     /**
