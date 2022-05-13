@@ -35,7 +35,6 @@
                     <li class="li"><a class="a" href="{{route('citas.index')}}">Crear Cita</a></li>
                     <li class="titulo-rol">DOCTOR</li>
                     <li class="li"><a class="a" href="">Mis citas</a></li>
-                    <li class="li"></li>
                     <li class="titulo-rol li">PACIENTE</li>
                     <li class="li"><a class="a" href="">Mis citas</a></li>
                     <li class="li"><a class="a" href=""></a></li>

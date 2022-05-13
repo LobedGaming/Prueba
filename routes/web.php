@@ -18,26 +18,18 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::view('/personalizar', 'personalizar')->name('personalizar');
 Route::get('/', function () {
     return view('welcome');
 });
-
-
-
-
 Route::get('/', function () {
-    // return view('welcome');
     return "Page not found :(";
 });
 Route::resource('/citas',CitasController::class)->names('citas');
 Auth::routes();
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/bitacora',[BitacoraController::class, 'index']);
 Route::resource('doctors', DoctorController::class)->names('doctors');
-
 Route::controller(SecretarioController::class)->group(function(){
     Route::get('/secretario','index')->name('secretario.index');
     Route::get('/secretario/create','create')->name('secretario.create');

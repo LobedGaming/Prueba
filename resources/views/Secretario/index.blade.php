@@ -2,7 +2,7 @@
 @section('contenido')
     <h1>Gestionar Secretarios</h1>
     <a href="{{ route('secretario.create')}}"> REGISTRAR NUEVO</a>
-    <table>
+    <table style="width:100%">
         <tr>
             <th>ID</th>
             <th>Nombre</th>
