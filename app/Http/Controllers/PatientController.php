@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Patient;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class PatientController extends Controller
@@ -13,7 +15,8 @@ class PatientController extends Controller
      */
     public function index()
     {
-        //
+        $patient = Patient::all();
+        return view('Paciente.index',['patients'=>$patient]);
     }
 
     /**
@@ -23,7 +26,7 @@ class PatientController extends Controller
      */
     public function create()
     {
-        //
+        return view('Paciente.create');
     }
 
     /**
@@ -34,7 +37,33 @@ class PatientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'ci' => 'required',
+            'address' => 'required',
+            'phone' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+            'fecha_nacimiento' => 'required',
+        ]);
+
+        $usuario = new User();
+        $usuario->name = $request->input('name');
+        $usuario->ci = $request->input('ci');
+        $usuario->address = $request->input('address');
+        $usuario->phone = $request->input('phone');
+        $usuario->email = $request->input('email');
+        $usuario->password = bcrypt($request->input('password'));
+        $usuario->fecha_nacimiento = $request->input('fecha_nacimiento');
+        
+        $usuario->save();
+
+        $patient = new Patient();
+        $patient->user_id = $usuario->id;
+
+        $patient->save();
+
+        return redirect()->route('patient.index');
     }
 
     /**
@@ -45,7 +74,8 @@ class PatientController extends Controller
      */
     public function show($id)
     {
-        //
+        $patient = Patient::find($id);
+        return view('Paciente.show',['patient'=>$patient]);
     }
 
     /**
@@ -56,7 +86,8 @@ class PatientController extends Controller
      */
     public function edit($id)
     {
-        //
+        $patient = Patient::find($id);
+        return view('Paciente.edit',['patient'=>$patient]);
     }
 
     /**
@@ -68,7 +99,29 @@ class PatientController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $patient = Patient::find($id);
+        $request->validate([
+            'name' => 'required',
+            'ci' => 'required',
+            'address' => 'required',
+            'phone' => 'required',
+            'email' => 'required',
+            
+            'fecha_nacimiento' => 'required',
+        ]);
+
+        $usuario = User::find($patient->user_id);
+        $usuario->name = $request->input('name');
+        $usuario->ci = $request->input('ci');
+        $usuario->address = $request->input('address');
+        $usuario->phone = $request->input('phone');
+        $usuario->email = $request->input('email');
+        
+        $usuario->fecha_nacimiento = $request->input('fecha_nacimiento');
+        
+        $usuario->save();
+
+        return redirect()->route('patient.index');
     }
 
     /**
@@ -79,6 +132,10 @@ class PatientController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $patient = Patient::find($id);
+        $usuario = User::find($patient->user_id);
+        $patient->delete();
+        $usuario->delete();
+        return redirect()->route('patient.index');
     }
 }
