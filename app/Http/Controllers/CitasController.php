@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Doctor;
 use App\Models\Patient;
 use App\Models\Cita;
-use App\Models\User;
+use App\Models\Secretarie;
 use Illuminate\Http\Request;
 
 class CitasController extends Controller
@@ -43,14 +43,23 @@ class CitasController extends Controller
      */
     public function store(Request $request)
     {
-       Cita::create([
-            'fecha_hora'=>$request->fecha_hora,
-            'patient_id'=>$request->patient_id,
-            'doctor_id'=>$request->doctor_id,
-            'description'=>$request->description,
-            'secretarie_id'=>1,
-        ]);
-        return redirect()->route('citas.index');
+    //    Cita::create([
+    //         'fecha_hora'=>$request->fecha_hora,
+    //         'patient_id'=>$request->patient_id,
+    //         'doctor_id'=>$request->doctor_id,
+    //         'description'=>$request->description,
+    //         'secretarie_id'=>1,
+    //     ]);
+    //     return redirect()->route('citas.index');
+    $cita       = new Cita();
+    $cita->fecha_hora    = $request->input('fecha_hora');
+    $cita->description   = $request->input('description');
+    $cita->doctor_id     = $request->input('doctor_id');
+    $cita->secretarie_id = $request->input('secretarie_id');
+    $cita->patient_id    = $request->input('patient_id');
+    $cita->save();
+    return redirect()->route('citas.index');
+
     }
 
     /**

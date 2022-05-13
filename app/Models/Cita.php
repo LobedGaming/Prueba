@@ -11,21 +11,21 @@ class Cita extends Model
 
     protected $fillable=[
         'fecha_hora',
-        'doctor_id',
         'description',
+        'doctor_id',
         'patient_id',
         'secretarie_id',];
     protected $primaryKey = 'id';
 
     public function doctor(){
-        return $this->belongsTo(Doctor::class);
+        return $this->belongsTo(Doctor::class,'doctor_id');
     }
 
     public function secretario(){
-        return $this->belongsTo(Secretarie::class);
+        return $this->belongsTo(Secretarie::class,'secretarie_id');
     }
 
     public function paciente(){
-        return $this->belongsTo(Patient::class);
+        return $this->belongsTo(Patient::class,'patient_id');
     }
 }

@@ -12,7 +12,7 @@ class Doctor extends Model
     protected $primaryKey = 'id';
 
     public function user(){
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,'user_id');
     }
     public function cita(){
         return $this->hasMany(Cita::class);

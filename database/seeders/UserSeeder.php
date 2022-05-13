@@ -54,7 +54,7 @@ class UserSeeder extends Seeder
             'phone'=>'73628134',
             'email'=>'esteban@prueba.com',
             'password'=>bcrypt('7833036'),
-            'fecha_nacimiento'=>'19/05/1999',
+            'fecha_nacimiento'=>'12/05/1999',
          ]);
          Doctor::create([
             'user_id'=>'3',
@@ -67,7 +67,7 @@ class UserSeeder extends Seeder
             'phone'=>'11111111',
             'email'=>'mirko@prueba.com',
             'password'=>bcrypt('11111111'),
-            'fecha_nacimiento'=>'19/05/1999',
+            'fecha_nacimiento'=>'12/05/1999',
          ]);
          Secretarie::create([
             'user_id'=>'4'
@@ -79,7 +79,7 @@ class UserSeeder extends Seeder
             'phone'=>'2222222',
             'email'=>'fadua@prueba.com',
             'password'=>bcrypt('2222222'),
-            'fecha_nacimiento'=>'19/05/1999',
+            'fecha_nacimiento'=>'12/05/1999',
          ]);
          Patient::create([
             'user_id'=>'5'
@@ -91,7 +91,7 @@ class UserSeeder extends Seeder
             'phone'=>'333333',
             'email'=>'pacientee@prueba.com',
             'password'=>bcrypt('333333'),
-            'fecha_nacimiento'=>'19/05/1999',
+            'fecha_nacimiento'=>'12/05/1999',
          ]);
          Patient::create([
             'user_id'=>'6'
@@ -103,7 +103,7 @@ class UserSeeder extends Seeder
             'phone'=>'44444444',
             'email'=>'paciente@prueba.com',
             'password'=>bcrypt('44444444'),
-            'fecha_nacimiento'=>'19/05/1999',
+            'fecha_nacimiento'=>'12/05/1999',
          ]);
          Patient::create([
             'user_id'=>'7'
@@ -115,7 +115,7 @@ class UserSeeder extends Seeder
             'phone'=>'555555555',
             'email'=>'pruebaa@prueba.com',
             'password'=>bcrypt('Pruebagit'),
-            'fecha_nacimiento'=>'19/05/1999',
+            'fecha_nacimiento'=>'12/05/1999',
          ]);
          Patient::create([
             'user_id'=>'8'
