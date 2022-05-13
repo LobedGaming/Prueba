@@ -6,6 +6,7 @@ use App\Models\Doctor;
 use App\Models\Patient;
 use App\Models\Cita;
 use App\Models\Secretarie;
+use DateTime;
 use Illuminate\Http\Request;
 
 
@@ -21,7 +22,8 @@ class CitasController extends Controller
 
         $doctors=Doctor::all();
         $pacientes=Patient::all();
-        $citas=Cita::all();
+        $hoy=new DateTime("now");
+        $citas=Cita::where('fecha_hora','<=',$hoy)->get();
         return view('Citas.index',['citas'=>$citas,'doctors'=>$doctors,'patients'=>$pacientes]);
     }
 
