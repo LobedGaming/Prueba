@@ -9,9 +9,11 @@ class Patient extends Model
 {
     use HasFactory;
     public $timestamps = false;
-    protected $primaryKey = 'id_user';
 
     public function cita(){
         return $this->hasMany(Cita::class);
+    }
+    public function user(){
+        return $this->belongsTo(User::class);
     }
 }

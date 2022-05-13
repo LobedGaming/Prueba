@@ -125,6 +125,10 @@ aside>ul{
     justify-content: center;
     border-collapse: collapse;
 }
+.table-general
+{
+    width: 100%;
+}
 .td,.th{
     border: 1px solid var(--font-color);
     font-size: var(--font-size);

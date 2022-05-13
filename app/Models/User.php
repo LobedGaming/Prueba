@@ -49,4 +49,7 @@ class User extends Authenticatable
     public function secretario(){
         return $this->hasOne(Secretarie::class);
     }
+    public function patient(){
+        return $this->hasOne(Patient::class);
+    }
 }

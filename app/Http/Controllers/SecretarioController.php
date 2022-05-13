@@ -121,11 +121,9 @@ class SecretarioController extends Controller
      */
     public function destroy(Secretarie $secretario)
     {
-        $secretario = Secretarie::findorFail($secretario->id);
-        $user= User::findorFail($secretario->user_id);
+        $usuario = User::find($secretario->user_id);
         $secretario->delete();
-        $user->delete();
-        
+        $usuario->delete();
         return redirect()->route('secretario.index');
     }
 }
