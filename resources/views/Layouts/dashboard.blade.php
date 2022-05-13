@@ -8,6 +8,8 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link rel="stylesheet" href="{{ asset('estilos/estilos.css') }}">
         @yield('css')
+        <script src="https://kit.fontawesome.com/871fc34738.js" crossorigin="anonymous"></script>
+
     </head>
     <body>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -29,10 +31,14 @@
                     <li class="li"><a class="a" href="">Historicos Clinicos</a></li>
                    {{-- <li><a href="{{ route('personalizar') }}">Personalizar</a></li>--}}
                     <li class="titulo-rol">SECRETARIO</li>
-                    <li class="li"><a class="a" href="{{ route('citas.index') }}">Gestionar citas</a></li>
+                    <li class="li"><a class="a" href="{{ route('citas.index')}}">Gestionar citas</a></li>
                     <li class="li"><a class="a" href="{{ route('patient.index')}}">Gestion Pacientes</a> </li>
                     <li class="titulo-rol">DOCTOR</li>
-                    <li class="li"><a class="a" href="">Mis citas</a></li>
+                    <form action="{{route('citas.citasDoctor')}}" method="POST">
+                        @csrf
+                        <input type="hidden" value="1" name="id">
+                        <button  type="submit">Mis citas</button>
+                    </form>
                     <li class="titulo-rol li">PACIENTE</li>
                     <li class="li"><a class="a" href="">Mis citas</a></li>
                 </ul>

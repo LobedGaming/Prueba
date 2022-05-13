@@ -10,22 +10,11 @@
         </tr>
         @foreach($citas as $cita)
         <tr>
-
-            <?php
-            $patients=DB::table('patients')->select('patients.*')->where('id',$cita->patient_id)->get();
-            foreach ($patients as $patient) {
-               $users=DB::table('users')->select('users.*')->where('id',$patient->user_id)->get();
-            }
-            foreach ($users as $user ) {
-                $name=$user->name;
-            }
-            ?>
-            <td>{{ $name}}</td>
+            <td>{{ $cita->paciente->user->name}}</td>
             <td>{{ $cita->fecha_hora}}</td>
             <td>{{ $cita->description}}</td>
             <td>     
-                  <form action="{{route ('citas.destroy',$cita->id)}}" method="POST">
-                    <a class="btn btn-primary btn-sm" href="{{route('citas.edit',$cita->id)}}">Editar</a>  
+                  <form action="{{route ('citas.destroy',$cita->id)}}" method="POST"> 
                     <a class="btn btn-info btn-sm" href="{{route('citas.show',$cita->id)}}">Ver</a>  
                     @csrf
                     @method('DELETE')

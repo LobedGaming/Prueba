@@ -19,7 +19,6 @@ class CitasController extends Controller
      */
     public function index()
     {
-
         $doctors=Doctor::all();
         $pacientes=Patient::all();
         $hoy=new DateTime("now");
@@ -73,7 +72,7 @@ class CitasController extends Controller
         $citas=Cita::where('patient_id',$id)->where('fecha_hora','>=',$hoy)->get();
           return view('citas.index',['citas'=>$citas]);
       }
-
+    
 
 
 
@@ -98,8 +97,8 @@ class CitasController extends Controller
      */
     public function show($id)
     {
-        //
-
+        $citas = Cita::findorFail($id);
+        return view('Citas.show',['citas' => $citas]);
     }
 
     /**
@@ -133,6 +132,9 @@ class CitasController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $cita = Cita::findorFail($id);
+        $cita->delete();
+        return redirect()->route('citas.index');
+
     }
 }
