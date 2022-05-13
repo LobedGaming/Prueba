@@ -65,8 +65,8 @@ class CitasController extends Controller
      */
     public function show($id)
     {
-        //
-
+        $citas = Cita::findorFail($id);
+        return view('Citas.show',['citas' => $citas]);
     }
 
     /**
