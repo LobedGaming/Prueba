@@ -7,7 +7,7 @@
     --font-color-nav: #ffffff;
     --font-color-aside: #080808;
 }
-p{
+.p{
     font-size: var(--font-size);
 }
 *{
@@ -32,28 +32,28 @@ body{
     grid-template-rows: 10% auto;
     
 }
-nav{
+.nav{
     position: relative;
     z-index: 10;
 
     background-color:#6183f5;
-    box-shadow: 0 0 5px 0 whitesmoke;
+    box-shadow: 0 0 5px 0 black;
     color: var(--font-color-nav);
     grid-column: 1 / span 2;
     grid-row: 1/ span 1;
 }
-aside{
+.aside{
     background: var(--aside-color);
-    box-shadow: 0 2px 5px 0 whitesmoke;
+    box-shadow: 0 2px 5px 0 black;
     grid-column: 1 /span 1;
     grid-row: 2 / span 1;
     color: var(--font-color-aside);
 }
-nav,aside{
+.nav,.aside{
     font-size: 18px;
     font-weight: 700;
 }
-nav>ul{
+.nav>.ul{
     width: 100%;
     height: 100%;
     display: flex;
@@ -66,14 +66,14 @@ nav>ul{
 {
     color: #6183f5;
 }
-aside>ul{
+.aside>.ul{
     height: 100%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     list-style: none;
 }
-aside>ul>li{
+.aside>.ul>.li{
     width: 100%;
     border-bottom: 2px solid var(--font-color-aside);
     padding: 1.5rem 0;
@@ -82,11 +82,11 @@ aside>ul>li{
     border-style: solid;
     border-color: white;
 }
-a{
+.a{
     text-decoration: none;
     color: inherit;
 }
-main{
+.main{
     width: 100%;
     height: 100%;
     padding: 2rem;
@@ -101,20 +101,13 @@ main{
     align-items: flex-start;
     justify-content: flex-start;
 }
-
-table{
-    
-    
+.table{
     display: flex;
     align-items: center;
     justify-content: center;
-    
     border-collapse: collapse;
-    
-    
 }
-td,th{
-    
+.td,.th{
     border: 1px solid var(--font-color);
     font-size: var(--font-size);
     padding: 1rem;
@@ -123,13 +116,13 @@ td,th{
 input[type="number"]{    
     font-size: 20px;
 }
-input,label{
+.input,.label{
     font-size: 20px;
 }
-label{
+.label{
     margin-right: 0.5em;
 }
-select{
+.select{
     border-radius: 5px;
     font-size: 20px;
 }
@@ -160,7 +153,6 @@ button{
     padding: 0.5em;
     border-radius: 15px;
     color: white;
-
 }
 form{
     width: 100%;
