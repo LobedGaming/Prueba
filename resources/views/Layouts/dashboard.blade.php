@@ -23,16 +23,14 @@
                 <ul class="ul">
                     <li class="li">Mi Perfil</li>
                     <li class="titulo-rol">ADMINSTRADOR</li>
-                    <li class="li"><a class="a" href="{{route('doctors.index')}}">Gestion Doctores</a> </li>
-                    <li class="li"><a class="a" href="{{ route('secretario.index')}}">Gestion Secretarios</a> </li>
+                    <li class="li"><a class="a" href="{{ route('doctors.index') }}">Gestion Doctores</a> </li>
+                    <li class="li"><a class="a" href="{{ route('secretario.index') }}">Gestion Secretarios</a> </li>
                     <li class="li"><a class="a" href="">Gestion Pacientes</a> </li>
                     <li class="li"><a class="a" href="">Historicos Clinicos</a></li>
                    {{-- <li><a href="{{ route('personalizar') }}">Personalizar</a></li>--}}
-                    <li class="li"><a class="a" href="">Gestionar citas</a></li>
                     <li class="titulo-rol">SECRETARIO</li>
-                    <li class="li"><a class="a" href="">Gestionar citas</a></li>
+                    <li class="li"><a class="a" href="{{ route('citas.index') }}">Gestionar citas</a></li>
                     <li class="li"><a class="a" href="">Crear Paciente</a></li>
-                    <li class="li"><a class="a" href="{{route('citas.index')}}">Crear Cita</a></li>
                     <li class="titulo-rol">DOCTOR</li>
                     <li class="li"><a class="a" href="">Mis citas</a></li>
                     <li class="titulo-rol li">PACIENTE</li>

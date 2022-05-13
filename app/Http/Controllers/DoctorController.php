@@ -38,6 +38,17 @@ class DoctorController extends Controller
      */
     public function store(Request $request)
     {
+
+        $request->validate([
+            'name' => 'required',
+            'ci' => 'required',
+            'address' => 'required',
+            'phone' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+            'fecha_nacimiento' => 'required',
+        ]);
+
         $user                   = new User();
         $user->name             = $request->input('name');
         $user->ci               = $request->input('ci');
@@ -92,6 +103,18 @@ class DoctorController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'name' => 'required',
+            'ci' => 'required',
+            'address' => 'required',
+            'phone' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+            'fecha_nacimiento' => 'required',
+            'especialidad' => 'required',
+        ]);
+
+
         $user                   = User::findorFail($id);
         $user->name             = $request->input('name');
         $user->ci               = $request->input('ci');

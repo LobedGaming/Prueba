@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Doctor;
 use App\Models\Patient;
+use App\Models\Cita;
 use Illuminate\Http\Request;
 
 class CitasController extends Controller
@@ -18,7 +19,8 @@ class CitasController extends Controller
         //
         $doctors=Doctor::all();
         $pacientes=Patient::all();
-        return view('Citas.index')->with('doctors',$doctors)->with('patient',$pacientes);
+        $citas=Cita::all();
+        return view('Citas.index',['citas'=>$citas,'doctors'=>$doctors,'patients'=>$pacientes]);
     }
 
     /**
@@ -28,7 +30,9 @@ class CitasController extends Controller
      */
     public function create()
     {
-        //
+        $doctors=Doctor::all();
+        $pacientes=Patient::all();
+        return view('citas.create',['doctors'=>$doctors,'patients'=>$pacientes]);
     }
 
     /**

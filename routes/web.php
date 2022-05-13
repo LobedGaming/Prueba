@@ -39,3 +39,5 @@ Route::controller(SecretarioController::class)->group(function(){
     Route::put('/secretario/{secretario}/update','update')->name('secretario.update');
     Route::get('/secretario/{secretario}/show','show')->name('secretario.show');
 });
+Route::resource('secretario', SecretarioController::class)->names('secretario');
+
