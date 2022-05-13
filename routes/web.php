@@ -2,6 +2,7 @@
 
 
 use App\Http\Controllers\BitacoraController;
+use App\Http\Controllers\CitasController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\SecretarioController;
 use Illuminate\Support\Facades\Route;
@@ -30,7 +31,7 @@ Route::get('/', function () {
     // return view('welcome');
     return "Page not found :(";
 });
-
+Route::resource('/citas',CitasController::class)->names('citas');
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
