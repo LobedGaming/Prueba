@@ -27,6 +27,8 @@ Route::get('/', function () {
     return "Page not found :(";
 });
 Route::resource('/citas',CitasController::class)->names('citas');
+Route::get('/citas/doctor/{id}',[CitasController::class, 'citasDoctor']);
+Route::get('/citas/paciente/{id}',[CitasController::class, 'citasPaciente']);
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/bitacora',[BitacoraController::class, 'index']);

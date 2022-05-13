@@ -19,10 +19,10 @@ class CitasController extends Controller
     public function index()
     {
 
+        $doctors=Doctor::all();
+        $pacientes=Patient::all();
         $citas=Cita::all();
-        $citas->load('doctor');
-        return [$citas];
-        // me cago
+        return view('Citas.index',['citas'=>$citas,'doctors'=>$doctors,'patients'=>$pacientes]);
     }
 
     /**
@@ -44,6 +44,24 @@ class CitasController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+
+    //todas las citas de un doctor que se recibe el id del doctor
+    public function citasDoctor($id){
+
+      $citas=Cita::where('doctor_id',$id)->get();
+        return view('citas.index',['citas'=>$citas]);
+    }
+    //todas las citas de un doctor que se recibe el id del paciente
+    public function citasPaciente($id){
+
+        $citas=Cita::where('patient_id',$id)->get();
+          return view('citas.index',['citas'=>$citas]);
+      }
+
+
+
+
     public function store(Request $request)
     {
     $cita       = new Cita();
