@@ -1,15 +1,15 @@
 @extends('Layouts.dashboard')
 @section('contenido')
     <h1>Gestionar Secretarios</h1>
-    <a href="{{ route('secretario.create')}}"> REGISTRAR NUEVO</a>
+    <a href="{{ route('secretario.create')}}" class="btn btn-info mb-3"> Nuevo Secretario</a>
     <table style="width:100%">
         <tr>
-            <th>ID</th>
-            <th>Nombre</th>
-            <th>CI</th>
+            <th>Id</th>
+            <th>Nombre Completo</th>
+            <th>Ci</th>
             <th>Direccion</th>
             <th>Telefono</th>
-            <th>Opciones</th>
+            <th>Acciones</th>
         </tr>
         @foreach ($Secretarios as $secretario)
             <tr>
@@ -19,12 +19,12 @@
                 <td>{{$secretario->user->address}}</td>
                 <td>{{$secretario->user->phone}}</td>
                 <td>
-                    <a href="{{ route('secretario.show',$secretario) }}">ver</a>
-                    <a href="{{ route('secretario.edit',$secretario) }}">editar</a>
+                    <a class="btn btn-primary btn-sm" href="{{ route('secretario.edit',$secretario) }}">editar</a>
+                    <a class="btn btn-info btn-sm" href="{{ route('secretario.show',$secretario) }}">ver</a>
                     <form action="{{ route('secretario.destroy', $secretario) }}" method="POST">
                         @method('delete')
                         @csrf
-                        <button type="submit" onclick="return confirm('CONFIRMAR ELIMINACION')">Eliminar</button>
+                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('CONFIRMAR ELIMINACION')">Eliminar</button>
                     </form> 
                 </td>    
             </tr>

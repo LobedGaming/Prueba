@@ -109,7 +109,6 @@ class DoctorController extends Controller
             'address' => 'required',
             'phone' => 'required',
             'email' => 'required',
-            'password' => 'required',
             'fecha_nacimiento' => 'required',
             'especialidad' => 'required',
         ]);
@@ -121,7 +120,6 @@ class DoctorController extends Controller
         $user->address          = $request->input('address');
         $user->phone            = $request->input('phone');
         $user->email            = $request->input('email');
-        $user->password         = $request->input('password');
         $user->fecha_nacimiento = $request->input('fecha_nacimiento');
         $user->save();
 

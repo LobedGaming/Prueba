@@ -37,10 +37,10 @@ class UserSeeder extends Seeder
         
          User::create([
             'name'=>'Alvaro Flores',
-            'ci'=>'12345678',
-            'address'=>'No se we',
-            'phone'=>'12345678',
-            'email'=>'alvaro@prueba.com',
+            'ci'=>'902050',
+            'address'=>'Virgen de Lujan',
+            'phone'=>'62354789',
+            'email'=>'alvaro@gmail.com',
             'password'=>bcrypt('12345678'),
             'fecha_nacimiento'=>'11/02/2022',
          ]);
@@ -51,10 +51,10 @@ class UserSeeder extends Seeder
          User::create([
             'name'=>'Obed Andreade',
             'ci'=>'87654321',
-            'address'=>'No se we',
-            'phone'=>'87654321',
-            'email'=>'obed@prueba.com',
-            'password'=>bcrypt('87654321'),
+            'address'=>'Las Palmas',
+            'phone'=>'7854123',
+            'email'=>'obed@gmail.com',
+            'password'=>bcrypt('12345678'),
             'fecha_nacimiento'=>'11/02/2022',
          ]);
          Doctor::create([
@@ -66,8 +66,8 @@ class UserSeeder extends Seeder
             'ci'=>'7833036',
             'address'=>'Barrio Entel Norte Calle 1 Casa 12',
             'phone'=>'73628134',
-            'email'=>'esteban@prueba.com',
-            'password'=>bcrypt('7833036'),
+            'email'=>'esteban@gmail.com',
+            'password'=>bcrypt('12345678'),
             'fecha_nacimiento'=>'12/05/1999',
          ]);
          Doctor::create([
@@ -80,11 +80,11 @@ class UserSeeder extends Seeder
 
          User::create([
             'name'=>'Mirko Ochoa',
-            'ci'=>'11111111',
+            'ci'=>'58931478',
             'address'=>'Barrio Entel Norte Calle 1 Casa 13',
-            'phone'=>'11111111',
-            'email'=>'mirko@prueba.com',
-            'password'=>bcrypt('11111111'),
+            'phone'=>'78541256',
+            'email'=>'mirko@gmail.com',
+            'password'=>bcrypt('12345678'),
             'fecha_nacimiento'=>'12/05/1999',
          ]);
          Secretarie::create([
@@ -96,47 +96,47 @@ class UserSeeder extends Seeder
 
          User::create([
             'name'=>'Fadua Veliz',
-            'ci'=>'2222222',
-            'address'=>'no se we',
-            'phone'=>'2222222',
-            'email'=>'fadua@prueba.com',
-            'password'=>bcrypt('2222222'),
+            'ci'=>'98521364',
+            'address'=>'Vallegrande',
+            'phone'=>'78521364',
+            'email'=>'fadua@gmail.com.com',
+            'password'=>bcrypt('12345678'),
             'fecha_nacimiento'=>'12/05/1999',
          ]);
          Patient::create([
             'user_id'=>'5'
          ]);
          User::create([
-            'name'=>'Paciente Veliz',
-            'ci'=>'333333',
-            'address'=>'no se we',
-            'phone'=>'333333',
-            'email'=>'pacientee@prueba.com',
-            'password'=>bcrypt('333333'),
+            'name'=>'Luis Fernando Camacho',
+            'ci'=>'96587412',
+            'address'=>'Plaza 24 de Septiembre',
+            'phone'=>'75841265',
+            'email'=>'luisfernando@gmail.com',
+            'password'=>bcrypt('12345678'),
             'fecha_nacimiento'=>'12/05/1999',
          ]);
          Patient::create([
             'user_id'=>'6'
          ]);
          User::create([
-            'name'=>'Paciente Prueba',
-            'ci'=>'44444444',
-            'address'=>'no se we',
-            'phone'=>'44444444',
-            'email'=>'paciente@prueba.com',
-            'password'=>bcrypt('44444444'),
+            'name'=>'Luchito Arce',
+            'ci'=>'42159867',
+            'address'=>'Casa Grande del Pueblo',
+            'phone'=>'72546987',
+            'email'=>'luchito@gmail.com',
+            'password'=>bcrypt('12345678'),
             'fecha_nacimiento'=>'12/05/1999',
          ]);
          Patient::create([
             'user_id'=>'7'
          ]);
          User::create([
-            'name'=>'Prueba Paciente',
-            'ci'=>'55555555',
-            'address'=>'no se we',
-            'phone'=>'555555555',
-            'email'=>'pruebaa@prueba.com',
-            'password'=>bcrypt('Pruebagit'),
+            'name'=>'Maria Galindo',
+            'ci'=>'985421',
+            'address'=>'Calle sin nombre, El Alto',
+            'phone'=>'72169845',
+            'email'=>'mariagalindo@gmail.com',
+            'password'=>bcrypt('12345678'),
             'fecha_nacimiento'=>'12/05/1999',
          ]);
          Patient::create([

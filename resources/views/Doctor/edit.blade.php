@@ -4,8 +4,8 @@
 <h1>Editar datos Doctor</h1>
 
 <form action="{{ route('doctors.update',[$doctor->user->id]) }}" method="POST" autocomplete="off">
-    @csrf   
-    @method('PUT')
+   @csrf   
+   @method('PUT')
 
                 
                     <label for="name">Nombre Completo</label>
