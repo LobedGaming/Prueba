@@ -102,12 +102,7 @@ body{
     align-items: flex-start;
     justify-content: flex-start;
 }
-.table{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-collapse: collapse;
-}
+
 .table-general
 {
     width: 100%;
@@ -151,7 +146,7 @@ h1,h2,h3{
     border-bottom: 2px solid var(--font-color);
     margin-bottom: 0.8em;
 }
-button{
+.boton-aceptar{
     font-size: 20px;
     border: 0;
     background: rgb(108, 212, 108);
@@ -166,4 +161,19 @@ form{
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
+}
+.table-data-option{
+    padding: 0 5px;
+    border: 0;
+    color: blue;
+    background-color: inherit;
+    cursor: pointer;
+}
+.table-data-option-list{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    
+    font-size: var(--font-size);   
 }
