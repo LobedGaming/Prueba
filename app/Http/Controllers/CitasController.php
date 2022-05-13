@@ -23,7 +23,8 @@ class CitasController extends Controller
         $doctors=Doctor::all();
         $pacientes=Patient::all();
         $hoy=new DateTime("now");
-        $citas=Cita::where('fecha_hora','<=',$hoy)->get();
+        $citas=Cita::where('fecha_hora','>=',$hoy)->get();
+      //  $citas=Cita::all();
         return view('Citas.index',['citas'=>$citas,'doctors'=>$doctors,'patients'=>$pacientes]);
     }
 
@@ -50,14 +51,26 @@ class CitasController extends Controller
 
     //todas las citas de un doctor que se recibe el id del doctor
     public function citasDoctor($id){
-
-      $citas=Cita::where('doctor_id',$id)->get();
+        $hoy=new DateTime("now");
+      $citas=Cita::where('doctor_id',$id)->where('fecha_hora','>=',$hoy)->get();
+      
         return view('citas.index',['citas'=>$citas]);
     }
-    //todas las citas de un doctor que se recibe el id del paciente
-    public function citasPaciente($id){
+    //todas las citas pasadas y futuras de un doctor
+    public function citasDoctorAll($id){
+        $citas=Cita::where('doctor_id',$id)->get();
+        return view('citas.index',['citas'=>$citas]);
+    }
 
+    //todas las citas de un paciente que se recibe el id del paciente pasadas y futuras
+    public function citasPacienteAll($id){
         $citas=Cita::where('patient_id',$id)->get();
+          return view('citas.index',['citas'=>$citas]);
+    }
+    //todas las citas de un paciente que se recibe el id del paciente
+    public function citasPaciente($id){
+        $hoy=new DateTime("now");
+        $citas=Cita::where('patient_id',$id)->where('fecha_hora','>=',$hoy)->get();
           return view('citas.index',['citas'=>$citas]);
       }
 
