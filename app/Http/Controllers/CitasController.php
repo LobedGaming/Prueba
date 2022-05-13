@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Doctor;
 use App\Models\Patient;
 use App\Models\Cita;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class CitasController extends Controller
@@ -16,11 +17,10 @@ class CitasController extends Controller
      */
     public function index()
     {
-        //
-        $doctors=Doctor::all();
-        $pacientes=Patient::all();
+
         $citas=Cita::all();
-        return view('Citas.index',['citas'=>$citas,'doctors'=>$doctors,'patients'=>$pacientes]);
+        $citas->load('doctor');
+        return [$citas];
     }
 
     /**
