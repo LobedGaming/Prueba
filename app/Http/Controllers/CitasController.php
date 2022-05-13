@@ -18,7 +18,6 @@ class CitasController extends Controller
      */
     public function index()
     {
-        
         $doctors=Doctor::all();
         $pacientes=Patient::all();
         $citas=Cita::all();
