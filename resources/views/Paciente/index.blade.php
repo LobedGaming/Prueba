@@ -28,7 +28,7 @@
                         <form action="{{ route('patient.destroy', $patient) }}" method="POST">
                             @method('delete')
                             @csrf
-                            <button type="submit" onclick="return confirm('CONFIRMAR ELIMINACION')" class="table-data-option" style="color:rgb(238, 78, 73)"><i class="fa-solid fa-trash-can"></i></button>
+                            <button type="submit" onclick="return confirm('CONFIRMAR ELIMINACION')" class="table-data-option" ><i class="fa-solid fa-trash-can"></i></button>
                         </form> 
                     </div>
                     
