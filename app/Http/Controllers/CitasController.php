@@ -22,6 +22,7 @@ class CitasController extends Controller
         $citas=Cita::all();
         $citas->load('doctor');
         return [$citas];
+        // me cago
     }
 
     /**
