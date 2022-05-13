@@ -78,9 +78,9 @@ body{
     border-bottom: 2px solid var(--font-color-aside);
     padding: 1.5rem 0;
     padding-left: 1.2rem;
-    color: #ffffff;
+    color: #000000;
     border-style: solid;
-    border-color: white;
+    border-color: rgb(0, 0, 0);
 }
 .a{
     text-decoration: none;
