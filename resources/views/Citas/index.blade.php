@@ -12,7 +12,7 @@
         </tr>
         @foreach($citas as $cita)
         <tr>
-            <td>{{ $cita->paciente->name}}</td>
+            <td>{{ $cita->paciente->user->name}}</td>
             <td>{{ $cita->fecha_hora}}</td>
             <td>{{ $cita->description}}</td>
             

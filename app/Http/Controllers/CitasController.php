@@ -43,7 +43,14 @@ class CitasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       Cita::create([
+            'fecha_hora'=>$request->fecha_hora,
+            'patient_id'=>$request->patient_id,
+            'doctor_id'=>$request->doctor_id,
+            'description'=>$request->description,
+            'secretarie_id'=>1,
+        ]);
+        return redirect()->route('citas.index');
     }
 
     /**

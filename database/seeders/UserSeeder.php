@@ -89,7 +89,7 @@ class UserSeeder extends Seeder
             'ci'=>'333333',
             'address'=>'no se we',
             'phone'=>'333333',
-            'email'=>'paciente@prueba.com',
+            'email'=>'pacientee@prueba.com',
             'password'=>bcrypt('333333'),
             'fecha_nacimiento'=>'19/05/1999',
          ]);
@@ -110,10 +110,10 @@ class UserSeeder extends Seeder
          ]);
          User::create([
             'name'=>'Prueba Paciente',
-            'ci'=>'5555555',
+            'ci'=>'55555555',
             'address'=>'no se we',
-            'phone'=>'Prueba',
-            'email'=>'prueba@prueba.com',
+            'phone'=>'555555555',
+            'email'=>'pruebaa@prueba.com',
             'password'=>bcrypt('Pruebagit'),
             'fecha_nacimiento'=>'19/05/1999',
          ]);

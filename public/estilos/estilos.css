@@ -35,11 +35,7 @@ body{
     position: relative;
     z-index: 10;
 
-<<<<<<< HEAD
-    background-color: var(--navbar-color);
-=======
     background-color:#6183f5;
->>>>>>> 2b0fc75bf39cfd2e020532cce247332c1b7ef4e1
     box-shadow: 0 0 5px 0 black;
     color: var(--font-color-nav);
     grid-column: 1 / span 2;
@@ -52,13 +48,8 @@ body{
     grid-row: 2 / span 1;
     color: var(--font-color-aside);
 }
-<<<<<<< HEAD
-nav,aside{
-    font-size: 25px;
-=======
 .nav,.aside{
     font-size: 18px;
->>>>>>> 2b0fc75bf39cfd2e020532cce247332c1b7ef4e1
     font-weight: 700;
 }
 .nav>.ul{
@@ -70,16 +61,11 @@ nav,aside{
     justify-content: space-around;
     align-items: center;
 }
-<<<<<<< HEAD
-
-aside>ul{
-=======
 .titulo-rol
 {
     color: #6183f5;
 }
 .aside>.ul{
->>>>>>> 2b0fc75bf39cfd2e020532cce247332c1b7ef4e1
     height: 100%;
     
 
@@ -93,12 +79,9 @@ aside>ul{
     border-bottom: 2px solid var(--font-color-aside);
     padding: 1.5rem 0;
     padding-left: 1.2rem;
-<<<<<<< HEAD
-=======
     color: #000000;
     border-style: solid;
     border-color: rgb(0, 0, 0);
->>>>>>> 2b0fc75bf39cfd2e020532cce247332c1b7ef4e1
 }
 .a{
     text-decoration: none;

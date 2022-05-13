@@ -9,7 +9,12 @@ class Cita extends Model
 {
     use HasFactory;
 
-    public $timestamps = false;
+    protected $fillable=[
+        'fecha_hora',
+        'doctor_id',
+        'description',
+        'patient_id',
+        'secretarie_id',];
     protected $primaryKey = 'id';
 
     public function doctor(){

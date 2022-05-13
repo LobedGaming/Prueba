@@ -1,7 +1,9 @@
 @extends('Layouts.dashboard')
 @section('contenido')
+<form action="{{route('citas.store')}}" method="POST">
+@csrf
 <h1 class="text-center">Creacion de Cita</h1>
-    
+
         <h3 class="text-center">Lista de Doctores</h3>
             <table style="width:100%">
                 <tr>
@@ -68,7 +70,8 @@
                 @enderror
             </div>
      
-        
+            <input type="submit" value='Guardar'>
+            </form>
         
         
        

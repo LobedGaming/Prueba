@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('citas', function (Blueprint $table) {
             $table->id();
-            $table->timestamp('fecha_hora', 1)->nullable(false);
+            $table->dateTime('fecha_hora');
             $table->text('description')->nullable(false);
             $table->unsignedBigInteger('doctor_id')->nullable(false);
             $table->unsignedBigInteger('secretarie_id')->nullable(false);
