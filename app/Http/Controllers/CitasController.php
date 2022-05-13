@@ -43,6 +43,24 @@ class CitasController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+
+    //todas las citas de un doctor que se recibe el id del doctor
+    public function citasDoctor(Request $request){
+
+      $citas=Cita::where('doctor_id',$request->id)->get();
+        return view('Doctor.agenda',['citas'=>$citas]);
+    }
+    //todas las citas de un doctor que se recibe el id del paciente
+    public function citasPaciente($id){
+
+        $citas=Cita::where('patient_id',$id)->get();
+          return view('citas.index',['citas'=>$citas]);
+      }
+    
+
+
+
     public function store(Request $request)
     {
     $cita       = new Cita();

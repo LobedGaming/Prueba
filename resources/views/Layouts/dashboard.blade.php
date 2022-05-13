@@ -29,10 +29,14 @@
                     <li class="li"><a class="a" href="">Historicos Clinicos</a></li>
                    {{-- <li><a href="{{ route('personalizar') }}">Personalizar</a></li>--}}
                     <li class="titulo-rol">SECRETARIO</li>
-                    <li class="li"><a class="a" href="{{ route('citas.index') }}">Gestionar citas</a></li>
+                    <li class="li"><a class="a" href="{{ route('citas.index')}}">Gestionar citas</a></li>
                     <li class="li"><a class="a" href="{{ route('patient.index')}}">Gestion Pacientes</a> </li>
                     <li class="titulo-rol">DOCTOR</li>
-                    <li class="li"><a class="a" href="">Mis citas</a></li>
+                    <form action="{{route('citas.citasDoctor')}}" method="POST">
+                        @csrf
+                        <input type="hidden" value="1" name="id">
+                        <button  type="submit">Mis citas</button>
+                    </form>
                     <li class="titulo-rol li">PACIENTE</li>
                     <li class="li"><a class="a" href="">Mis citas</a></li>
                 </ul>

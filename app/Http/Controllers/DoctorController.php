@@ -145,7 +145,6 @@ class DoctorController extends Controller
         $user   = User::findorFail($doctor->user_id);
         $doctor->delete();
         $user->delete();
-
         return redirect()->route('doctors.index');
 
     }
