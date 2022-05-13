@@ -18,7 +18,7 @@
                 <ul>
                     <li><a href="">Gestion Doctores </a> </li>
                     <li><a href="{{ route('secretario.index')}}">Gestion Secretarios </a> </li>
-                    <li><a href="">Gestion Pacientes</a> </li>
+                    <li><a href="{{ route('patient.index')}}">Gestion Pacientes</a> </li>
                     <li><a href="">Historicos</a></li>
                     <li><a href="{{ route('personalizar') }}">Personalizar</a></li>
                     <li><a href="">Mis citas</a></li>

@@ -105,7 +105,6 @@ class SecretarioController extends Controller
             'address' => 'required',
             'phone' => 'required',
             'email' => 'required',
-            
             'fecha_nacimiento' => 'required',
         ]);
 
@@ -130,7 +129,7 @@ class SecretarioController extends Controller
      */
     public function destroy(Secretarie $secretario)
     {
-        $usuario = User::find($secretario->id);
+        $usuario = User::find($secretario->user_id);
         $secretario->delete();
         $usuario->delete();
         return redirect()->route('secretario.index');

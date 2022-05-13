@@ -2,7 +2,9 @@
 
 
 use App\Http\Controllers\BitacoraController;
+use App\Http\Controllers\PatientController;
 use App\Http\Controllers\SecretarioController;
+use App\Models\Secretarie;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -41,4 +43,13 @@ Route::controller(SecretarioController::class)->group(function(){
     Route::get('/secretario/{secretario}/edit','edit')->name('secretario.edit');
     Route::put('/secretario/{secretario}/update','update')->name('secretario.update');
     Route::get('/secretario/{secretario}/show','show')->name('secretario.show');
+});
+Route::controller(PatientController::class)->group(function(){
+    Route::get('/patient','index')->name('patient.index');
+    Route::get('/patient/create','create')->name('patient.create');
+    Route::post('/patient/store','store')->name('patient.store');
+    Route::delete('/patient/{patient}','destroy')->name('patient.destroy');
+    Route::get('/patient/{patient}/edit','edit')->name('patient.edit');
+    Route::put('/patient/{patient}/update','update')->name('patient.update');
+    Route::get('/patient/{patient}/show','show')->name('patient.show');
 });
