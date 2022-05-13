@@ -1,30 +1,20 @@
 @extends('Layouts.dashboard')
-
 @section('contenido')
-<div class="row">
-        <div>            
-            <label for="">Nombre Completo:</label>
-            <div class="panel panel-default">
-                <div class="panel-body">                    
-                   {{ $citas->patient->name}}
-                </div>
-            </div>
+    <h1>Ver Cita</h1>
+    <div class="contenedor-show">
+        <div class="show-dato">
+            <span>Nombre: </span>
+            <span>{{$citas->paciente->user->name}}</span>
         </div>
-        <div>            
-            <label for="">Fecha y Hora:</label>
-            <div class="panel panel-default">
-                <div class="panel-body">                    
-                   {{ $citas->fecha_hora }}
-                </div>
-            </div>
+       
+        <div class="show-dato">
+            <span>Fecha y Hora: </span>
+            <span>{{$citas->fecha_hora}}</span>
         </div>
-        <div>            
-            <label for="">Descripción:</label>
-            <div class="panel panel-default">
-                <div class="panel-body">                    
-                   {{ $citas->description}}
-                </div>
-            </div>
-        </div>      
- </div>
+        <div class="show-dato">
+            <span>Descripcion: </span>
+            <span>{{$citas->description}}</span>
+        </div>
+    </div>
+    
 @endsection

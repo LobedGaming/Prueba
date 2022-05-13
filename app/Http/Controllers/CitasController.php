@@ -100,6 +100,9 @@ class CitasController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $cita = Cita::findorFail($id);
+        $cita->delete();
+        return redirect()->route('citas.index');
+
     }
 }
