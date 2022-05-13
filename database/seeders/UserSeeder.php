@@ -19,7 +19,21 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        //Doctor
+      // //USUARIO ADMINISTRADOR
+      // User::create([
+      //    'name'=>'Administrador',
+      //    'ci'=>'96385274',
+      //    'address'=>'administrador',
+      //    'phone'=>'12345678',
+      //    'email'=>'administrador@gmail.com',
+      //    'password'=>bcrypt('12345678'),
+      //    'fecha_nacimiento'=>'11/02/2022',
+      // ])->assignRole('Administrador');
+
+
+
+
+        //USUARIOS DOCTORES
         
          User::create([
             'name'=>'Alvaro Flores',
@@ -60,6 +74,10 @@ class UserSeeder extends Seeder
             'user_id'=>'3',
             'especialidad'=>'Cardiologo'
          ]);
+
+
+         //USUARIOS SECRETARIOS
+
          User::create([
             'name'=>'Mirko Ochoa',
             'ci'=>'11111111',
@@ -72,6 +90,10 @@ class UserSeeder extends Seeder
          Secretarie::create([
             'user_id'=>'4'
          ]);
+
+
+         //USUARIOS PACIENTES
+
          User::create([
             'name'=>'Fadua Veliz',
             'ci'=>'2222222',

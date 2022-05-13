@@ -16,6 +16,8 @@
             <span>Descripcion: </span>
             <span>{{$cita->description}}</span>
         </div>
+        <span>-----------------------------</span>
+        <span>-----------------------------</span>
     </div>
     @endforeach
 @endsection

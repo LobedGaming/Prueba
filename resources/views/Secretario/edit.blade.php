@@ -11,7 +11,7 @@
             <small>*{{$message}}</small>
         @enderror
 
-        <label for="ci">Numero de docomento de identidad</label>
+        <label for="ci">Numero de documento de identidad</label>
         <input type="number" id="ci" name="ci" value="{{old('ci',$secretario->user->ci)}}">
         @error('ci')
             <small>*{{$message}}</small>
@@ -41,6 +41,9 @@
             <small>*{{$message}}</small>
         @enderror
 
-        <input type="submit">
+        <div>           
+            <a href="{{ route('secretario.index') }}" class="btn btn-secondary">Atras</a>
+            <button type="submit" class="btn btn-info">Guardar</button>
+        </div>
     </form>
 @endsection

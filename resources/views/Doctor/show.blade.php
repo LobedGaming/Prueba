@@ -1,72 +1,60 @@
 @extends('Layouts.dashboard')
 
 @section('contenido')
-<div class="row">
-        <div>            
-            <label for="">Nombre Completo:</label>
-            <div class="panel panel-default">
-                <div class="panel-body">                    
-                   {{ $doctor->user->name }}
-                </div>
+<div class="contenedor-show">
+                   
+            <div class="show-dato">
+                <span>Nombre Completo:</span>
+                <span>
+                    {{ $doctor->user->name }}                  
+                </span>
             </div>
-        </div>
         
-        <div>            
-            <label for="">Carnet de Identidad:</label>
-            <div class="panel panel-default">
-                <div class="panel-body">                    
+        
+        <div class="show-dato">            
+                <span>Carnet de Identidad:</span>
+                <span>                    
                    {{ $doctor->user->ci }}
-                </div>
-            </div>
+                </span>  
         </div>
 
-        <div>            
-            <label for="">Direccion:</label>
-            <div class="panel panel-default">
-                <div class="panel-body">                    
+        <div class="show-dato">            
+            <span for="">Direccion:</span>
+                <span>                    
                    {{ $doctor->user->address }}
-                </div>
-            </div>
+                </span>
         </div>
 
-        <div>            
-            <label for="">Telefono:</label>
-            <div class="panel panel-default">
-                <div class="panel-body">                    
+        <div class="show-dato">            
+            <span>Telefono:</span>
+                <span>                    
                    {{ $doctor->user->phone }}
-                </div>
-            </div>
+                </span>
         </div>
 
-        <div>            
-            <label for="">Correo Electronico:</label>
-            <div class="panel panel-default">
-                <div class="panel-body">  
+        <div class="show-dato">            
+            <span>Correo Electronico:</span>
+                <span>  
                     @if($doctor->user->email)                  
                    {{ $doctor->user->email }}
                    @else
                         No tiene Correo Electronico
                     @endif
-                </div>
-            </div>
+                </span>
         </div>
 
-        <div>            
-            <label for="">Fecha de nacimiento:</label>
-            <div class="panel panel-default">
-                <div class="panel-body">                    
+        <div class="show-dato">            
+            <span for="">Fecha de nacimiento:</span>
+                <span>                    
                    {{ $doctor->user->fecha_nacimiento }}
-                </div>
-            </div>
+                </span>
         </div>
 
-        <div>            
-            <label for="">Especialidad:</label>
-            <div class="panel panel-default">
-                <div class="panel-body">                    
+        <div class="show-dato">            
+            <span>Especialidad:</span>
+                <span>                    
                    {{ $doctor->especialidad }}
-                </div>
-            </div>
+                </span>
         </div>
         
         
