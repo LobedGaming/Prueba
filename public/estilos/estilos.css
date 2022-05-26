@@ -36,7 +36,6 @@ margin: 0 auto;
 .nav-bg
 {
  background-color: rgb(0, 191, 255);
-
 }
 .nav-principal
 {
@@ -56,7 +55,7 @@ margin: 0 auto;
 .menu-contenido
 {
 display: grid;
-grid-template-columns: 20% 75%;
+grid-template-columns: 20% 15% 50%;
 
 }
 .menu-contenido>section>nav>ul{
@@ -66,10 +65,15 @@ grid-template-columns: 20% 75%;
     align-items: flex-start;
     list-style: none;
 }
+.contenido
+{
+    padding-top: 4rem;
+}
 
 .menu-contenido>section>nav>ul>li{
 
     width: 75%;
+    height: 100%;
     padding: 1.5rem 0;
    
 }
