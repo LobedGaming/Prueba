@@ -55,7 +55,7 @@ margin: 0 auto;
 .menu-contenido
 {
 display: grid;
-grid-template-columns: 20% 15% 50%;
+grid-template-columns: 20% 10% 50%;
 
 }
 .menu-contenido>section>nav>ul{

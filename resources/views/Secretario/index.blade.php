@@ -1,7 +1,7 @@
 @extends('Layouts.dashboard')
 @section('contenido')
     <h1>Gestionar Secretarios</h1>
-    <a href="{{ route('secretario.create')}}">Nuevo Secretario</a>
+    <a href="{{ route('secretario.create')}}"  class="btn btn-info mb-3">Nuevo Secretario</a>
     <table class="table table-striped">
         <thead>
             <tr>
@@ -23,9 +23,9 @@
                 <td>{{$secretario->user->phone}}</td>
                 <td>
                     <div class="table-data-option-list">
-                        <a href="{{ route('secretario.show',$secretario) }}" class="table-data-option" style="color:rgb(92, 230, 92)"><i class="fa-solid fa-eye"></i></a>
-                        <a href="{{ route('secretario.edit',$secretario) }}" class="table-data-option" style="color:rgb(102, 146, 228)"><i class="fa-solid fa-file-pen"></i></a>
                         <form action="{{ route('secretario.destroy', $secretario) }}" method="POST">
+                        <a href="{{ route('secretario.edit',$secretario) }}" class="table-data-option" style="color:rgb(92, 230, 92)"><i class="fa-solid fa-file-pen"></i></a>
+                        <a href="{{ route('secretario.show',$secretario) }}" class="table-data-option" style="color:rgb(102, 146, 228)"><i class="fa-solid fa-eye"></i></a>
                             @method('delete')
                             @csrf
                             <button type="submit" onclick="return confirm('CONFIRMAR ELIMINACION')"class="table-data-option" style="color:rgb(238, 78, 73)"><i class="fa-solid fa-trash-can"></i></button>
