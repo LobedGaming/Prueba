@@ -14,10 +14,10 @@
             <td>{{ $cita->fecha_hora}}</td>
             <td>{{ $cita->description}}</td>
             <td>     
-                  <form action="{{route ('citas.destroy',$cita->id)}}" method="POST"> 
-                    <a class="btn btn-info btn-sm" href="{{route('citas.show',$cita->id)}}">Ver</a>  
-                    @csrf
-                    @method('DELETE')
+                <a class="btn btn-info btn-sm" href="{{route('citas.show',$cita->id)}}">Ver</a>  
+                <form action="{{route ('citas.destroy',$cita->id)}}" method="POST"> 
+                @method('DELETE')
+                @csrf
 
                     <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('CONFIRMAR ELIMINACION')" value="Borrar">Eliminar</button>
 

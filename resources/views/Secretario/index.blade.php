@@ -1,7 +1,7 @@
 @extends('Layouts.dashboard')
 @section('contenido')
     <h1>Gestionar Secretarios</h1>
-    <a href="{{ route('secretario.create')}}"> REGISTRAR NUEVO</a>
+    <a href="{{ route('secretario.create')}}">Nuevo Secretario</a>
     <table class="table table-striped">
         <thead>
             <tr>

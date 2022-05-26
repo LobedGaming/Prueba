@@ -1,6 +1,7 @@
 @extends('Layouts.dashboard')
 
 @section('contenido')
+<h1>Gestionar Doctores</h1>
 <a href="{{ route('doctors.create') }}" >Nuevo Doctor</a>
 <table  class="table table-striped">
     <thead>
