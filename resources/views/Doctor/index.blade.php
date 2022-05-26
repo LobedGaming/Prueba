@@ -25,9 +25,11 @@
             <td>{{ $doctor->user->phone}}</td>
             <td>{{ $doctor->especialidad}}</td>
             <td>     
-                <div class="table-data-option-list">
+                <div class="d-flex justify-content-between">
                     <a class="table-data-option" href="{{route('doctors.edit',$doctor->id)}}" style="color:rgb(92, 230, 92)"><i class="fa-solid fa-file-pen"></i></a>  
+
                     <a class="table-data-option" href="{{route('doctors.show',$doctor->id)}}" style="color:rgb(102, 146, 228)"><i class="fa-solid fa-eye"></i></a>  
+
                     <form action="{{route ('doctors.destroy',$doctor->id)}}" method="POST">
                         @method('delete')
                         @csrf

@@ -22,9 +22,11 @@
                 <td>{{$secretario->user->address}}</td>
                 <td>{{$secretario->user->phone}}</td>
                 <td>
-                    <div class="table-data-option-list">
+                    <div class="d-flex justify-content-between">
                         <a href="{{ route('secretario.show',$secretario) }}" class="table-data-option" style="color:rgb(92, 230, 92)"><i class="fa-solid fa-eye"></i></a>
+
                         <a href="{{ route('secretario.edit',$secretario) }}" class="table-data-option" style="color:rgb(102, 146, 228)"><i class="fa-solid fa-file-pen"></i></a>
+                        
                         <form action="{{ route('secretario.destroy', $secretario) }}" method="POST">
                             @method('delete')
                             @csrf

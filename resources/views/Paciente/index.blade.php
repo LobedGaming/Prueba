@@ -22,13 +22,14 @@
                 <td>{{$patient->user->address}}</td>
                 <td>{{$patient->user->phone}}</td>
                 <td>
-                    <div class="table-data-option-list">
+                    <div class="d-flex justify-content-between">
                         <a href="{{ route('patient.show',$patient) }}" class="table-data-option " style="color:rgb(92, 230, 92)"><i class="fa-solid fa-eye"></i></a>
+                            
                         <a href="{{ route('patient.edit',$patient) }}" class="table-data-option" style="color:rgb(102, 146, 228)"><i class="fa-solid fa-file-pen"></i></a>
                         <form action="{{ route('patient.destroy', $patient) }}" method="POST">
                             @method('delete')
                             @csrf
-                            <button type="submit" onclick="return confirm('CONFIRMAR ELIMINACION')" class="table-data-option" ><i class="fa-solid fa-trash-can"></i></button>
+                            <button type="submit" onclick="return confirm('CONFIRMAR ELIMINACION')" class="table-data-option" style="color:rgb(238, 78, 73)"><i class="fa-solid fa-trash-can"></i></button>
                         </form> 
                     </div>
                     
