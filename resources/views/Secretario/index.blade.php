@@ -8,7 +8,6 @@
                 <th scope="col">ID</th>
                 <th scope="col">Nombre</th>
                 <th scope="col">CI</th>
-                <th scope="col">Direccion</th>
                 <th scope="col">Telefono</th>
                 <th scope="col">Opciones</th>
             </tr>
@@ -19,7 +18,6 @@
                 <td>{{$secretario->id}}</td>
                 <td>{{$secretario->user->name}}</td>
                 <td>{{$secretario->user->ci}}</td>
-                <td>{{$secretario->user->address}}</td>
                 <td>{{$secretario->user->phone}}</td>
                 <td>
                     <div class="table-data-option-list">

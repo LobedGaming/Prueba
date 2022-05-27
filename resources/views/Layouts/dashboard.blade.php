@@ -48,6 +48,7 @@
                     <div class="sombra-claro">
                       <div id="headingTwo">
                         <h5 class="mb-0">
+                          @can('admins.index')
                           <button class="btn btn-info collapsed boton-collapsed" style="width: 100%" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                             ADMINISTRACION
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-building-hospital" width="32" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -59,6 +60,7 @@
                               <line x1="12" y1="7" x2="12" y2="11" />
                             </svg>
                           </button>
+                          @endcan
                         </h5>
                       </div>
                       <div id="collapseTwo" class="collapse" aria-labelledby="" data-parent="#accordion">
@@ -98,6 +100,7 @@
                 <div class="sombra-claro">
                   <div id="headingTwo">
                     <h5 class="mb-0">
+                    @can('citas.index')
                       <button class="btn btn-info collapsed boton-collapsed" style="width: 100%" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseTwo">
                         SECRETARIO
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-file-like" width="32" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -108,6 +111,7 @@
                           <path d="M5 12.1v-7.1a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2h-2.3" />
                         </svg>
                       </button>
+                      @endcan
                     </h5>
                   </div>
                   <div id="collapseFour" class="collapse" aria-labelledby="" data-parent="#accordion">
@@ -124,6 +128,7 @@
               <div class="sombra-claro">
                 <div id="headingTwo">
                   <h5 class="mb-0">
+                    @can('doctors.agenda')
                     <button class="btn btn-info collapsed boton-collapsed" style="width: 100%" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseTwo">
                       DOCTOR<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-pill" width="32" height="32" viewBox="0 0 24 24" stroke-width="2.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -131,15 +136,12 @@
                         <line x1="8.5" y1="8.5" x2="15.5" y2="15.5" />
                       </svg>
                     </button>
+                    @endcan
                   </h5>
                 </div>
                 <div id="collapseFive" class="collapse" aria-labelledby="" data-parent="#accordion">
                   <div class="card-body">
-                    <form action="{{route('citas.citasDoctor')}}" method="POST">
-                      @csrf
-                      <input type="hidden" value="1" name="id">
-                      <button  type="submit" class="btn btn-link">Mis citas</button>
-                  </form>
+                    <a href="{{route('citas.citasDoctor', Auth::user()->id) }}">Mi Agenda</a>
                   </div>
                 </div>
               </div>
@@ -150,6 +152,7 @@
             <div class="sombra-claro">
               <div id="headingTwo">
                 <h5 class="mb-0">
+                  @can('patients.index')
                   <button class="btn btn-info collapsed boton-collapsed" style="width: 100%" data-toggle="collapse" data-target="#collapsesix" aria-expanded="false" aria-controls="collapseTwo">
                     PACIENTE <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-circle" width="32" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -158,6 +161,7 @@
                       <path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855" />
                     </svg>
                   </button>
+                  @endcan
                 </h5>
               </div>
               <div id="collapsesix" class="collapse" aria-labelledby="" data-parent="#accordion">

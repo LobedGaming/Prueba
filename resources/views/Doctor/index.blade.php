@@ -9,7 +9,6 @@
             <th scope="col">Id</th>
             <th scope="col">Nombre Completo</th>
             <th scope="col">Ci</th>
-            <th scope="col">Direccion</th>
             <th scope="col">Telefono</th>
             <th scope="col">Especialidad</th>
             <th scope="col">Acciones</th>
@@ -22,7 +21,6 @@
             <td>{{ $doctor->id}}</td>
             <td>{{ $doctor->user->name}}</td>
             <td>{{ $doctor->user->ci}}</td>
-            <td>{{ $doctor->user->address}}</td>
             <td>{{ $doctor->user->phone}}</td>
             <td>{{ $doctor->especialidad}}</td>
             <td>     
