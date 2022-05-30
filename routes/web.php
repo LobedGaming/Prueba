@@ -20,7 +20,9 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('/escritorio', function () {
+    return view('Layouts.escritorio');
+});
 Route::get('/', function () {
     return view('auth.login');
 });
