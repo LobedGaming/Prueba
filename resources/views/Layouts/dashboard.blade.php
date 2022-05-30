@@ -14,8 +14,6 @@
     <script src="https://kit.fontawesome.com/871fc34738.js" crossorigin="anonymous"></script>
   </head>
   <body class="panel sombra">
-
-    
     <aside class="sombra">
         <div class="m-3">
             <h3 class="title-dashboard">
@@ -27,9 +25,8 @@
             </h3>
             <span class="fw-bold d-flex justify-content-end">Tu salud primero </span>
         </div>
-
+        
         <div class="list-group m-3">
-
             <div class="mb-3 sombra-claro">
             @can('admins.index')
             <button class="btn btn-info collapsed boton-collapsed" style="width: 100%;" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAdmin" aria-expanded="false" aria-controls="collapseAdmin">
@@ -46,13 +43,12 @@
                 @endcan
                 <div class="collapse " id="collapseAdmin">
                     <div class="list-group list-group-custom card-body">
-                      <a class="list-group-item list-group-item-action mb-2" href="{{ route('doctors.index') }}">Gestion Doctores</a> 
-                      <a class="list-group-item list-group-item-action mb-2" href="{{ route('secretario.index') }}">Gestion Secretarios</a>
-                      <a class="list-group-item list-group-item-action" href="{{ route('admin.index') }}">Gestion Admin</a>
+                      <a class="list-group-item list-group-item-action mb-2" href="{{ route('doctors.index') }}">Gestionar Doctores</a> 
+                      <a class="list-group-item list-group-item-action mb-2" href="{{ route('secretario.index') }}">Gestionar Secretarios</a>
+                      <a class="list-group-item list-group-item-action" href="{{ route('admin.index') }}">Gestionar Administrador</a>
                     </div>
                 </div>
             </div>
-
             <div class="mb-3 sombra-claro">
                 <button class="btn btn-info collapsed boton-collapsed" style="width: 100%;" type="button" data-bs-toggle="collapse" data-bs-target="#collapseHistoricoCli" aria-expanded="false" aria-controls="collapseHistoricoCli">
                     HISTORICOS CLINICOS
@@ -71,7 +67,7 @@
                     </div>
                 </div>
             </div>
-
+            
             <div class="mb-3 sombra-claro">
             @can('citas.index')
                 <button class="btn btn-info collapsed boton-collapsed" style="width: 100%;" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSecretario" aria-expanded="false" aria-controls="collapseSecretario">
@@ -87,17 +83,15 @@
                 @endcan
                 
                 <div class="collapse " id="collapseSecretario">
-                    <div class="card-body">
-                      <a href="{{ route('citas.index')}}">Gestionar citas</a><br>
-                      <a href="{{ route('patient.index')}}">Gestion Pacientes</a>
+                <div class="list-group list-group-custom card-body">
+                    <a class="list-group-item list-group-item-action mb-2" href="{{ route('patient.index')}}">Gestionar Pacientes</a>
+                      <a class="list-group-item list-group-item-action mb-2" href="{{ route('citas.index')}}">Gestionar Citas</a><br>
                     </div>
                 </div>
             </div>
-        </div>
-    </aside>
-
-    <div class="mb-3 sombra-claro">
-                 @can('doctors.agenda')
+            
+            <div class="mb-3 sombra-claro">
+                @can('doctors.agenda')
                 <button class="btn btn-info collapsed boton-collapsed" style="width: 100%;" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDoctor" aria-expanded="false" aria-controls="collapseDoctor">
                     DOCTOR
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-pill" width="32" height="32" viewBox="0 0 24 24" stroke-width="2.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -108,12 +102,13 @@
                 </button>
                 @endcan
                 <div class="collapse " id="collapseDoctor">
-                    <div class="card-body">
-                      <a href="{{route('citas.citasDoctor', Auth::user()->id)}}">Ver Citas</a>
+                    <div class="list-group list-group-custom card-body">
+                      <a class="list-group-item list-group-item-action mb-2" href="{{route('citas.citasDoctor', Auth::user()->id)}}">Ver Agenda</a>
                     </div>
                 </div>
             </div>
-
+            
+            
             <div class="mb-3 sombra-claro">
             @can('patients.index')
                 <button class="btn btn-info collapsed boton-collapsed" style="width: 100%;" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePaciente" aria-expanded="false" aria-controls="collapsePaciente">
@@ -127,21 +122,34 @@
                 </button>
                 @endcan
                 <div class="collapse " id="collapsePaciente">
-                    <div class="card-body">
-                      <a href="#">Mis citas</a>
+                <div class="list-group list-group-custom card-body">
+                    <a class="list-group-item list-group-item-action mb-2" href="#">Mis Citas</a>
                     </div>
                 </div>
             </div>
+
+            
+        </div>
+        
+    </aside>
 
     <div class="container-right">
         
         <nav class="d-flex justify-content-between">
             <a href="">DashBoard</a>
+            <div>
             <a href="">Mi cuenta <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                 <circle cx="12" cy="7" r="4" />
                 <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
-                </svg></a>
+            </svg></a>
+            <a href="{{route('logout')}}">Salir <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-logout" width="36" height="36" viewBox="0 0 24 24" stroke-width="2" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                  <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2" />
+                  <path d="M7 12h14l-3 -3m0 6l3 -3" />
+                 
+            </svg></a>
+         </div>
         </nav>
 
         <main style="height: 1000px;">
