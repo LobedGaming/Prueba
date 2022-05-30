@@ -111,8 +111,14 @@ nav {
     flex-direction: row;
     align-items: center;
 }
-
 nav > a {
+    color: aliceblue;
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 1rem;
+}
+nav >div> a {
     color: aliceblue;
     text-decoration: none;
     font-size: 1.5rem;
