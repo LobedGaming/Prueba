@@ -50,7 +50,6 @@ class CitasController extends Controller
 
     //todas las citas de un doctor que se recibe el id del doctor
     public function citasDoctor($id){
-
      $idsDoctor=Doctor::where('user_id',$id)->get();
      foreach($idsDoctor as $idDoctor)
      {

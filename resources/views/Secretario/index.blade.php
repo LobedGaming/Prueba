@@ -26,7 +26,7 @@
                         <a href="{{ route('secretario.show',$secretario) }}" class="table-data-option" style="color:rgb(102, 146, 228)"><i class="fa-solid fa-eye"></i></a>
                             @method('delete')
                             @csrf
-                            <button type="submit" onclick="return confirm('CONFIRMAR ELIMINACION')"class="table-data-option" style="color:rgb(238, 78, 73)"><i class="fa-solid fa-trash-can"></i></button>
+                            <button type="submit" onclick="return confirm('CONFIRMAR ELIMINACION')"class="table-data-option" style="color:rgb(238, 78, 73)"><i class="fa-solid fa-trash-can" ></i></button>
                         </form> 
                     </div>
                 </td>    
