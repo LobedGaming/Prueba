@@ -134,12 +134,8 @@
                   </h5>
                 </div>
                 <div id="collapseFive" class="collapse" aria-labelledby="" data-parent="#accordion">
-                  <div class="card-body">
-                    <form action="{{route('citas.citasDoctor')}}" method="POST">
-                      @csrf
-                      <input type="hidden" value="1" name="id">
-                      <button  type="submit" class="btn btn-link">Mis citas</button>
-                  </form>
+                  <div class="card-body">              
+                      <a href="{{route('citas.citasDoctor',Auth::user()->id)}}">Mis citas</a>     
                   </div>
                 </div>
               </div>

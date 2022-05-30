@@ -8,7 +8,7 @@ use App\Models\Cita;
 use App\Models\Secretarie;
 use DateTime;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 
 class CitasController extends Controller
 {
@@ -49,9 +49,13 @@ class CitasController extends Controller
 
 
     //todas las citas de un doctor que se recibe el id del doctor
-    public function citasDoctor(Request $request){
-
-      $citas=Cita::where('doctor_id',$request->id)->get();
+    public function citasDoctor($id){
+     $idsDoctor=Doctor::where('user_id',$id)->get();
+     foreach($idsDoctor as $idDoctor)
+     {
+        $doctor_id=$idDoctor;
+     }
+      $citas=Cita::where('doctor_id',$doctor_id->id)->get();
         return view('Doctor.agenda',['citas'=>$citas]);
     }
     //todas las citas de un paciente que se recibe el id del paciente pasadas y futuras
