@@ -14,8 +14,6 @@
     <script src="https://kit.fontawesome.com/871fc34738.js" crossorigin="anonymous"></script>
   </head>
   <body class="panel sombra">
-
-    
     <aside class="sombra">
         <div class="m-3">
             <h3 class="title-dashboard">
@@ -27,9 +25,8 @@
             </h3>
             <span class="fw-bold d-flex justify-content-end">Tu salud primero </span>
         </div>
-
+        @can('admins.index')
         <div class="list-group m-3">
-
             <div class="mb-3 sombra-claro">
                 <button class="btn btn-info collapsed boton-collapsed" style="width: 100%;" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAdmin" aria-expanded="false" aria-controls="collapseAdmin">
                     ADMINISTRACION
@@ -42,7 +39,6 @@
                     <line x1="12" y1="7" x2="12" y2="11" />
                 </svg>
                 </button>
-                
                 <div class="collapse " id="collapseAdmin">
                     <div class="list-group list-group-custom card-body">
                       <a class="list-group-item list-group-item-action mb-2" href="{{ route('doctors.index') }}">Gestion Doctores</a> 
@@ -51,7 +47,7 @@
                     </div>
                 </div>
             </div>
-
+            @endcan
             <div class="mb-3 sombra-claro">
                 <button class="btn btn-info collapsed boton-collapsed" style="width: 100%;" type="button" data-bs-toggle="collapse" data-bs-target="#collapseHistoricoCli" aria-expanded="false" aria-controls="collapseHistoricoCli">
                     HISTORICOS CLINICOS
@@ -70,7 +66,7 @@
                     </div>
                 </div>
             </div>
-
+            @can('citas.index')
             <div class="mb-3 sombra-claro">
                 <button class="btn btn-info collapsed boton-collapsed" style="width: 100%;" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSecretario" aria-expanded="false" aria-controls="collapseSecretario">
                     SECRETARIO
@@ -90,7 +86,8 @@
                     </div>
                 </div>
             </div>
-
+            @endcan
+            @can('doctors.agenda')
             <div class="mb-3 sombra-claro">
                 <button class="btn btn-info collapsed boton-collapsed" style="width: 100%;" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDoctor" aria-expanded="false" aria-controls="collapseDoctor">
                     DOCTOR
@@ -107,7 +104,8 @@
                     </div>
                 </div>
             </div>
-
+            @endcan
+            @can('patients.index')
             <div class="mb-3 sombra-claro">
                 <button class="btn btn-info collapsed boton-collapsed" style="width: 100%;" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePaciente" aria-expanded="false" aria-controls="collapsePaciente">
                     PACIENTE
@@ -128,17 +126,26 @@
 
             
         </div>
+        @endcan
     </aside>
 
     <div class="container-right">
         
         <nav class="d-flex justify-content-between">
             <a href="">DashBoard</a>
+            <div>
             <a href="">Mi cuenta <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                 <circle cx="12" cy="7" r="4" />
                 <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
-                </svg></a>
+            </svg></a>
+            <a href="">Salir <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-logout" width="36" height="36" viewBox="0 0 24 24" stroke-width="2" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                  <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2" />
+                  <path d="M7 12h14l-3 -3m0 6l3 -3" />
+                  {{Auth::user()->logout}}
+            </svg></a>
+         </div>
         </nav>
 
         <main style="height: 1000px;">
