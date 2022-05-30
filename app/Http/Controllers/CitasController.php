@@ -75,7 +75,7 @@ class CitasController extends Controller
 
     public function store(Request $request)
     {
-    $cita       = new Cita();
+    $cita = new Cita();
     $cita->fecha_hora    = $request->input('fecha_hora');
     $cita->description   = $request->input('description');
     $cita->doctor_id     = $request->input('doctor_id');

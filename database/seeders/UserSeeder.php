@@ -19,20 +19,7 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-      // //USUARIO ADMINISTRADOR
-      // User::create([
-      //    'name'=>'Administrador',
-      //    'ci'=>'96385274',
-      //    'address'=>'administrador',
-      //    'phone'=>'12345678',
-      //    'email'=>'administrador@gmail.com',
-      //    'password'=>bcrypt('12345678'),
-      //    'fecha_nacimiento'=>'11/02/2022',
-      // ])->assignRole('Administrador');
-
-
-
-
+      
         //USUARIOS DOCTORES
         
          User::create([
@@ -43,7 +30,7 @@ class UserSeeder extends Seeder
             'email'=>'alvaro@gmail.com',
             'password'=>bcrypt('12345678'),
             'fecha_nacimiento'=>'11/02/2022',
-         ]);
+         ])->assignRole('Doctor');
          Doctor::create([
             'user_id'=>'1',
             'especialidad'=>'Ginecologo'
@@ -56,7 +43,7 @@ class UserSeeder extends Seeder
             'email'=>'obed@gmail.com',
             'password'=>bcrypt('12345678'),
             'fecha_nacimiento'=>'11/02/2022',
-         ]);
+         ])->assignRole('Doctor');
          Doctor::create([
             'user_id'=>'2',
             'especialidad'=>'Urologo'
@@ -69,7 +56,7 @@ class UserSeeder extends Seeder
             'email'=>'esteban@gmail.com',
             'password'=>bcrypt('12345678'),
             'fecha_nacimiento'=>'12/05/1999',
-         ]);
+         ])->assignRole('Doctor');
          Doctor::create([
             'user_id'=>'3',
             'especialidad'=>'Cardiologo'
@@ -86,7 +73,7 @@ class UserSeeder extends Seeder
             'email'=>'mirko@gmail.com',
             'password'=>bcrypt('12345678'),
             'fecha_nacimiento'=>'12/05/1999',
-         ]);
+         ])->assignRole('Secretario');
          Secretarie::create([
             'user_id'=>'4'
          ]);
@@ -102,7 +89,7 @@ class UserSeeder extends Seeder
             'email'=>'fadua@gmail.com.com',
             'password'=>bcrypt('12345678'),
             'fecha_nacimiento'=>'12/05/1999',
-         ]);
+         ])->assignRole('Paciente');
          Patient::create([
             'user_id'=>'5'
          ]);
@@ -114,7 +101,7 @@ class UserSeeder extends Seeder
             'email'=>'luisfernando@gmail.com',
             'password'=>bcrypt('12345678'),
             'fecha_nacimiento'=>'12/05/1999',
-         ]);
+         ])->assignRole('Paciente');
          Patient::create([
             'user_id'=>'6'
          ]);
@@ -126,7 +113,7 @@ class UserSeeder extends Seeder
             'email'=>'luchito@gmail.com',
             'password'=>bcrypt('12345678'),
             'fecha_nacimiento'=>'12/05/1999',
-         ]);
+         ])->assignRole('Paciente');
          Patient::create([
             'user_id'=>'7'
          ]);
@@ -138,10 +125,20 @@ class UserSeeder extends Seeder
             'email'=>'mariagalindo@gmail.com',
             'password'=>bcrypt('12345678'),
             'fecha_nacimiento'=>'12/05/1999',
-         ]);
+         ])->assignRole('Paciente');
          Patient::create([
             'user_id'=>'8'
          ]);
 
+         //USUARIO ADMINISTRADOR
+      User::create([
+         'name'=>'Administrador',
+         'ci'=>'96385274',
+         'address'=>'administrador',
+         'phone'=>'12345678',
+         'email'=>'administrador@gmail.com',
+         'password'=>bcrypt('12345678'),
+         'fecha_nacimiento'=>'11/02/2022',
+      ])->assignRole('Administrador');
     }
 }
