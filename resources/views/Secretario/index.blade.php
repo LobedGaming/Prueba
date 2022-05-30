@@ -30,7 +30,7 @@
                         <form action="{{ route('secretario.destroy', $secretario) }}" method="POST">
                             @method('delete')
                             @csrf
-                            <button type="submit" onclick="return confirm('CONFIRMAR ELIMINACION')"class="table-data-option" style="color:rgb(238, 78, 73)"><i class="fa-solid fa-trash-can"></i></button>
+                            <button type="submit" onclick="return confirm('CONFIRMAR ELIMINACION')"class="table-data-option" style="color:rgb(238, 78, 73)"><i class="fa-solid fa-trash-can" ></i></button>
                         </form> 
                     </div>
                 </td>    

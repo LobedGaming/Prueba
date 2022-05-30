@@ -49,11 +49,12 @@ class CitasController extends Controller
 
 
     //todas las citas de un doctor que se recibe el id del doctor
-    public function citasDoctor(Request $request){
+    public function citasDoctor($id){
 
-      $citas=Cita::where('doctor_id',$request->id)->get();
+      $citas=Cita::where('doctor_id',$id)->get();
         return view('Doctor.agenda',['citas'=>$citas]);
     }
+
     //todas las citas de un paciente que se recibe el id del paciente pasadas y futuras
     public function citasPacienteAll($id){
         $citas=Cita::where('patient_id',$id)->get();
