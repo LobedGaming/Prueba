@@ -30,7 +30,6 @@
             </h3>
             <span class="font-weight-bold d-flex justify-content-end">Tu salud primero </span>
         </div>
-<<<<<<< HEAD
     </section>
 <div class="nav-bg"> 
     <nav class="nav-principal contenedor ">
@@ -95,31 +94,6 @@
                     <div id="collapseTree" class="collapse" aria-labelledby="" data-parent="#accordion">
                       <div class="card-body">
                       </div>
-=======
-
-        <div class="list-group m-3">
-            <div class="mb-2" id="">
-                <div class="sombra-claro">
-                  <div id="headingTwo">
-                    <h5 class="mb-0">
-                      <button class="btn btn-info collapsed boton-collapsed" style="width: 100%" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                        ADMINISTRACION
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-building-hospital" width="32" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                          <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                          <line x1="3" y1="21" x2="21" y2="21" />
-                          <path d="M5 21v-16a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v16" />
-                          <path d="M9 21v-4a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v4" />
-                          <line x1="10" y1="9" x2="14" y2="9" />
-                          <line x1="12" y1="7" x2="12" y2="11" />
-                        </svg>
-                      </button>
-                    </h5>
-                  </div>
-                  <div id="collapseTwo" class="collapse" aria-labelledby="" data-parent="#accordion">
-                    <div class="card-body">
-                      <a class="a-text" href="{{ route('doctors.index') }}">Gestion Doctores</a> <br>
-                      <a class="a-text" href="{{ route('secretario.index') }}">Gestion Secretarios</a>
->>>>>>> 4b6e1568c384c9132147c8b87062a6635bbe040e
                     </div>
                   </div>
                 </div>
