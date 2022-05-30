@@ -29,6 +29,7 @@ Route::get('/', function () {
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/logout', [App\Http\Controllers\HomeController::class, 'logout'])->name('logout');
 Route::view('/personalizar', 'personalizar')->name('personalizar');
 Route::get('/citas/paciente/{id}',[CitasController::class, 'citasPaciente']);
 Route::get('/citas/doctor/{id}',[CitasController::class,'citasDoctor'])->name('citas.citasDoctor');
