@@ -171,54 +171,6 @@
                   <a href="">Mis citas</a>
                 </div>
             </div>
-
-            <div class="mb-2" id="">
-                <div class="sombra-claro">
-                    <div id="headingTwo">
-                    <h5 class="mb-0">
-                        <button class="btn btn-info collapsed boton-collapsed" style="width: 100%" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseTwo">
-                        DOCTOR<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-pill" width="32" height="32" viewBox="0 0 24 24" stroke-width="2.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                            <path d="M4.5 12.5l8 -8a4.94 4.94 0 0 1 7 7l-8 8a4.94 4.94 0 0 1 -7 -7" />
-                            <line x1="8.5" y1="8.5" x2="15.5" y2="15.5" />
-                        </svg>
-                        </button>
-                    </h5>
-                    </div>
-                    <div id="collapseFive" class="collapse" aria-labelledby="" data-parent="#accordion">
-                    <div class="card-body">
-                        <form action="{{route('citas.citasDoctor')}}" method="POST">
-                        @csrf
-                        <input type="hidden" value="1" name="id">
-                        <button  type="submit" class="btn btn-link">Mis citas</button>
-                    </form>
-                    </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="mb-2" id="">
-                <div class="sombra-claro">
-                <div id="headingTwo">
-                    <h5 class="mb-0">
-                    <button class="btn btn-info collapsed boton-collapsed" style="width: 100%" data-toggle="collapse" data-target="#collapsesix" aria-expanded="false" aria-controls="collapseTwo">
-                        PACIENTE <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-circle" width="32" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                        <circle cx="12" cy="12" r="9" />
-                        <circle cx="12" cy="10" r="3" />
-                        <path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855" />
-                        </svg>
-                    </button>
-                    </h5>
-                </div>
-                <div id="collapsesix" class="collapse" aria-labelledby="" data-parent="#accordion">
-                    <div class="card-body">
-                    <a href="#">Mis citas</a>
-                    </div>
-                </div>
-                </div>
-            </div>
-
         </div>
     </aside>
 
