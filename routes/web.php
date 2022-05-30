@@ -1,6 +1,6 @@
 <?php
 
-
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BitacoraController;
 use App\Http\Controllers\CitasController;
 use App\Http\Controllers\DoctorController;
@@ -30,11 +30,11 @@ Route::get('/', function () {
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::view('/personalizar', 'personalizar')->name('personalizar');
-
 Route::get('/citas/paciente/{id}',[CitasController::class, 'citasPaciente']);
 Route::get('/citas/doctor/{id}',[CitasController::class,'citasDoctor'])->name('citas.citasDoctor');
-Route::resource('/citas',CitasController::class)->names('citas');
 Route::get('/bitacora',[BitacoraController::class, 'index']);
+Route::resource('citas', CitasController::class)->names('citas');
 Route::resource('doctors', DoctorController::class)->names('doctors');
 Route::resource('secretario', SecretarioController::class)->names('secretario');
 Route::resource('patient', PatientController::class)->names('patient');
+Route::resource('admin', AdminController::class)->names('admin');
