@@ -118,7 +118,7 @@
                 </button>
                 
                 <div class="collapse " id="collapsePaciente">
-                    <div class="card-body">
+                    <div class="card-body card">
                       <a href="#">Mis citas</a>
                     </div>
                 </div>
