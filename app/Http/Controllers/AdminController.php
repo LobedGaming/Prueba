@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Admin;
+use App\Models\User;
 
 class AdminController extends Controller
 {
@@ -13,8 +15,8 @@ class AdminController extends Controller
      */
     public function index()
     {
-        //return todos los admins
-        return view('admin.index');
+        $admin = Admin::all();
+        return view('admin.index')->with('admins',$admin);
     }
 
     /**
@@ -37,9 +39,17 @@ class AdminController extends Controller
     {   
         $request->validate([
             'name' => 'required',
-            'mail' => 'required',
+            'email' => 'required',
             'password' => 'required',
         ]);
+        $usuario = new User();
+        $usuario->name = $request->input('name');
+        $usuario->email = $request->input('email');
+        $usuario->password = bcrypt($request->input('password'));
+        $usuario->save();
+        $admin = new Admin();
+        $admin->user_id = $usuario->id;
+        $admin->save();
         return redirect()->route('admin.index')->with('info', 'Administrador agregado');
     }
 
@@ -62,7 +72,9 @@ class AdminController extends Controller
      */
     public function edit($id)
     {
-        //
+        $admin = Admin::findorFail($id);
+        $admin->load('user');
+        return view('admin.edit',['admin' => $admin]);
     }
 
     /**
@@ -74,7 +86,22 @@ class AdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+        ]);
+
+
+        $user                   = User::findorFail($id);
+        $user->name             = $request->input('name');
+        $user->email            = $request->input('email');
+        $user->save();
+
+        $admin = $user->admin;
+        $admin->user_id = $user->id;
+        $admin->save();
+
+        return redirect()->route('admin.index');
     }
 
     /**
@@ -85,6 +112,10 @@ class AdminController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $admin = Admin::findorFail($id);
+        $user   = User::findorFail($admin->user_id);
+        $admin->delete();
+        $user->delete();
+        return redirect()->route('admin.index');
     }
 }

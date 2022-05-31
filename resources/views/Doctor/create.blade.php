@@ -5,7 +5,7 @@
 
 <form action="/doctors" method="POST" autocomplete="off">
     @csrf   
-    <div class="col">
+    <div class="form-row">
          <div>
                 <div class="form-group">
                     <label for="name">Nombre Completo</label>
@@ -88,8 +88,8 @@
         </div>
 
         <div>           
-            <a href="/doctors" class="btn btn-secondary">Atras</a>
-            <button type="submit" class="btn btn-info">Guardar</button>
+            <a href="/doctors" class="btn btn-secondary mt-4">Atras</a>
+            <button type="submit" class="btn btn-info mt-4">Guardar</button>
         </div>
         
     </div>
