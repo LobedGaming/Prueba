@@ -25,10 +25,11 @@
             </h3>
             <span class="fw-bold d-flex justify-content-end">Tu salud primero </span>
         </div>
-        @can('admins.index')
+        
         <div class="list-group m-3">
             <div class="mb-3 sombra-claro">
-                <button class="btn btn-info collapsed boton-collapsed" style="width: 100%;" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAdmin" aria-expanded="false" aria-controls="collapseAdmin">
+            @can('admins.index')
+            <button class="btn btn-info collapsed boton-collapsed" style="width: 100%;" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAdmin" aria-expanded="false" aria-controls="collapseAdmin">
                     ADMINISTRACION
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-building-hospital" width="32" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -39,15 +40,15 @@
                     <line x1="12" y1="7" x2="12" y2="11" />
                 </svg>
                 </button>
+                @endcan
                 <div class="collapse " id="collapseAdmin">
                     <div class="list-group list-group-custom card-body">
-                      <a class="list-group-item list-group-item-action mb-2" href="{{ route('doctors.index') }}">Gestion Doctores</a> 
-                      <a class="list-group-item list-group-item-action mb-2" href="{{ route('secretario.index') }}">Gestion Secretarios</a>
-                      <a class="list-group-item list-group-item-action" href="{{ route('admin.index') }}">Gestion Admin</a>
+                      <a class="list-group-item list-group-item-action mb-2" href="{{ route('doctors.index') }}">Gestionar Doctores</a> 
+                      <a class="list-group-item list-group-item-action mb-2" href="{{ route('secretario.index') }}">Gestionar Secretarios</a>
+                      <a class="list-group-item list-group-item-action" href="{{ route('admin.index') }}">Gestionar Administrador</a>
                     </div>
                 </div>
             </div>
-            @endcan
             <div class="mb-3 sombra-claro">
                 <button class="btn btn-info collapsed boton-collapsed" style="width: 100%;" type="button" data-bs-toggle="collapse" data-bs-target="#collapseHistoricoCli" aria-expanded="false" aria-controls="collapseHistoricoCli">
                     HISTORICOS CLINICOS
@@ -66,8 +67,9 @@
                     </div>
                 </div>
             </div>
-            @can('citas.index')
+            
             <div class="mb-3 sombra-claro">
+            @can('citas.index')
                 <button class="btn btn-info collapsed boton-collapsed" style="width: 100%;" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSecretario" aria-expanded="false" aria-controls="collapseSecretario">
                     SECRETARIO
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-file-like" width="32" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -78,17 +80,18 @@
                       <path d="M5 12.1v-7.1a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2h-2.3" />
                     </svg>
                 </button>
+                @endcan
                 
                 <div class="collapse " id="collapseSecretario">
-                    <div class="card-body">
-                      <a href="{{ route('citas.index')}}">Gestionar citas</a><br>
-                      <a href="{{ route('patient.index')}}">Gestion Pacientes</a>
+                <div class="list-group list-group-custom card-body">
+                    <a class="list-group-item list-group-item-action mb-2" href="{{ route('patient.index')}}">Gestionar Pacientes</a>
+                      <a class="list-group-item list-group-item-action mb-2" href="{{ route('citas.index')}}">Gestionar Citas</a><br>
                     </div>
                 </div>
             </div>
-            @endcan
-            @can('doctors.agenda')
+            
             <div class="mb-3 sombra-claro">
+                @can('doctors.agenda')
                 <button class="btn btn-info collapsed boton-collapsed" style="width: 100%;" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDoctor" aria-expanded="false" aria-controls="collapseDoctor">
                     DOCTOR
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-pill" width="32" height="32" viewBox="0 0 24 24" stroke-width="2.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -97,16 +100,17 @@
                         <line x1="8.5" y1="8.5" x2="15.5" y2="15.5" />
                     </svg>
                 </button>
-                
+                @endcan
                 <div class="collapse " id="collapseDoctor">
-                    <div class="card-body">
-                      <a href="{{route('citas.citasDoctor', Auth::user()->id)}}">Ver Citas</a>
+                    <div class="list-group list-group-custom card-body">
+                      <a class="list-group-item list-group-item-action mb-2" href="{{route('citas.citasDoctor', Auth::user()->id)}}">Ver Agenda</a>
                     </div>
                 </div>
             </div>
-            @endcan
-            @can('patients.index')
+            
+            
             <div class="mb-3 sombra-claro">
+            @can('patients.index')
                 <button class="btn btn-info collapsed boton-collapsed" style="width: 100%;" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePaciente" aria-expanded="false" aria-controls="collapsePaciente">
                     PACIENTE
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-circle" width="32" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -116,17 +120,17 @@
                       <path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855" />
                     </svg>
                 </button>
-                
+                @endcan
                 <div class="collapse " id="collapsePaciente">
-                    <div class="card-body card">
-                      <a href="#">Mis citas</a>
+                <div class="list-group list-group-custom card-body">
+                    <a class="list-group-item list-group-item-action mb-2" href="#">Mis Citas</a>
                     </div>
                 </div>
             </div>
 
             
         </div>
-        @endcan
+        
     </aside>
 
     <div class="container-right">

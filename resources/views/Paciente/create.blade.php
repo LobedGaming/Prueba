@@ -1,51 +1,87 @@
 @extends('Layouts.dashboard')
+
 @section('contenido')
-    <h1>Gestionar paciente</h1>
+ <h1>Gestionar Paciente</h1>
 
     <form action="{{ route('patient.store') }}" method="POST" autocomplete="off">
-        @csrf
-        <label for="name">Nombre completo</label>
-        <input type="text" id="name" name="name" value="{{old('name')}}">
-        @error('name')
-            <small>*{{$message}}</small>
-        @enderror
+    @csrf   
+    <div class="form-row">
+         <div>
+                <div class="form-group">
+                    <label for="name">Nombre Completo</label>
+                    <input id="name" name="name" type="text" class="form-control" value="{{old('name')}}" placeholder="Nombre Completo...">
+                    @error('name')
+                        <span class="text-red">* {{ $message }} </span>
+                    @enderror
+                </div>
+        </div>
 
-        <label for="ci">Numero de docomento de identidad</label>
-        <input type="number" id="ci" name="ci" value="{{old('ci')}}">
-        @error('ci')
-            <small>*{{$message}}</small>
-        @enderror
+        <div>
+            <div class="form-group">
+                     <label for="ci">Carnet de Identidad</label>
+                     <input id="ci" name="ci" type="text" class="form-control" value="{{old('ci')}}" placeholder="Carnet de Identidad...">
+                     @error('ci')
+                        <span class="text-red"> * {{ $message }} </span>
+                     @enderror
+            </div>
+        </div>
+        
+        
+        <div>
+            <div class="form-group">
+                <label for="address">Direccion</label>
+                <input type="text" name="address" id="address" class="form-control" value="{{old('address')}}" placeholder="Direccion...">
+                @error('address')
+                <span class="text-red">* {{ $message }} </span>
+                @enderror
+            </div>
+        </div>
 
-        <label for="address">Direccion domiciliario</label>
-        <input type="text" id="address" name="address"  value="{{old('address')}}">
-        @error('address')
-            <small>*{{$message}}</small>
-        @enderror
+        <div>
+            <div class="form-group">
+                     <label for="phone">Telefono</label>
+                     <input id="phone" name="phone" type="text" class="form-control" placeholder="Telefono..." value="{{old('phone')}}">
+                     @error('phone')
+                        <span class="text-red"> * {{ $message }} </span>
+                     @enderror
+            </div>
+        </div>
+        
+        <div>
+            <div class="form-group">
+                     <label for="email">Correo Electronico</label>
+                     <input id="email" name="email" type="email" class="form-control" placeholder="Email..." value="{{old('email')}}">
+                     @error('email')
+                        <span class="text-red"> * {{ $message }} </span>
+                     @enderror
+            </div>
+        </div>
 
-        <label for="phone">Numero de telefono</label>
-        <input type="number" id="phone" name="phone" value="{{old('phone')}}">
-        @error('phone')
-            <small>*{{$message}}</small>
-        @enderror
+        <div>
+            <div class="form-group">
+                     <label for="password">Contraseña</label>
+                     <input id="password" name="password" type="password" class="form-control" placeholder="Contraseña..." value="{{old('password')}}" >
+                     @error('password')
+                        <span class="text-red"> * {{ $message }} </span>
+                     @enderror
+            </div>
+        </div>
 
-        <label for="email">Correo electronico</label>
-        <input type="email" id="email" name="email" value="{{old('email')}}">
-        @error('email')
-            <small>*{{$message}}</small>
-        @enderror
+        <div>
+            <div class="form-group">
+                     <label for="password">Fecha de Nacimiento</label>
+                     <input id="fecha_nacimiento" name="fecha_nacimiento" type="date" class="form-control" value="{{old('fecha_nacimiento')}}">
+                     @error('fecha_nacimiento')
+                        <span class="text-red"> * {{ $message }} </span>
+                     @enderror
+            </div>
+        </div>
 
-        <label for="password">Contraseña</label>
-        <input type="password" id="password" name="password" value="{{old('password')}}">
-        @error('password')
-            <small>*{{$message}}</small>
-        @enderror
-
-        <label for="fecha_nacimiento">Fecha de nacimiento</label >
-        <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" value="{{old('fecha_nacimiento')}}">
-        @error('fecha_nacimiento')
-            <small>*{{$message}}</small>
-        @enderror
-
-        <input type="submit">
+        <div>           
+            <a href="/patient" class="btn btn-secondary mt-4">Atras</a>
+            <button type="submit" class="btn btn-info mt-4">Guardar</button>
+        </div>
+        
+    </div>
     </form>
 @endsection
