@@ -79,8 +79,8 @@
          
 
         <div>           
-            <a href="/secretario" class="btn btn-secondary">Atras</a>
-            <button type="submit" class="btn btn-info">Guardar</button>
+            <a href="/secretario" class="btn btn-secondary mt-4">Atras</a>
+            <button type="submit" class="btn btn-info mt-4">Guardar</button>
         </div>
      </div>
 

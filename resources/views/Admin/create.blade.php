@@ -1,41 +1,39 @@
 @extends('Layouts.dashboard')
 
 @section('contenido')
-    <h1>Crear Administrador</h1>
+    <h1>Nuevo Administrador</h1>
     
-    <form action="{{route('admin.store')}}" method="post">
+    <form action="/admin" method="post">
         @csrf
-
         <div class="form-row">
-            <div class="">
                 <div class="form-group">
-                    <label for="">Nombre: </label>
-                    <input type="text" class="form-control form-control-lg" placeholder="Ingrese su nombre" name="name" value="{{old('name')}}">
+                    <label for="name">Nombre Completo</label>
+                    <input id="name" name="name" type="text" class="form-control" value="{{old('name')}}" placeholder="Nombre completo...">
                     @error('name')
-                        <small class="text-danger">{{$message}}</small>
-                        <br><br>
+                        <span class="text-red">* {{ $message }} </span>
                     @enderror
                 </div>
     
                 <div class="form-group">
-                    <label for="">Correo: </label>
-                    <input type="text" class="form-control form-control-lg" placeholder="Ingrese su correo" name="mail" value="{{old('mail')}}">
-                    @error('mail')
-                        <small class="text-danger">{{$message}}</small>
-                        <br><br>
-                    @enderror
+                     <label for="email">Correo Electronico</label>
+                     <input id="email" name="email" type="email" class="form-control" placeholder="Email..." value="{{old('email')}}">
+                     @error('email')
+                        <span class="text-red"> * {{ $message }} </span>
+                     @enderror
                 </div>
     
                 <div class="form-group">
-                    <label for="">Contraseña: </label>
-                    <input type="password" class="form-control form-control-lg" placeholder="Ingrese una contraseña" name="password" value="{{old('password')}}">
-                    @error('password')
-                        <small class="text-danger">{{$message}}</small>
-                        <br><br>
-                    @enderror
-                </div>
+                     <label for="password">Contraseña</label>
+                     <input id="password" name="password" type="password" class="form-control" placeholder="Contraseña..." value="{{old('password')}}" >
+                     @error('password')
+                        <span class="text-red"> * {{ $message }} </span>
+                     @enderror
             </div>
         </div>
-        <button type="submit" class="btn btn-primary mt-4">Crear administrador</button>
+
+        <div>
+        <a href="/admins" class="btn btn-secondary mt-4">Atras</a>
+        <button type="submit" class="btn btn-info mt-4">Crear administrador</button>
+        </div>
     </form>
 @endsection
