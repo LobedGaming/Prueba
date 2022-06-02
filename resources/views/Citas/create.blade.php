@@ -1,6 +1,6 @@
 @extends('Layouts.dashboard')
 @section('contenido')
-<form action="{{route('citas.store')}}" method="POST">
+<form action="{{route('citas.store')}} " method="POST">
 @csrf
 <h1 class="text-center">Creacion de Cita</h1>
 
@@ -64,14 +64,16 @@
 
             <div class="form-group">
                 <label for="description">Descripcion:</label>
-                <input type="description" name="description" id="description" class="form-control"  style="width: 200%;">
+                <input type="description" name="description" id="description" class="form-control"  style="width: 100%;">
                 @error('description')
                 <span class="text-red">* {{ $message }} </span>
                 @enderror
             </div>
-     
-            <input type="submit" value='Guardar'>
-            </form>
+            <div>           
+                <a href="/citas" class="btn btn-secondary mt-4">Atras</a>
+                <button type="submit" class="btn btn-info mt-4">Guardar</button>
+            </div>
+     </form>
         
         
        
