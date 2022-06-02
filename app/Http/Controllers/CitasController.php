@@ -87,8 +87,8 @@ class CitasController extends Controller
         $hora = $citaDoctor->fecha_hora;
         $horaM = Carbon::parse($hora); //HoraM hora del foreach mas 15minutos
         $horaM->addMinutes(15);
-        if($request->fecha_hora>=$citaDoctor->fecha_hora){
-            if($request->fecha_hora<=$horaM){
+        if(Carbon::parse($request->fecha_hora)->gte($citaDoctor->fecha_hora)){
+            if(Carbon::parse($request->fecha_hora)->lte($horaM)){
                 return 'ya hay una cita a esta hora';
             }
         }
