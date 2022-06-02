@@ -74,19 +74,8 @@ class CitasController extends Controller
     //   }
     
 
-    // public function store(Request $request)
-    // {
-    // $cita = new Cita();
-    // $cita->fecha_hora    = $request->input('fecha_hora');
-    // $cita->description   = $request->input('description');
-    // $cita->doctor_id     = $request->input('doctor_id');
-    // $cita->secretarie_id = $request->input('secretarie_id');
-    // $cita->patient_id    = $request->input('patient_id');
-    // $cita->save();
-    // return redirect()->route('citas.index');
-    // }
-
-
+    
+    //FUNCION INCOMPLETA, TERMINAR
     public function store(Request $request)
     {
         //15:45 esta creada citaDoctor
