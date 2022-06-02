@@ -11,6 +11,12 @@
                     <th>Especialidad</th>
                     <th>Seleccionar</th>  
                 </tr>
+
+                <select name="cars" id="cars">
+                    @foreach($doctors as $doctor)
+                    <option value="{{$doctor->id}}">{{ $doctor->user->name}}</option>
+                    @endforeach
+                  </select>
                 @foreach($doctors as $doctor)
                 <tr>
                     <td>{{ $doctor->user->name}}</td>
