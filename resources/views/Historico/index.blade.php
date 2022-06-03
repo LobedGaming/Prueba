@@ -1,7 +1,7 @@
 @extends('Layouts.dashboard')
 @section('contenido')
 
-<nav class="navbar navbar-light bg-light">
+{{--<nav class="navbar navbar-light bg-light">
     <div class="container-fluid">
       <a class="navbar-brand">ID del paciente: </a>
       <form class="d-flex">
@@ -9,7 +9,7 @@
         <button class="btn btn-outline-success" type="submit">Buscar</button>
       </form>
     </div>
-  </nav>
+  </nav>--}}
   <table class="table table-striped">
     <thead>
         <tr>
