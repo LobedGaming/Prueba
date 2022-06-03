@@ -17,10 +17,12 @@
             <span>{{$cita->description}}</span>
         </div>
 
-      <button type="button" class="btn btn-primary mt-4" value="{{$cita->id}}" id="recetaBtn">CrearReceta</button>
-      <a href="{{route('receta.show', $cita->id)}}" class="btn btn-primary mt-4">Ver receta</a>
-      <input type="hidden" name="cita_id" id="cita_id" value="{{$cita->id}}">
-      <br
+        {{-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo" value="{{$cita->id}}" id="recetaBtn">Receta {{$cita->id}}</button> --}}
+
+        <a href="{{route('receta.createCita', $cita->id)}}" class="btn btn-info">Crear Receta</a>
+        <a href="{{route('receta.show', $cita->id)}}" class="btn btn-info">Ver Receta</a>
+      
+        <br>
         <span>-----------------------------</span>
         <span>-----------------------------</span>
     </div>
