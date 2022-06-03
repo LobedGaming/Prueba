@@ -43,7 +43,7 @@
                     </div>
 
                     <div class="firm d-flex justify-content-end">
-                        <p class="fw-bold fs-5 me-2" style="">Firma</p>
+                        <p class="fw-bold fs-5 me-2">Firma</p>
                         <div style="background-color: rgb(241, 241, 239); width: 15%; height: 30px; border:0; border-bottom: 2px solid black;"></div>
                     </div>
 

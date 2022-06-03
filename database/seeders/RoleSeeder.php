@@ -55,6 +55,10 @@ class RoleSeeder extends Seeder
         Permission::create(['name' => 'receta.index'  ])->syncRoles([$role4]);
         Permission::create(['name' => 'receta.create' ])->syncRoles([$role2]);
         Permission::create(['name' => 'receta.show'   ])->syncRoles([$role2,$role4]);
+
+        Permission::create(['name' => 'historico.index'  ])->syncRoles([$role1]);
+        Permission::create(['name' => 'historico.show'   ])->syncRoles([$role1]);
+    
         
     }
 }

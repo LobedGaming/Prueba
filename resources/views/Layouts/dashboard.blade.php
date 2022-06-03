@@ -50,6 +50,7 @@
                 </div>
             </div>
             <div class="mb-3 sombra-claro">
+                @can('historico.index')
                 <button class="btn btn-info collapsed boton-collapsed" style="width: 100%;" type="button" data-bs-toggle="collapse" data-bs-target="#collapseHistoricoCli" aria-expanded="false" aria-controls="collapseHistoricoCli">
                     HISTORICOS CLINICOS
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-report-medical" width="32" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -60,7 +61,7 @@
                         <line x1="12" y1="12" x2="12" y2="16" />
                     </svg>
                 </button>
-                
+                @endcan
                 <div class="collapse " id="collapseHistoricoCli">
                     <div class="list-group list-group-custom card-body">
                         <a class="list-group-item list-group-item-action mb-2" href="{{route('historico.index')}}">Ver Historicos</a>
