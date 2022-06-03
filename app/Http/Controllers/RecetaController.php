@@ -66,7 +66,8 @@ class RecetaController extends Controller
         $receta->cita_id = $request->input('cita_id');
         $receta->save();
 
-        return $request;
+        // return $request;
+        return redirect()->route('receta.show', $request->input('cita_id'))->with('info', 'Receta agregada');
         // return view('receta.show', compact('receta', 'doctor', 'paciente'));
     }
     /**
