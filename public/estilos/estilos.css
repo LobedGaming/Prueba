@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
+
 body
 {
     background-color: rgb(201, 238, 247);
@@ -171,11 +173,17 @@ grid-template-columns: 20% 10% 50%;
     text-decoration: none;
 } */
 
+.title-doctor > p {
+    font-family: 'Courgette', cursive;
+    font-size: 30px;
+    text-align: center;
+
+}
  
-.card
+/* .card
 {
  border-style: solid;
  background-color:rgb(159, 216, 248); 
  text-decoration: none;
  border-radius: 1rem;
-} 
+}  */

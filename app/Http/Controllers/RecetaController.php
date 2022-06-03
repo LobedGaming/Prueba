@@ -6,6 +6,7 @@ use App\Models\Cita;
 use App\Models\Doctor;
 use App\Models\Patient;
 use App\Models\Receta;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class RecetaController extends Controller
@@ -45,7 +46,17 @@ class RecetaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $receta = new Receta();
+        $dateAct = Carbon::now('America/La_Paz');
+
+        $receta->fecha_hora    = $dateAct;
+        $receta->description   = $request->input('description');
+
+        $receta->doctor_id     = $request->input('doctor_id');
+        $receta->patient_id    = $request->input('patient_id');
+        $receta->save();
+
+        // return view('paciente.receta.show', $id);
     }
 
     /**
@@ -56,7 +67,7 @@ class RecetaController extends Controller
      */
     public function show($id)
     {
-        //
+        // return view('paciente.receta.show');
     }
 
     /**
