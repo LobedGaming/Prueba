@@ -17,6 +17,7 @@ class RecetaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
         $recetas=Receta::all();
@@ -31,12 +32,22 @@ class RecetaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Cita $cita)
     {
-        $doctors=Doctor::all();
-        $pacientes=Patient::all();
-        $citas=Cita::all();
-        return view('receta.create',['citas'=>$citas,'doctors'=>$doctors,'patients'=>$pacientes]);
+        // $doctors=Doctor::all();
+        // $pacientes=Patient::all();
+        // $citas=Cita::all();
+        return $cita;
+        // return view('receta.create',['citas'=>$citas,'doctors'=>$doctors,'patients'=>$pacientes]);
+    }
+    public function createCita($cita)
+    {
+        // $doctors=Doctor::all();
+        // $pacientes=Patient::all();
+        // $citas=Cita::all();
+        // return $cita;
+        return view('receta.create', compact('cita'));
+        // return view('receta.create',['citas'=>$citas,'doctors'=>$doctors,'patients'=>$pacientes]);
     }
 
     /**
@@ -47,16 +58,14 @@ class RecetaController extends Controller
      */
     public function store(Request $request)
     {
-        // $receta = new Receta();
-        // $dateAct = Carbon::now('America/La_Paz');
+        $receta = new Receta();
+        $dateAct = Carbon::now('America/La_Paz');
 
-        // $receta->fecha_hora    = $dateAct;
-        // $receta->description   = $request->input('description');
+        $receta->fecha_hora    = $dateAct;
+        $receta->description   = $request->input('description');
+        $receta->cita_id = $request->input('cita_id');
+        $receta->save();
 
-        // $receta->doctor_id     = $request->input('doctor_id');
-        // $receta->patient_id    = $request->input('patient_id');
-        // $receta->save();
-        dd($request);
         return $request;
         // return view('receta.show', compact('receta', 'doctor', 'paciente'));
     }
@@ -90,7 +99,7 @@ class RecetaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $this->idCita = $id;
     }
 
     /**

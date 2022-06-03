@@ -41,4 +41,6 @@ Route::resource('doctors', DoctorController::class)->names('doctors');
 Route::resource('secretario', SecretarioController::class)->names('secretario');
 Route::resource('patient', PatientController::class)->names('patient');
 Route::resource('admin', AdminController::class)->names('admin');
+
 Route::resource('receta', RecetaController::class)->names('receta');
+Route::get('/receta/create/{id}', [RecetaController::class, 'createCita'])->name('receta.createCita');
