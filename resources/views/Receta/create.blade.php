@@ -10,13 +10,14 @@
 
         <div class="card-body" style="background-color: rgba(241, 241, 239, 0.6)">
             <form action="{{route('receta.store')}}" method="post">
-            @csrf
-            <div class="mb-3 mt-3">
-                <label for="inputOtros" class="fw-bold fs-5">Descripción</label>
-                <textarea class="form-control mt-2" style="resize: none;" id="inputOtros" name="description" id="" cols="30" rows="15" placeholder="Ingrese una descripción"></textarea>
-                <input type="hidden" value="{{$cita}}" name="cita_id">
-            </div>
-                <button type="submit" class="col-2 btn btn-primary" data-bs-dismiss="modal">Registrar</button>
+                @csrf
+                <div class="mb-3 mt-3">
+                    <label for="inputOtros" class="fw-bold fs-5">Descripción</label>
+                    <textarea class="form-control mt-2" style="resize: none;" id="inputOtros" name="description" id="" cols="30" rows="15" placeholder="Ingrese una descripción"></textarea>
+                    <input type="hidden" value="{{$cita}}" name="cita_id">
+                </div>
+                <a href="{{route('citas.citasDoctor', Auth::user()->id)}}" class="btn btn-secondary">Atras</a>
+                <button type="submit" class="btn btn-info" data-bs-dismiss="modal">Registrar</button>
             </form>
         </div>
     </div>

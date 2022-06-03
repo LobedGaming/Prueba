@@ -8,6 +8,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
+
         @foreach ($recetas as $receta)
             <div class="container">
                 
@@ -48,8 +49,8 @@
 
                 </div>
             </div>
-            <br>
-            <br>
-            <br>
+            <br> <br> <br>
         @endforeach
+        <a href="{{route('citas.citasDoctor', Auth::user()->id)}}" class="btn btn-secondary col-2">Atras</a>
+        <br> <br> <br>
 @endsection

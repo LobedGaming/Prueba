@@ -62,8 +62,8 @@
                 </button>
                 
                 <div class="collapse " id="collapseHistoricoCli">
-                    <div class="card-body">
-                        
+                    <div class="list-group list-group-custom card-body">
+                        <a class="list-group-item list-group-item-action mb-2" href="{{route('historico.index')}}">Ver Historicos</a>
                     </div>
                 </div>
             </div>
@@ -85,7 +85,9 @@
                 <div class="collapse " id="collapseSecretario">
                 <div class="list-group list-group-custom card-body">
                     <a class="list-group-item list-group-item-action mb-2" href="{{ route('patient.index')}}">Gestionar Pacientes</a>
+                    @can('citas.edit')
                       <a class="list-group-item list-group-item-action mb-2" href="{{ route('citas.index')}}">Gestionar Citas</a><br>
+                      @endcan
                     </div>
                 </div>
             </div>
@@ -110,7 +112,7 @@
             
             
             <div class="mb-3 sombra-claro">
-            @can('patients.index')
+            @can('receta.index')
                 <button class="btn btn-info collapsed boton-collapsed" style="width: 100%;" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePaciente" aria-expanded="false" aria-controls="collapsePaciente">
                     PACIENTE
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-circle" width="32" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -123,7 +125,7 @@
                 @endcan
                 <div class="collapse " id="collapsePaciente">
                 <div class="list-group list-group-custom card-body">
-                    <a class="list-group-item list-group-item-action mb-2" href="#">Mis Citas</a>
+                    <a class="list-group-item list-group-item-action mb-2" href="{{route('receta.show',Auth::user()->id)}}">Mis Recetas</a>
                     </div>
                 </div>
             </div>

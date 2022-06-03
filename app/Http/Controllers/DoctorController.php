@@ -10,7 +10,6 @@ class DoctorController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
      * @return \Illuminate\Http\Response
      */
     public function index()
@@ -27,7 +26,6 @@ class DoctorController extends Controller
     public function create()
     {
         return view('doctor.create');
-        
     }
 
     /**
@@ -48,7 +46,6 @@ class DoctorController extends Controller
             'password' => 'required',
             'fecha_nacimiento' => 'required',
         ]);
-
         $user                   = new User();
         $user->name             = $request->input('name');
         $user->ci               = $request->input('ci');
@@ -59,14 +56,11 @@ class DoctorController extends Controller
         $user->fecha_nacimiento = $request->input('fecha_nacimiento');
         $user->assignRole('Doctor');
         $user->save();
-
         $doctor = new Doctor();
         $doctor->especialidad = $request->input('especialidad');
         $doctor->user_id = $user->id;
         $doctor->save();
-
         return redirect()->route('doctors.index');
-
     }
 
     /**
@@ -114,8 +108,6 @@ class DoctorController extends Controller
             'fecha_nacimiento' => 'required',
             'especialidad' => 'required',
         ]);
-
-
         $user                   = User::findorFail($id);
         $user->name             = $request->input('name');
         $user->ci               = $request->input('ci');
@@ -125,12 +117,10 @@ class DoctorController extends Controller
         //$user->password         = $request->input('password');
         $user->fecha_nacimiento = $request->input('fecha_nacimiento');
         $user->save();
-
         $doctor = $user->doctor;
         $doctor->especialidad = $request->input('especialidad');
         $doctor->user_id = $user->id;
         $doctor->save();
-
         return redirect()->route('doctors.index');
     }
 
@@ -147,6 +137,5 @@ class DoctorController extends Controller
         $doctor->delete();
         $user->delete();
         return redirect()->route('doctors.index');
-
     }
 }

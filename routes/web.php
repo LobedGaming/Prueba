@@ -8,6 +8,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SecretarioController;
 use App\Http\Controllers\RecetaController;
 use App\Http\Controllers\PatientController;
+use App\Http\Controllers\HistoricoController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -41,6 +42,6 @@ Route::resource('doctors', DoctorController::class)->names('doctors');
 Route::resource('secretario', SecretarioController::class)->names('secretario');
 Route::resource('patient', PatientController::class)->names('patient');
 Route::resource('admin', AdminController::class)->names('admin');
-
 Route::resource('receta', RecetaController::class)->names('receta');
 Route::get('/receta/create/{id}', [RecetaController::class, 'createCita'])->name('receta.createCita');
+Route::resource('historico', HistoricoController::class)->names('historico');

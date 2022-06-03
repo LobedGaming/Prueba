@@ -76,7 +76,11 @@ class CitasController extends Controller
 
     
     //FUNCION INCOMPLETA, TERMINAR
-    public function store(Request $request)
+    public function store(Request $request){
+    //dd( $horaAct=Carbon::now('America/La_Paz'));
+    //dd(Carbon::parse($request->fecha_hora));
+    $horaAct=Carbon::now('America/La_Paz');
+    if(Carbon::parse($request->fecha_hora)->gte($horaAct) )
     {
     $citasDoctor = Cita::where('doctor_id',$request->doctor_id)->get();
     foreach ($citasDoctor as $citaDoctor){
@@ -100,6 +104,9 @@ class CitasController extends Controller
         $cita->patient_id    = $request->input('patient_id');
         $cita->save();
         return redirect()->route('citas.index');
+      }
+      return redirect()->route('citas.create')
+      ->with('info','Hora Incorrecta, seleccione de nuevo');
     }
 
     /**

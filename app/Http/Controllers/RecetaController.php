@@ -65,10 +65,8 @@ class RecetaController extends Controller
         $receta->description   = $request->input('description');
         $receta->cita_id = $request->input('cita_id');
         $receta->save();
-
-        // return $request;
+        
         return redirect()->route('receta.show', $request->input('cita_id'))->with('info', 'Receta agregada');
-        // return view('receta.show', compact('receta', 'doctor', 'paciente'));
     }
     /**
      * Display the specified resource.
@@ -87,7 +85,6 @@ class RecetaController extends Controller
     public function getDoctor($id){
         $doctor_Doctor = Doctor::find($id);
         $doctor_User = User::find($doctor_Doctor->user_id);
-
         $dateArray = [$doctor_User, $doctor_Doctor];
         return $dateArray;
     }
