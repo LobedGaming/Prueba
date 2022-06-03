@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Cita;
 use App\Models\Historico;
 use App\Models\Patient;
+use App\Models\Receta;
 use Illuminate\Http\Request;
 
 class HistoricoController extends Controller
@@ -52,7 +53,8 @@ class HistoricoController extends Controller
     {
         //
         $citas= Cita::where('patient_id',$id)->get();
-        return view('Historico.show',['citas'=>$citas]);
+        $recetas=Receta::all();
+        return view('Historico.show',['citas'=>$citas,'recetas'=>$recetas]);
     }
 
     /**
