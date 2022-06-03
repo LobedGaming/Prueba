@@ -69,8 +69,12 @@ class CitasController extends Controller
     // }
     //todas las citas de un paciente que se recibe el id del paciente
     public function citasPaciente($id){
-        
-        $citas= Cita::where('patient_id',$id)->get();
+        $paciente_ids=Patient::where('user_id',$id)->get();
+        foreach($paciente_ids as $paciente_id)
+        {
+            $patient_id=$paciente_id;
+        }
+        $citas= Cita::where('patient_id',$patient_id->id)->get();
         $recetas=Receta::all();
         return view('Historico.show',['citas'=>$citas,'recetas'=>$recetas]);
       }

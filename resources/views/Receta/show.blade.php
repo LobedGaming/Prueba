@@ -46,8 +46,12 @@
         @endforeach
         @if (Auth::user()->hasRole('Doctor'))
         <a href="{{route('citas.citasDoctor', Auth::user()->id)}}" class="btn btn-secondary col-2">Atras</a>  
-        @else
+        @endif
+        @if(Auth::user()->hasRole('Administrador')) 
         <a href="{{route('historico.index')}}" class="btn btn-secondary col-2">Atras</a>
+        @endif
+        @if(Auth::user()->hasRole('Paciente')) 
+        <a href="{{route('citas.citasPaciente',Auth::user()->id)}}" class="btn btn-secondary col-2">Atras</a>
         @endif
         <br> <br> <br>
 @endsection
