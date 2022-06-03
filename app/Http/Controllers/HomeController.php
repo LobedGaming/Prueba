@@ -1,13 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-<<<<<<< HEAD
- use App\Http\Controllers\Auth;
-use DateTime;
-use Hamcrest\Core\HasToString;
-=======
 use App\Http\Controllers\Auth;
->>>>>>> 1de25b282f4b64e43e2c77c75167078be525ad7a
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
