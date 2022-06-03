@@ -126,7 +126,7 @@
                 @endcan
                 <div class="collapse " id="collapsePaciente">
                 <div class="list-group list-group-custom card-body">
-                    <a class="list-group-item list-group-item-action mb-2" href="{{route('receta.show',Auth::user()->id)}}">Mis Recetas</a>
+                    <a class="list-group-item list-group-item-action mb-2" href="{{route('citas.citasPaciente',Auth::user()->id)}}">Mis Citas</a>
                     </div>
                 </div>
             </div>

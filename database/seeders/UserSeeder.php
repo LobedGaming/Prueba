@@ -86,7 +86,7 @@ class UserSeeder extends Seeder
             'ci'=>'98521364',
             'address'=>'Vallegrande',
             'phone'=>'78521364',
-            'email'=>'fadua@gmail.com.com',
+            'email'=>'fadua@gmail.com',
             'password'=>bcrypt('12345678'),
             'fecha_nacimiento'=>'12/05/1999',
          ])->assignRole('Paciente');

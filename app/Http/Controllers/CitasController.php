@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Doctor;
 use App\Models\Patient;
 use App\Models\Cita;
+use App\Models\Receta;
 use App\Models\Secretarie;
 use DateTime;
 use Illuminate\Http\Request;
@@ -66,12 +67,13 @@ class CitasController extends Controller
     //     $citas=Cita::where('patient_id',$id)->get();
     //       return view('citas.index',['citas'=>$citas]);
     // }
-    // //todas las citas de un paciente que se recibe el id del paciente
-    // public function citasPaciente($id){
-    //     $hoy=new DateTime("now");
-    //     $citas=Cita::where('patient_id',$id)->where('fecha_hora','>=',$hoy)->get();
-    //       return view('citas.index',['citas'=>$citas]);
-    //   }
+    //todas las citas de un paciente que se recibe el id del paciente
+    public function citasPaciente($id){
+        
+        $citas= Cita::where('patient_id',$id)->get();
+        $recetas=Receta::all();
+        return view('Historico.show',['citas'=>$citas,'recetas'=>$recetas]);
+      }
     
 
     
