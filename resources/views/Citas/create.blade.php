@@ -9,47 +9,41 @@
                 <tr>
                     <th>Nombre Completo</th>
                     <th>Especialidad</th>
-                    <th>Seleccionar</th>  
+                    <th>Seleccionar</th>
                 </tr>
-
-                <select name="cars" id="cars">
-                    @foreach($doctors as $doctor)
-                    <option value="{{$doctor->id}}">{{ $doctor->user->name}}</option>
-                    @endforeach
-                  </select>
                 @foreach($doctors as $doctor)
                 <tr>
                     <td>{{ $doctor->user->name}}</td>
                     <td>{{ $doctor->especialidad}}</td>
-                    <td>     
+                    <td>
 
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="doctor_id" id="doctor_id" value="{{$doctor->id}}" checked>
                             <label for=""></label>
-                        </div>                          
-                        
+                        </div>
+
                     </td>
                 </tr>
                 @endforeach
                 <input type="hidden">
             </table>
-    
+
 
 <h3 class="text-center">Lista de Pacientes</h3>
             <table style="width:100%">
                 <tr>
                     <th>Nombre Completo</th>
-                    <th>Seleccionar</th>  
+                    <th>Seleccionar</th>
                 </tr>
                 @foreach($patients as $patient)
                 <tr>
                     <td>{{ $patient->user->name}}</td>
-                    <td>     
+                    <td>
                             <div class="form-check">
                             <input class="form-check-input" type="radio" name="patient_id" id="patient_id" value="{{$patient->id}}" checked>
                             <label for=""></label>
-                        </div>                         
-                        
+                        </div>
+
                     </td>
                 </tr>
                 @endforeach
@@ -57,8 +51,8 @@
             </table>
 
  <h3 class="text-center">Detalles de la Cita</h3>
- 
-        
+
+
             <div class="form-group">
                 <label for="fecha_hora">Fecha y Hora:</label>
                 <input type="datetime-local" name="fecha_hora" id="fecha_hora" class="form-control" >
@@ -66,7 +60,7 @@
                 <span class="text-red">* {{ $message }} </span>
                 @enderror
             </div>
-        
+
 
             <div class="form-group">
                 <label for="description">Descripcion:</label>
@@ -75,12 +69,18 @@
                 <span class="text-red">* {{ $message }} </span>
                 @enderror
             </div>
-            <div>           
+            <div>
                 <a href="/citas" class="btn btn-secondary mt-4">Atras</a>
                 <button type="submit" class="btn btn-info mt-4">Guardar</button>
+            @if(session('info'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>{{session('info')}}</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
             </div>
      </form>
-        
-        
-       
+
+
+
 @endsection

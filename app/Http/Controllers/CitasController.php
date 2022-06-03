@@ -78,28 +78,20 @@ class CitasController extends Controller
     //FUNCION INCOMPLETA, TERMINAR
     public function store(Request $request)
     {
-        //15:45 esta creada citaDoctor
-        // esta metiendo a las 15:50 request
-        
     $citasDoctor = Cita::where('doctor_id',$request->doctor_id)->get();
-
     foreach ($citasDoctor as $citaDoctor){
         $hora = $citaDoctor->fecha_hora;
         $horaM = Carbon::parse($hora); //HoraM hora del foreach mas 15minutos
         $horaM->addMinutes(15);
         if(Carbon::parse($request->fecha_hora)->gte($citaDoctor->fecha_hora)){
             if(Carbon::parse($request->fecha_hora)->lte($horaM)){
-                return 'ya hay una cita a esta hora';
+                return redirect()->route('citas.create')
+                ->with('info','El Doctor ya tiene una cita a esta hora');
             }
         }
-        // if($request->fecha_hora>=$citaDoctor->fecha_hora and $request->fecha_hora<=$horaM){
-        // //15:50   15:45                                         15:50                16:00
-        //         return 'ya hay una cita a esta hora';
-        // }
         else{
         } 
     }
-
         $cita = new Cita();
         $cita->fecha_hora    = $request->input('fecha_hora');
         $cita->description   = $request->input('description');
@@ -108,7 +100,6 @@ class CitasController extends Controller
         $cita->patient_id    = $request->input('patient_id');
         $cita->save();
         return redirect()->route('citas.index');
-        
     }
 
     /**
