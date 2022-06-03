@@ -21,7 +21,7 @@
     </div>
   
     @endforeach
-    <table class="table table-warning table-striped">
+   {{-- <table class="table table-primary table-striped">
         <thead>
           <tr>
             <th scope="col">Dia</th>
@@ -49,5 +49,5 @@
             <td>@twitter</td>
           </tr>
         </tbody>
-      </table>
+      </table>--}}
 @endsection
