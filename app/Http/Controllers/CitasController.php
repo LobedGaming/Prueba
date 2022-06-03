@@ -9,6 +9,7 @@ use App\Models\Secretarie;
 use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class CitasController extends Controller
 {
@@ -21,8 +22,8 @@ class CitasController extends Controller
     {
         $doctors=Doctor::all();
         $pacientes=Patient::all();
-      //  $hoy=new DateTime("now");
-       // $citas=Cita::where('fecha_hora','>=',$hoy)->get();
+        // $hoy=new DateTime("now");
+        // $citas=Cita::where('fecha_hora','>=',$hoy)->get();
         $citas=Cita::all();
         return view('Citas.index',['citas'=>$citas,'doctors'=>$doctors,'patients'=>$pacientes]);
     }
@@ -48,42 +49,64 @@ class CitasController extends Controller
      */
 
 
-    //todas las citas de un doctor que se recibe el id del doctor
+    //todas las citas actuales y futuras para un doctor que recibe el id del doctor
     public function citasDoctor($id){
      $idsDoctor=Doctor::where('user_id',$id)->get();
      foreach($idsDoctor as $idDoctor)
      {
         $doctor_id=$idDoctor;
      }
-      $citas=Cita::where('doctor_id',$doctor_id->id)->get();
-        return view('Doctor.agenda',['citas'=>$citas]);
+     $hoy = Carbon::now('America/La_Paz')->subMinutes(15);
+     $citas=Cita::where('doctor_id',$doctor_id->id)->where('fecha_hora','>=',$hoy)->get();
+     return view('Doctor.agenda',['citas'=>$citas]);
+
     }
-    //todas las citas de un paciente que se recibe el id del paciente pasadas y futuras
-    public function citasPacienteAll($id){
-        $citas=Cita::where('patient_id',$id)->get();
-          return view('citas.index',['citas'=>$citas]);
-    }
-    //todas las citas de un paciente que se recibe el id del paciente
-    public function citasPaciente($id){
-        $hoy=new DateTime("now");
-        $citas=Cita::where('patient_id',$id)->where('fecha_hora','>=',$hoy)->get();
-          return view('citas.index',['citas'=>$citas]);
-      }
+    // //todas las citas de un paciente que se recibe el id del paciente pasadas y futuras
+    // public function citasPacienteAll($id){
+    //     $citas=Cita::where('patient_id',$id)->get();
+    //       return view('citas.index',['citas'=>$citas]);
+    // }
+    // //todas las citas de un paciente que se recibe el id del paciente
+    // public function citasPaciente($id){
+    //     $hoy=new DateTime("now");
+    //     $citas=Cita::where('patient_id',$id)->where('fecha_hora','>=',$hoy)->get();
+    //       return view('citas.index',['citas'=>$citas]);
+    //   }
     
 
-
-
-    public function store(Request $request)
+    
+    //FUNCION INCOMPLETA, TERMINAR
+    public function store(Request $request){
+    //dd( $horaAct=Carbon::now('America/La_Paz'));
+    //dd(Carbon::parse($request->fecha_hora));
+    $horaAct=Carbon::now('America/La_Paz');
+    if(Carbon::parse($request->fecha_hora)->gte($horaAct) )
     {
-    $cita = new Cita();
-    $cita->fecha_hora    = $request->input('fecha_hora');
-    $cita->description   = $request->input('description');
-    $cita->doctor_id     = $request->input('doctor_id');
-    $cita->secretarie_id = $request->input('secretarie_id');
-    $cita->patient_id    = $request->input('patient_id');
-    $cita->save();
-    return redirect()->route('citas.index');
-
+    $citasDoctor = Cita::where('doctor_id',$request->doctor_id)->get();
+    foreach ($citasDoctor as $citaDoctor){
+        $hora = $citaDoctor->fecha_hora;
+        $horaM = Carbon::parse($hora); //HoraM hora del foreach mas 15minutos
+        $horaM->addMinutes(15);
+        if(Carbon::parse($request->fecha_hora)->gte($citaDoctor->fecha_hora)){
+            if(Carbon::parse($request->fecha_hora)->lte($horaM)){
+                return redirect()->route('citas.create')
+                ->with('info','El Doctor ya tiene una cita a esta hora');
+            }
+        }
+        else{
+        } 
+    }
+        $cita = new Cita();
+        $cita->fecha_hora    = $request->input('fecha_hora');
+        $cita->description   = $request->input('description');
+        $cita->doctor_id     = $request->input('doctor_id');
+        $cita->secretarie_id = $request->input('secretarie_id');
+        $cita->patient_id    = $request->input('patient_id');
+        $cita->save();
+        return redirect()->route('citas.index');
+      }
+      return redirect()->route('citas.create')
+      ->with('info','Hora Incorrecta, seleccione de nuevo');
     }
 
     /**

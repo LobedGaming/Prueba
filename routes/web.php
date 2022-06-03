@@ -6,7 +6,9 @@ use App\Http\Controllers\CitasController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SecretarioController;
+use App\Http\Controllers\RecetaController;
 use App\Http\Controllers\PatientController;
+use App\Http\Controllers\HistoricoController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,11 +22,12 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/escritorio', function () {
-    return view('Layouts.escritorio');
-});
 Route::get('/', function () {
+    if (Auth::check()) {
+       return view('home');
+    }else{
     return view('auth.login');
+    }
 });
 
 Auth::routes();
@@ -39,3 +42,5 @@ Route::resource('doctors', DoctorController::class)->names('doctors');
 Route::resource('secretario', SecretarioController::class)->names('secretario');
 Route::resource('patient', PatientController::class)->names('patient');
 Route::resource('admin', AdminController::class)->names('admin');
+Route::resource('receta', RecetaController::class)->names('receta');
+Route::resource('historico', HistoricoController::class)->names('historico');

@@ -63,7 +63,7 @@
                 
                 <div class="collapse " id="collapseHistoricoCli">
                     <div class="card-body">
-                        
+                        <a href="{{route('historico.index')}}">Ver Historicos</a>
                     </div>
                 </div>
             </div>
@@ -123,7 +123,7 @@
                 @endcan
                 <div class="collapse " id="collapsePaciente">
                 <div class="list-group list-group-custom card-body">
-                    <a class="list-group-item list-group-item-action mb-2" href="#">Mis Citas</a>
+                    <a class="list-group-item list-group-item-action mb-2" href="{{route('receta.show',Auth::user()->id)}}">Mis Recetas</a>
                     </div>
                 </div>
             </div>

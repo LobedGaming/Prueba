@@ -28,4 +28,8 @@ class Cita extends Model
     public function paciente(){
         return $this->belongsTo(Patient::class,'patient_id');
     }
+
+    public function receta(){
+        return $this->hasMany(Receta::class);
+    }
 }
