@@ -59,6 +59,7 @@ class CitasController extends Controller
      }
      $hoy = Carbon::now('America/La_Paz')->subMinutes(15);
      $citas=Cita::where('doctor_id',$doctor_id->id)->where('fecha_hora','>=',$hoy)->get();
+     
      return view('Doctor.agenda',['citas'=>$citas]);
 
     }
