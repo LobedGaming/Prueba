@@ -36,28 +36,28 @@ textSize.onchange =  function(){
     style.setProperty('--font-size', elem+"px");
 }
 const temaOscuro = {
-    "bgColor":"#4a4a4a",
+    "bgColor":"#a6a6a6",
     "asideColor":"#4a4a4a",
-    "navbarColor":"#000000",
+    "navbarColor":"#2F4F4F",
     "fontColor":"#ffffff",
     "fontColorAside":"#ffffff",
     "fontColorNav":"#ffffff",
     "fontSize":"21",
 }
 const temaClaro = {
-    "bgColor":"#ffffff",
+    "bgColor":"#ccffff",
     "asideColor":"#f5f5f5",
-    "navbarColor":"#000000",
-    "fontColor":"#000000",
+    "navbarColor":"#7FFFD4",
+    "fontColor":"#ffffff",
     "fontColorAside":"#000000",
     "fontColorNav":"#ffffff",
     "fontSize":"21",
 }
 const temaClasico = {
-    "bgColor":"#ffffff",
+    "bgColor":"#c9eef7",
     "asideColor":"#ffffff",
-    "navbarColor":"#6183f5",
-    "fontColor":"#000000",
+    "navbarColor":"#2ACFDB",
+    "fontColor":"#ffffff",
     "fontColorAside":"#080808",
     "fontColorNav":"#ffffff",
     "fontSize":"21",

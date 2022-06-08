@@ -131,6 +131,22 @@
                 </div>
             </div>
 
+            <div class="mb-3 sombra-claro">        
+                <button class="btn btn-info collapsed boton-collapsed" style="width: 100%;" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTemas" aria-expanded="false" aria-controls="collapseTemas">
+                    CONFIGURACIONES
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-circle" width="32" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                      <circle cx="12" cy="12" r="9" />
+                      <circle cx="12" cy="10" r="3" />
+                      <path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855" />
+                    </svg>
+                </button>          
+                <div class="collapse " id="collapseTemas">
+                <div class="list-group list-group-custom card-body">
+                    <a class="list-group-item list-group-item-action mb-2" href="{{route('personalizar')}}">Temas</a>
+                    </div>
+                </div>
+            </div>
             
         </div>
         
@@ -139,7 +155,7 @@
     <div class="container-right">
         
         <nav class="d-flex justify-content-between">
-            <a href="">DashBoard</a>
+            <a href="/home">DashBoard</a>
             <div>
             <a href="">{{Auth::user()->name}}<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -161,5 +177,7 @@
 
     </div>
     <script src="{{asset("js/app.js")}}"></script>
+    <script src="{{ asset('scripts/personalizacion.js') }}"></script>   
+    <script src="{{ asset('scripts/main.js') }}"></script>   
 </body>
 </html>
