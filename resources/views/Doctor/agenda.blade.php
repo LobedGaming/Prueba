@@ -47,6 +47,11 @@
 	</head>
 	<body>
 	<section class="ftco-section">
+		<div>
+			<button class="btn btn-danger" id="btn-dataJson">dataJson</button>
+			<p id="pdataJson">{{$dataJson}}</p>
+		</div>
+
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-md-6 text-center">
@@ -105,7 +110,7 @@
 				    <div class="dialog" id="dialog">
 				        <h2 class="dialog-header"> Add New Event </h2>
 				        <form class="form" id="form">
-				          <div class="form-container" align="center">
+				          <div class="form-container">
 				            <label class="form-label" id="valueFromMyButton" for="name">Event name</label>
 				            <input class="input" type="text" id="name" maxlength="36">
 				            <label class="form-label" id="valueFromMyButton" for="count">Number of people to invite</label>
@@ -121,8 +126,8 @@
 		</div>
 	</section>
   <script src="{{asset('js/jquery.min.js')}}"></script>
-  <script src="{{asset('js/popper.js')}}"></script>
-  <script src="{{asset('js/bootstrap.min.js')}}"></script>
+  {{-- <script src="{{asset('js/popper.js')}}"></script>
+  <script src="{{asset('js/bootstrap.min.js')}}"></script> --}}
   <script src="{{asset('js/main.js')}}"></script>
 </body> 
     @endsection

@@ -60,8 +60,39 @@ class CitasController extends Controller
      $hoy = Carbon::now('America/La_Paz')->subMinutes(15);
      $citas=Cita::where('doctor_id',$doctor_id->id)->where('fecha_hora','>=',$hoy)->get();
      
-     return view('Doctor.agenda',['citas'=>$citas]);
+     return view('Doctor.agenda',['citas'=>$citas, 'dataJson'=>json_encode($this->loadDataJsonCitasDoctor())]);
 
+    }
+
+    public function loadDataJsonCitasDoctor(){
+        return [
+            "events" => [
+                [
+                    "occasion" => "OBED ESTA ENFERMO ",
+                    "invited_count"=> 120,
+                    "year"=> 2022,
+                    "month"=> 6,
+                    "day"=> 8,
+                    "cancelled"=> true
+                ],
+                [
+                    "occasion"=> " Repeated Test Event ",
+                    "invited_count"=> 120,
+                    "year"=> 2022,
+                    "month"=> 6,
+                    "day"=> 8,
+                    "cancelled"=> false
+                ],
+                [
+                    "occasion"=> " Repeated Test Alvaro ",
+                    "invited_count"=> 120,
+                    "year"=> 2022,
+                    "month"=> 6,
+                    "day"=> 10,
+                    "cancelled"=> false
+                ],
+            ]
+        ];
     }
     // //todas las citas de un paciente que se recibe el id del paciente pasadas y futuras
     // public function citasPacienteAll($id){
