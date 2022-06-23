@@ -12,6 +12,17 @@ class DoctorController extends Controller
      * Display a listing of the resource.
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('can:doctors.index')  ->only('index');
+        $this->middleware('can:doctors.create') ->only('create', 'store');
+        $this->middleware('can:doctors.edit')   ->only('edit', 'update');
+        $this->middleware('can:doctors.show')   ->only('show');
+        $this->middleware('can:doctors.destroy')->only('destroy');
+        
+    }
+
+
     public function index()
     {
         $doctor = Doctor::all();

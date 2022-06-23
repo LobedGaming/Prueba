@@ -19,6 +19,17 @@ class CitasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('can:citas.index')  ->only('index');
+        $this->middleware('can:citas.create') ->only('create', 'store');
+        $this->middleware('can:citas.edit')   ->only('edit', 'update');
+        $this->middleware('can:citas.show')   ->only('show');
+        $this->middleware('can:citas.destroy')->only('destroy');
+        $this->middleware('can:citas.citasDoctor')->only('citasDoctor');
+        $this->middleware('can:citas.citasPaciente')->only('citasPaciente');
+    }
+
     public function index()
     {
         $doctors=Doctor::all();

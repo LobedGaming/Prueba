@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Patient;
 use App\Models\User;
+use GuzzleHttp\Middleware;
 use Illuminate\Http\Request;
 
 class PatientController extends Controller
@@ -13,6 +14,14 @@ class PatientController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        $this->middleware('can:patients.index')  ->only('index');
+        $this->middleware('can:patients.create') ->only('create', 'store');
+        $this->middleware('can:patients.edit')   ->only('edit', 'update');
+        $this->middleware('can:patients.destroy')->only('destroy');
+    }
     public function index()
     {
         $patient = Patient::all();

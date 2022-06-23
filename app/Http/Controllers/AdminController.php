@@ -13,6 +13,15 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        $this->middleware('can:admins.index')  ->only('index');
+        $this->middleware('can:admins.create') ->only('create', 'store');
+        $this->middleware('can:admins.edit')   ->only('edit', 'update');
+        $this->middleware('can:admins.destroy')->only('destroy');
+    }
+
     public function index()
     {
         $admin = Admin::all();

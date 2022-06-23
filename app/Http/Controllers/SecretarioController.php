@@ -13,6 +13,15 @@ class SecretarioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('can:secretaries.index')  ->only('index');
+        $this->middleware('can:secretaries.create') ->only('create', 'store');
+        $this->middleware('can:secretaries.edit')   ->only('edit', 'update');
+        $this->middleware('can:secretaries.show')   ->only('show');
+        $this->middleware('can:secretaries.destroy')->only('destroy');
+    }
+
     public function index()
     {
         $Secretarios = Secretarie::all();

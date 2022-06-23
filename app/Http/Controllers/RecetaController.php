@@ -17,6 +17,14 @@ class RecetaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('can:receta.index')  ->only('index');
+        $this->middleware('can:receta.create') ->only('create', 'store');
+        $this->middleware('can:receta.show')   ->only('show');
+        $this->middleware('can:receta.destroy')->only('destroy');
+        
+    }
 
     public function index()
     {
