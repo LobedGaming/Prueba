@@ -10,7 +10,7 @@
         @endif
 
         @foreach ($recetas as $receta)
-            <div class="container">
+            <div class="container" id="report-container">
                 
                 <div class="card-header d-flex justify-content-between" style="background-color:rgb(145, 175, 179);">
                     <p class="fw-bold fs-3 title-clinic align-self-center">Clinic-Center</p>
@@ -45,7 +45,8 @@
             <br> <br> <br>
         @endforeach
         @if (Auth::user()->hasRole('Doctor'))
-        <a href="{{route('citas.citasDoctor', Auth::user()->id)}}" class="btn btn-secondary col-2">Atras</a>  
+        <a href="{{route('citas.citasDoctor', Auth::user()->id)}}" class="btn btn-secondary col-2">Atras</a>
+        <button class="btn btn-danger ms-3" id="btn-pdf">PDF</button>
         @endif
         @if(Auth::user()->hasRole('Administrador')) 
         <a href="{{route('historico.index')}}" class="btn btn-secondary col-2">Atras</a>

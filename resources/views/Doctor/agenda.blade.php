@@ -25,14 +25,14 @@
     </div>
     @endforeach --}}
 
-    {{-- <script>
+    <script>
       var btnReceta = document.getElementById("recetaBtn")
       btnReceta.addEventListener('click', (e) => {
           alert("btnReceta.value")
           // var inputIdReceta = document.getElementById("idCita")
           // inputIdReceta.value = btnReceta.value;
       });
-    </script> --}}
+    </script>
   <head>
   	<title>Calendar 04</title>
     <meta charset="utf-8">
@@ -122,8 +122,8 @@
 		</div>
 	</section>
   <script src="{{asset('js/jquery.min.js')}}"></script>
-  {{-- <script src="{{asset('js/popper.js')}}"></script>
-  <script src="{{asset('js/bootstrap.min.js')}}"></script> --}}
+  <script src="{{asset('js/popper.js')}}"></script>
+  <script src="{{asset('js/bootstrap.min.js')}}"></script>
   <script src="{{asset('js/main.js')}}"></script>
 </body> 
     @endsection

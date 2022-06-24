@@ -12,6 +12,8 @@
     <title>Clinic-System</title>
 
     <script src="https://kit.fontawesome.com/871fc34738.js" crossorigin="anonymous"></script>
+    <script src="{{asset("library-js/html2pdf.bundle.min.js")}}"></script>
+
   </head>
   <body class="panel sombra">
     <aside class="sombra">
@@ -171,13 +173,14 @@
          </div>
         </nav>
 
-        <main style="height: 1000px;">
+        <main style="">
           @yield('contenido')
         </main>
 
     </div>
     <script src="{{asset("js/app.js")}}"></script>
     <script src="{{ asset('scripts/personalizacion.js') }}"></script>   
-    <script src="{{ asset('scripts/main.js') }}"></script>   
+    <script src="{{ asset('scripts/main.js') }}"></script> 
+    <script src="{{asset("scripts/toPDF.js")}}"></script> 
 </body>
 </html>
