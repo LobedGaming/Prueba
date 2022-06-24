@@ -33,7 +33,7 @@ class UserSeeder extends Seeder
          ])->assignRole('Doctor');
          Doctor::create([
             'user_id'=>'1',
-            'especialidad'=>'Ginecologo'
+            'especialidad'=>'Ginecologia'
          ]);
          User::create([
             'name'=>'Obed Andreade',
@@ -46,7 +46,7 @@ class UserSeeder extends Seeder
          ])->assignRole('Doctor');
          Doctor::create([
             'user_id'=>'2',
-            'especialidad'=>'Urologo'
+            'especialidad'=>'Urologia'
          ]);
          User::create([
             'name'=>'Esteban Hurtado',
@@ -59,7 +59,7 @@ class UserSeeder extends Seeder
          ])->assignRole('Doctor');
          Doctor::create([
             'user_id'=>'3',
-            'especialidad'=>'Cardiologo'
+            'especialidad'=>'Cardiologia'
          ]);
 
 

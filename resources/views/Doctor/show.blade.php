@@ -61,7 +61,7 @@
         
         <div style="margin-top: 20px">
             <div class="form-group">             
-                <a href="{{ route('doctors.index') }}" class="btn btn-primary">Atras</a>
+                <a href="{{ route('doctors.index') }}" class="btn btn-info">Atras</a>
             </div>
         </div>
  </div>
