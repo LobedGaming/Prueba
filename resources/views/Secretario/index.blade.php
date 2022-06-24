@@ -34,4 +34,5 @@
         @endforeach
         </tbody>
     </table>
+    {{$Secretarios->links('pagination::bootstrap-5')}}
 @endsection

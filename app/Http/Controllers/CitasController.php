@@ -7,10 +7,13 @@ use App\Models\Patient;
 use App\Models\Cita;
 use App\Models\Receta;
 use App\Models\Secretarie;
+use App\Models\User;
 use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class CitasController extends Controller
 {
@@ -120,6 +123,13 @@ class CitasController extends Controller
         $cita->secretarie_id = $request->input('secretarie_id');
         $cita->patient_id    = $request->input('patient_id');
         $cita->save();
+        
+        $paciente = Patient::find($cita->patient_id);
+        $usuario = User::find($paciente->user_id);
+        $mytime = Carbon::now('America/La_Paz');
+        DB::statement('CALL insertar_bitacora(?,?,?,?,?,?)',['Cita', 'Crear',$usuario->name,$mytime->toDateTimeString(),auth()->user()->id,
+        auth()->user()->name]);
+        
         return redirect()->route('citas.index');
       }
       return redirect()->route('citas.create')
@@ -171,6 +181,12 @@ class CitasController extends Controller
     {
         $cita = Cita::findorFail($id);
         $cita->delete();
+
+        $paciente = Patient::find($cita->patient_id);
+        $usuario = User::find($paciente->user_id);
+        $mytime = Carbon::now('America/La_Paz');
+        DB::statement('CALL insertar_bitacora(?,?,?,?,?,?)',['Cita', 'Eliminar',$usuario->name,$mytime->toDateTimeString(),auth()->user()->id,
+        auth()->user()->name]);
         return redirect()->route('citas.index');
 
     }

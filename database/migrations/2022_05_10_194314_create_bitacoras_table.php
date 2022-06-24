@@ -16,32 +16,35 @@ return new class extends Migration
     {
         Schema::create('bitacoras', function (Blueprint $table) {
             $table->id();
-            $table->dateTime('fecha');
+            $table->string('apartado');
             $table->string('accion');
             $table->string('implicado');
-            $table->string('apartado');
-            $table->unsignedBigInteger('user_id')->nullable();
+            $table->dateTime('fecha');
+            $table->unsignedBigInteger('user_id');
+            $table->string('nombre_usuario');
             $table->timestamps();
-
             $table->foreign('user_id')->references('id')->on('users')
             ->onDelete('set null')
             ->onUpdate('set null');
         });
 
         DB::unprepared('
-            create or replace procedure insertar_bitacora(
-                d_fecha timestamp WITHOUT TIME ZONE,
-                d_accion CHARACTER VARYING,
-                d_implicado CHARACTER VARYING,
-                d_apartado CHARACTER VARYING,
-                d_user_id bigint
-            )
-            language sql
-            as $$
-                insert into bitacoras(fecha,accion, implicado, apartado, user_id)
-                values(d_fecha, d_accion, d_implicado, d_apartado, d_user_id);
-            $$;
-        ');
+        create or replace procedure insertar_bitacora(
+            d_apartado CHARACTER VARYING,
+            d_accion CHARACTER VARYING,
+            d_implicado CHARACTER VARYING,
+            d_fecha timestamp WITHOUT TIME ZONE,
+            d_user_id bigint,
+            d_nombre_usuario CHARACTER VARYING
+        )
+        language sql
+        as $$
+            insert into bitacoras(apartado, accion, implicado, fecha, user_id, nombre_usuario)
+            values(d_apartado, d_accion, d_implicado, d_fecha, d_user_id, d_nombre_usuario);
+        $$;
+    ');
+
+       
     }
 
     /**
@@ -52,6 +55,6 @@ return new class extends Migration
     public function down()
     {
         Schema::dropIfExists('bitacoras');
-        DB::unprepared('drop procedure insertar_bitacora;');
+        DB::unprepared('drop procedure insertar_bitacora');
     }
 };

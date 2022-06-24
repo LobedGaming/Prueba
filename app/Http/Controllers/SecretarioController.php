@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Secretarie;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SecretarioController extends Controller
 {
@@ -24,7 +26,7 @@ class SecretarioController extends Controller
 
     public function index()
     {
-        $Secretarios = Secretarie::all();
+        $Secretarios = Secretarie::paginate(5);
         return view("Secretario.index")->with('Secretarios',$Secretarios);
     }
 
@@ -68,6 +70,10 @@ class SecretarioController extends Controller
         $secretario = new Secretarie();
         $secretario->user_id = $usuario->id;
         $secretario->save();
+
+        $mytime = Carbon::now('America/La_Paz');
+        DB::statement('CALL insertar_bitacora(?,?,?,?,?,?)',['Secretario', 'Crear',$usuario->name,$mytime->toDateTimeString(),auth()->user()->id,
+        auth()->user()->name]);
         return redirect()->route('secretario.index');
 
     }
@@ -119,6 +125,11 @@ class SecretarioController extends Controller
         $usuario->email = $request->input('email');
         $usuario->fecha_nacimiento = $request->input('fecha_nacimiento');
         $usuario->update();
+
+        $mytime = Carbon::now('America/La_Paz');
+        DB::statement('CALL insertar_bitacora(?,?,?,?,?,?)',['Secretario', 'Modificar',$usuario->name,$mytime->toDateTimeString(),auth()->user()->id,
+        auth()->user()->name]);
+
         return redirect()->route('secretario.index');
     }
 
@@ -133,6 +144,11 @@ class SecretarioController extends Controller
         $usuario = User::find($secretario->user_id);
         $secretario->delete();
         $usuario->delete();
+
+        $mytime = Carbon::now('America/La_Paz');
+        DB::statement('CALL insertar_bitacora(?,?,?,?,?,?)',['Secretario', 'Eliminar',$usuario->name,$mytime->toDateTimeString(),auth()->user()->id,
+        auth()->user()->name]);
+
         return redirect()->route('secretario.index');
     }
 }

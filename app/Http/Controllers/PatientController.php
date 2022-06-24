@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Patient;
 use App\Models\User;
+use Carbon\Carbon;
 use GuzzleHttp\Middleware;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PatientController extends Controller
 {
@@ -24,7 +26,7 @@ class PatientController extends Controller
     }
     public function index()
     {
-        $patient = Patient::all();
+        $patient = Patient::paginate(5);
         return view('Paciente.index',['patients'=>$patient]);
     }
 
@@ -69,8 +71,11 @@ class PatientController extends Controller
 
         $patient = new Patient();
         $patient->user_id = $usuario->id;
-
         $patient->save();
+
+        $mytime = Carbon::now('America/La_Paz');
+        DB::statement('CALL insertar_bitacora(?,?,?,?,?,?)',['Paciente', 'Crear',$usuario->name,$mytime->toDateTimeString(),auth()->user()->id,
+        auth()->user()->name]);
 
         return redirect()->route('patient.index');
     }
@@ -108,7 +113,6 @@ class PatientController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $patient = Patient::find($id);
         $request->validate([
             'name' => 'required',
             'ci' => 'required',
@@ -118,7 +122,8 @@ class PatientController extends Controller
             
             'fecha_nacimiento' => 'required',
         ]);
-
+        
+        $patient = Patient::find($id);
         $usuario = User::find($patient->user_id);
         $usuario->name = $request->input('name');
         $usuario->ci = $request->input('ci');
@@ -127,8 +132,11 @@ class PatientController extends Controller
         $usuario->email = $request->input('email');
         
         $usuario->fecha_nacimiento = $request->input('fecha_nacimiento');
-        
         $usuario->save();
+
+        $mytime = Carbon::now('America/La_Paz');
+        DB::statement('CALL insertar_bitacora(?,?,?,?,?,?)',['Paciente', 'Modificar',$usuario->name,$mytime->toDateTimeString(),auth()->user()->id,
+        auth()->user()->name]);
 
         return redirect()->route('patient.index');
     }
@@ -145,6 +153,11 @@ class PatientController extends Controller
         $usuario = User::find($patient->user_id);
         $patient->delete();
         $usuario->delete();
+
+        $mytime = Carbon::now('America/La_Paz');
+        DB::statement('CALL insertar_bitacora(?,?,?,?,?,?)',['Paciente', 'Eliminar',$usuario->name,$mytime->toDateTimeString(),auth()->user()->id,
+        auth()->user()->name]);
+
         return redirect()->route('patient.index');
     }
 }
