@@ -1,0 +1,28 @@
+{
+    "events": [
+            {
+                "occasion": "OBED ESTA ENFERMO ",
+                "invited_count": 120,
+                "year": 2022,
+                "month": 6,
+                "day": 8,
+                "cancelled": true
+            },
+            {
+                "occasion": " Repeated Test Event ",
+                "invited_count": 120,
+                "year": 2022,
+                "month": 6,
+                "day": 8,
+                "cancelled": false
+            },
+            {
+                "occasion": " Repeated Test Alvaro ",
+                "invited_count": 120,
+                "year": 2022,
+                "month": 6,
+                "day": 10,
+                "cancelled": false
+            }
+        ]     
+}

@@ -11,6 +11,7 @@ use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use Illuminate\Console\Scheduling\Event;
 
 class CitasController extends Controller
 {
@@ -59,40 +60,31 @@ class CitasController extends Controller
      }
      $hoy = Carbon::now('America/La_Paz')->subMinutes(15);
      $citas=Cita::where('doctor_id',$doctor_id->id)->where('fecha_hora','>=',$hoy)->get();
+
      
-     return view('Doctor.agenda',['citas'=>$citas, 'dataJson'=>json_encode($this->loadDataJsonCitasDoctor())]);
-
+     return view('Doctor.agenda',['citas'=>$citas, 'dataJson'=>json_encode($this->loadDataJsonCitasDoctor($citas))]);
+    
     }
-
-    public function loadDataJsonCitasDoctor(){
-        return [
-            "events" => [
-                [
-                    "occasion" => "OBED ESTA ENFERMO ",
-                    "invited_count"=> 120,
-                    "year"=> 2022,
-                    "month"=> 6,
-                    "day"=> 8,
-                    "cancelled"=> true
-                ],
-                [
-                    "occasion"=> " Repeated Test Event ",
-                    "invited_count"=> 120,
-                    "year"=> 2022,
-                    "month"=> 6,
-                    "day"=> 8,
-                    "cancelled"=> false
-                ],
-                [
-                    "occasion"=> " Repeated Test Alvaro ",
-                    "invited_count"=> 120,
-                    "year"=> 2022,
-                    "month"=> 6,
-                    "day"=> 10,
-                    "cancelled"=> false
-                ],
-            ]
-        ];
+   
+    public function loadDataJsonCitasDoctor($citas){
+    $array = [];
+     foreach($citas as $cita){
+        $originalDate =  $cita->fecha_hora;
+        $date = Carbon::parse($originalDate, 'UTC');
+        array_push( $array, [
+                         "id"=>$cita->id,  
+                         "occasion" => $cita->description,
+                         "invited_count"=> 0,
+                         "year"=>  (int)$date->isoFormat('Y'),
+                         "month"=> (int)$date->isoFormat('M'),
+                         "day"=>   (int)$date->isoFormat('D'),
+                         "cancelled"=> true
+                        ]
+                    );
+     };
+     return [
+         "events" => $array
+     ];
     }
     // //todas las citas de un paciente que se recibe el id del paciente pasadas y futuras
     // public function citasPacienteAll($id){

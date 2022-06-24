@@ -34,7 +34,7 @@
       });
     </script> --}}
   <head>
-  	<title>Calendar 04</title>
+  	<title>Calendar</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
@@ -43,15 +43,15 @@
 	</head>
 	<body>
 	<section class="ftco-section">
-		<div>
-			<button class="btn btn-danger" id="btn-dataJson">dataJson</button>
+		<div hidden="true">
+
 			<p id="pdataJson">{{$dataJson}}</p>
 		</div>
 
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-md-6 text-center">
-					<h2 class="heading-section">Calendar #04</h2>
+					<h2 class="heading-section">Calendar</h2>
 				</div>
 			</div>
 			<div class="row">
@@ -98,7 +98,7 @@
 			              </tbody> 
 				          </table>
 				        </div> 
-				         <button class="button" id="add-button">Add Event</button>
+				         {{-- <button class="button" id="add-button">Add Event</button> --}}
 				      </div>
 				    </div>
 				    <div class="events-container">
