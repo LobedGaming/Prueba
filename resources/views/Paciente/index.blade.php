@@ -35,6 +35,6 @@
             
         @endforeach
         </tbody>
-        
     </table>
+    {{$patients->links('pagination::bootstrap-5')}}
 @endsection

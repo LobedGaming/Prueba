@@ -1,22 +1,26 @@
 @extends('Layouts.dashboard')
 @section('contenido')
-    <table>
+<h1>Bitacora</h1>
+    <table class="table table-striped">
+      <thead>
         <tr>
-            <th>Id</th>
-            <th>Fecha</th>
-            <th>accion</th>
-            <th>implicado</th>
-            <th>apartado</th>
-            <th>usuario</th>
+            <th scope="col">Apartado</th>
+            <th scope="col">Accion</th>
+            <th scope="col">Implicado</th>
+            <th scope="col">Fecha</th>
+            <th scope="col">Usuario</th>
         </tr>
-        @foreach ($Bitacoras as $bitacora)
-            <th>{{$bitacora->id}}</th>
-            <th>{{$bitacora->fecha}}</th>
-            <th>{{$bitacora->accion}}</th>
-            <th>{{$bitacora->implicado}}</th>
-            <th>{{$bitacora->apartado}}</th>
-            <th>{{$bitacora->user_id}}</th>
-        @endforeach
-
+     </thead>
+        <tbody>
+                @foreach ($bitacoras as $bitacora)
+            <tr>
+                <td>{{$bitacora->apartado}}</td>
+                <td>{{$bitacora->accion}}</td>
+                <td>{{$bitacora->implicado}}</td>
+                <td>{{$bitacora->fecha}}</td>
+                <td>{{$bitacora->nombre_usuario}}</td>
+            </tr>
+                @endforeach
+        </tbody>
     </table>
 @endsection

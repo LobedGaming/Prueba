@@ -38,7 +38,7 @@ Route::view('/Personalizar-Reporte', 'personalizar-reporte')->name('personalizar
 
 Route::get('/citas/paciente/{id}',[CitasController::class, 'citasPaciente'])->name('citas.citasPaciente');
 Route::get('/citas/doctor/{id}',[CitasController::class,'citasDoctor'])->name('citas.citasDoctor');
-Route::get('/bitacora',[BitacoraController::class, 'index']);
+Route::get('/bitacora',[App\Http\Controllers\BitacoraController::class, 'index'])->name('bitacora.index');
 Route::resource('citas', CitasController::class)->names('citas');
 Route::resource('doctors', DoctorController::class)->names('doctors');
 Route::resource('secretario', SecretarioController::class)->names('secretario');

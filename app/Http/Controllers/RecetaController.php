@@ -9,6 +9,7 @@ use App\Models\Receta;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class RecetaController extends Controller
 {
@@ -17,6 +18,14 @@ class RecetaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('can:receta.index')  ->only('index');
+        $this->middleware('can:receta.create') ->only('create', 'store');
+        $this->middleware('can:receta.show')   ->only('show');
+        $this->middleware('can:receta.destroy')->only('destroy');
+        
+    }
 
     public function index()
     {
@@ -65,6 +74,13 @@ class RecetaController extends Controller
         $receta->description   = $request->input('description');
         $receta->cita_id = $request->input('cita_id');
         $receta->save();
+        
+        $cita = Cita::find($receta->cita_id);
+        $paciente = Patient::find($cita->patient_id);
+        $usuario = User::find($paciente->user_id);
+        $mytime = Carbon::now('America/La_Paz');
+        DB::statement('CALL insertar_bitacora(?,?,?,?,?,?)',['Receta', 'Crear',$usuario->name,$mytime->toDateTimeString(),auth()->user()->id,
+        auth()->user()->name]);
         
         return redirect()->route('receta.show', $request->input('cita_id'))->with('info', 'Receta agregada');
     }
