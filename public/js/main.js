@@ -220,10 +220,10 @@ function check_events(day, month, year) {
 
 // Given data for events in JSON format
 
-document.getElementById('btn-dataJson').addEventListener('click', e => {
-    console.log(JSON.parse(document.getElementById('pdataJson').textContent));
-})
-
+// document.getElementById('btn-dataJson').addEventListener('click', e => {
+//     console.log(JSON.parse(document.getElementById('pdataJson').textContent));
+// })
+console.log(JSON.parse(document.getElementById('pdataJson').textContent));
 var event_data = {
     "events": [
     {
