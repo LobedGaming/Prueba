@@ -9,6 +9,8 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('estilos/estilos.css') }}">
+    <link rel="stylesheet" href="{{ asset('estilos/estilos-reporte-receta.css') }}">
+
     <title>Clinic-System</title>
 
     <script src="https://kit.fontawesome.com/871fc34738.js" crossorigin="anonymous"></script>
@@ -183,5 +185,8 @@
     <script src="{{ asset('scripts/personalizacion.js') }}"></script>   
     <script src="{{ asset('scripts/main.js') }}"></script> 
     <script src="{{asset("scripts/toPDF.js")}}"></script> 
+
+    <script src="{{asset("library-js/Sortable.min.js")}}"></script>
+    <script src="{{asset("scripts/op-reportes-receta.js")}}"></script> 
 </body>
 </html>
