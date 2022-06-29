@@ -11,35 +11,78 @@
 
         @foreach ($recetas as $receta)
             <div class="container" id="report-container">
-                
-                <div class="card-header d-flex justify-content-between" style="background-color:rgb(145, 175, 179);">
-                    <p class="fw-bold fs-3 title-clinic align-self-center">Clinic-Center</p>
-
-                    <div class="title-doctor">
-                        <p>{{$doctor[0]->name}}</p>
-                        <p>Lic. en {{$doctor[1]->especialidad}}</p>
+                <div class="card-header row">
+                    
+                    <div class="col-4 moverCaja" id="moverCaja1">
+                        <p class="fw-bold fs-3 title-clinic align-self-center" id="content1">Clinic-Center</p>
                     </div>
-                    <div class="end"></div>
+        
+                    <div class="col-4 moverCaja" id="moverCaja2">
+                        <p class="title-doctor" id="content2">{{$doctor[0]->name}}</p>                
+                    </div>
+        
+                    <div class="col-4 moverCaja" id="moverCaja3">
+                        <p class="title-doctor-profesion" id="content3">Lic. en {{$doctor[1]->especialidad}}</p>
+                    </div>
+                    
                 </div>
-                <div class="card-body" style="background-color: rgb(241, 241, 239);">
-                    <div class="d-flex justify-content-between">
-                        <div class="d-flex">
-                            <p  class="fw-bold fs-5">Paciente:</p>
-                            <p class="ms-2 fs-5">{{$patient->name}}</p>
+        
+                <div class="card-body row">
+        
+                    <div class="col-4 moverCaja" id="moverCaja4">
+                        <div class="row" id="content4">
+                            <div class="col-auto">
+                                <p  class="fw-bold fs-5">Paciente:</p>
+                            </div>
+                            <div class="col-auto">
+                                <p class="ms-2 fs-5">{{$patient->name}}</p>
+                            </div>
                         </div>
-                        <div class="d-flex">
+                    </div>
+        
+                    <div class="col-4 moverCaja" id="moverCaja5" style="height: auto;">
+                        
+                    </div>
+        
+                    <div class="col-4 moverCaja" id="moverCaja6">
+                        <div class="d-flex" id="content5">
                             <p  class="fw-bold fs-5">Fecha:</p>
                             <p class="ms-2 fs-5">{{$receta->fecha_hora}}</p>
                         </div>
                     </div>
-                    <div class="">
-                        <p class="fw-bold fs-5">Descripción</p>
-                        <p>{{$receta->description}}</p>
+        
+                    <div class="col-12">
+                        <div>
+                            <p class="fw-bold fs-5">Descripción</p>
+                            {{$receta->description}}
+                        </div>
                     </div>
-                    <div class="firm d-flex justify-content-end">
-                        <p class="fw-bold fs-5 me-2">Firma</p>
-                        <div style="background-color: rgb(241, 241, 239); width: 15%; height: 30px; border:0; border-bottom: 2px solid black;"></div>
+        
+                </div>
+        
+                <div class="card-footer row">
+                    
+        
+                    <div class="col-4 moverCaja" id="moverCaja7">
+                    
                     </div>
+        
+                    <div class="col-4 moverCaja" id="moverCaja8">
+                        
+                    </div>
+        
+                    <div class="col-4 moverCaja" id="moverCaja9">
+                        <div class="row mt-3" id="content6">
+                            <div class="col-auto">
+                                <p class="fw-bold">Firma</p>
+                            </div>
+        
+                            <div class="col-auto d-flex flex-column justify-content-center">
+                                <div class="firm"></div>
+                            </div>
+                        </div>
+                    </div>
+        
                 </div>
             </div>
             <br> <br> <br>
