@@ -148,7 +148,9 @@
                 <div class="collapse " id="collapseTemas">
                 <div class="list-group list-group-custom card-body">
                     <a class="list-group-item list-group-item-action mb-2" href="{{route('personalizar')}}">Temas</a>
+                    @can('bitacora.index')
                     <a class="list-group-item list-group-item-action mb-2" href="{{route('bitacora.index')}}">Bitacora</a>
+                    @endcan
                 </div>
                 </div>
             </div>

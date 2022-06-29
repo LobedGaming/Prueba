@@ -60,6 +60,9 @@ class RoleSeeder extends Seeder
 
         Permission::create(['name' => 'historico.index'  ])->syncRoles([$role1]);
         Permission::create(['name' => 'historico.show'   ])->syncRoles([$role1]);
+
+        Permission::create(['name' => 'bitacora.index'  ])->syncRoles([$role1,$role2,$role3]);
+        Permission::create(['name' => 'bitacora.show'   ])->syncRoles([$role1,$role2,$role3]);
     
         
     }
