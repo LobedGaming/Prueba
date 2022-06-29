@@ -9,7 +9,11 @@ class Bitacora extends Model
 {
     use HasFactory;
 
+    protected $table = 'bitacoras';
+    protected $fillable=['apartado','accion','implicado','fecha','user_id','nombre_usuario'];
+    public $timestamps = false;
+
     public function user(){
-        return $this->belongsTo(User::class);
+        return $this->hasMany(User::class, 'user_id');
     }
 }

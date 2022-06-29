@@ -33,8 +33,8 @@
           // inputIdReceta.value = btnReceta.value;
       });
     </script> --}}
-  {{-- <head>
-  	<title>Calendar 04</title>
+  <head>
+  	<title>Calendar</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
@@ -43,15 +43,15 @@
 	</head>
 	<body>
 	<section class="ftco-section">
-		<div>
-			<button class="btn btn-danger" id="btn-dataJson">dataJson</button>
+		<div hidden="true">
+
 			<p id="pdataJson">{{$dataJson}}</p>
 		</div>
 
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-md-6 text-center">
-					<h2 class="heading-section">Calendar #04</h2>
+					<h2 class="heading-section">Calendario</h2>
 				</div>
 			</div>
 			<div class="row">
@@ -67,30 +67,30 @@
 				        <table class="months-table w-100"> 
 				          <tbody>
 				            <tr class="months-row">
-				              <td class="month">Jan</td> 
+				              <td class="month">Ene</td> 
 				              <td class="month">Feb</td> 
 				              <td class="month">Mar</td> 
-				              <td class="month">Apr</td> 
+				              <td class="month">Abr</td> 
 				              <td class="month">May</td> 
 				              <td class="month">Jun</td> 
 				              <td class="month">Jul</td>
-				              <td class="month">Aug</td> 
+				              <td class="month">Ago</td> 
 				              <td class="month">Sep</td> 
 				              <td class="month">Oct</td>          
 				              <td class="month">Nov</td>
-				              <td class="month">Dec</td>
+				              <td class="month">Dic</td>
 				            </tr>
 				          </tbody>
 				        </table> 
 				        
 				        <table class="days-table w-100"> 
-				          <td class="day">Sun</td> 
-				          <td class="day">Mon</td> 
-				          <td class="day">Tue</td> 
-				          <td class="day">Wed</td> 
-				          <td class="day">Thu</td> 
-				          <td class="day">Fri</td> 
-				          <td class="day">Sat</td>
+				          <td class="day">Dom</td> 
+				          <td class="day">Lun</td> 
+				          <td class="day">Mar</td> 
+				          <td class="day">Mie</td> 
+				          <td class="day">Jue</td> 
+				          <td class="day">Vie</td> 
+				          <td class="day">Sab</td>
 				        </table> 
 				        <div class="frame"> 
 				          <table class="dates-table w-100"> 
@@ -98,7 +98,7 @@
 			              </tbody> 
 				          </table>
 				        </div> 
-				         <button class="button" id="add-button">Add Event</button>
+				         {{-- <button class="button" id="add-button">Add Event</button> --}}
 				      </div>
 				    </div>
 				    <div class="events-container">
@@ -125,6 +125,6 @@
   <script src="{{asset('js/popper.js')}}"></script>
   <script src="{{asset('js/bootstrap.min.js')}}"></script>
   <script src="{{asset('js/main.js')}}"></script>
-</body>  --}}
+</body>  
     @endsection
 

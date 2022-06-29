@@ -14,16 +14,15 @@
                 <div class="card-header row">
                     
                     <div class="col-4 moverCaja" id="moverCaja1">
-                        <p class="fw-bold fs-3 title-clinic align-self-center">Clinic-Center</p>
+                        <p class="fw-bold fs-3 title-clinic align-self-center" id="content1">Clinic-Center</p>
                     </div>
         
                     <div class="col-4 moverCaja" id="moverCaja2">
-                        <p class="title-doctor">{{$doctor[0]->name}}</p>
-                        <p class="title-doctor-profesion">Lic. en {{$doctor[1]->especialidad}}</p>
+                        <p class="title-doctor" id="content2">{{$doctor[0]->name}}</p>                
                     </div>
         
                     <div class="col-4 moverCaja" id="moverCaja3">
-        
+                        <p class="title-doctor-profesion" id="content3">Lic. en {{$doctor[1]->especialidad}}</p>
                     </div>
                     
                 </div>
@@ -31,7 +30,7 @@
                 <div class="card-body row">
         
                     <div class="col-4 moverCaja" id="moverCaja4">
-                        <div class="row">
+                        <div class="row" id="content4">
                             <div class="col-auto">
                                 <p  class="fw-bold fs-5">Paciente:</p>
                             </div>
@@ -46,7 +45,7 @@
                     </div>
         
                     <div class="col-4 moverCaja" id="moverCaja6">
-                        <div class="d-flex">
+                        <div class="d-flex" id="content5">
                             <p  class="fw-bold fs-5">Fecha:</p>
                             <p class="ms-2 fs-5">{{$receta->fecha_hora}}</p>
                         </div>
@@ -73,7 +72,7 @@
                     </div>
         
                     <div class="col-4 moverCaja" id="moverCaja9">
-                        <div class="row mt-3">
+                        <div class="row mt-3" id="content6">
                             <div class="col-auto">
                                 <p class="fw-bold">Firma</p>
                             </div>

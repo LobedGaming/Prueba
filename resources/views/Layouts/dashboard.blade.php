@@ -93,7 +93,7 @@
                     @can('citas.edit')
                       <a class="list-group-item list-group-item-action mb-2" href="{{ route('citas.index')}}">Gestionar Citas</a><br>
                       @endcan
-                    </div>
+                </div>
                 </div>
             </div>
             
@@ -135,6 +135,8 @@
                 </div>
             </div>
 
+           
+
             <div class="mb-3 sombra-claro">        
                 <button class="btn btn-info collapsed boton-collapsed" style="width: 100%;" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTemas" aria-expanded="false" aria-controls="collapseTemas">
                     CONFIGURACIONES
@@ -146,10 +148,11 @@
                     </svg>
                 </button>          
                 <div class="collapse " id="collapseTemas">
-                    <div class="list-group list-group-custom card-body">
-                        <a class="list-group-item list-group-item-action mb-2" href="{{route('personalizar')}}">Temas</a>
-                        <a class="list-group-item list-group-item-action mb-2" href="{{route('personalizar-reporte')}}">Personalizar reporte</a>
-                    </div>
+                <div class="list-group list-group-custom card-body">
+                    <a class="list-group-item list-group-item-action mb-2" href="{{route('personalizar')}}">Temas</a>
+                    <a class="list-group-item list-group-item-action mb-2" href="{{route('bitacora.index')}}">Bitacora</a>
+                    <a class="list-group-item list-group-item-action mb-2" href="{{route('personalizar-reporte')}}">Reporte - receta</a>
+                </div>
                 </div>
             </div>
             

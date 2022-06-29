@@ -181,7 +181,7 @@ function show_events(events, month, day) {
     // If there are no events for this date, notify the user
     if(events.length===0) {
         var event_card = $("<div class='event-card'></div>");
-        var event_name = $("<div class='event-name'>There are no events planned for "+month+" "+day+".</div>");
+        var event_name = $("<div class='event-name'>No hay eventos planeados para "+month+" "+day+".</div>");
         $(event_card).css({ "border-left": "10px solid #FF1744" });
         $(event_card).append(event_name);
         $(".events-container").append(event_card);
@@ -190,16 +190,27 @@ function show_events(events, month, day) {
         // Go through and add each event as a card to the events container
         for(var i=0; i<events.length; i++) {
             var event_card = $("<div class='event-card'></div>");
-            var event_name = $("<div class='event-name'>"+events[i]["occasion"]+":</div>");
+            var event_name = $("<div class='event-name'> Descripcion: "+events[i]["occasion"]+"</div><br>");
+            var user_name = $("<div class='event-name'> Paciente: "+events[i]["name"]+"</div><br>");
+            var event_id = $("<div class='event-id'>"+"</div>");
             var event_count = $("<div class='event-count'>"+events[i]["invited_count"]+" Invited</div>");
+            var id=events[i]["id"];
+            var event_buttonAtencion=$( "<a class='btn btn-success ml-3' href='/receta/create/"+id+"'>Atender</a>");
+            var event_button=$( "<a class='btn btn-info' href='/receta/create/"+id+"'>Crear Receta</a>");
+            var event_buttonShow=$("<a class='btn btn-warning ml-3' href='/receta/"+id+"'>Ver Receta</a>");
             if(events[i]["cancelled"]===true) {
                 $(event_card).css({
                     "border-left": "10px solid #FF1744"
                 });
-                event_count = $("<div class='event-cancelled'>Cancelled</div>");
+                event_count = $("<div class='event-cancelled'></div>");
             }
-            $(event_card).append(event_name).append(event_count);
+            $(event_card).append(user_name).append(event_id);
+            $(event_card).append(event_name).append(event_id);
+            $(event_card).append(event_button);
+            $(event_card).append(event_buttonShow);
+            $(event_card).append(event_buttonAtencion);
             $(".events-container").append(event_card);
+            
         }
     }
 }
@@ -220,52 +231,22 @@ function check_events(day, month, year) {
 
 // Given data for events in JSON format
 
-// document.getElementById('btn-dataJson').addEventListener('click', e => {
-//     console.log(JSON.parse(document.getElementById('pdataJson').textContent));
-// })
 console.log(JSON.parse(document.getElementById('pdataJson').textContent));
-var event_data = {
-    "events": [
-    {
-        "occasion": "OBED ESTA ENFERMO ",
-        "invited_count": 120,
-        "year": 2022,
-        "month": 6,
-        "day": 8,
-        "cancelled": true
-    },
-    {
-        "occasion": " Repeated Test Event ",
-        "invited_count": 120,
-        "year": 2022,
-        "month": 6,
-        "day": 8,
-        "cancelled": false
-    },
-    {
-        "occasion": " Repeated Test Alvaro ",
-        "invited_count": 120,
-        "year": 2022,
-        "month": 6,
-        "day": 10,
-        "cancelled": false
-    },
-    ]
-};
+ var event_data = JSON.parse(document.getElementById('pdataJson').textContent);
 
 const months = [ 
-    "January", 
-    "February", 
-    "March", 
-    "April", 
-    "May", 
-    "June", 
-    "July", 
-    "August", 
-    "September", 
-    "October", 
-    "November", 
-    "December" 
+    "Enero", 
+    "Febrero", 
+    "Marzo", 
+    "Abril", 
+    "Mayo", 
+    "Junio", 
+    "Julio", 
+    "Agosto", 
+    "Septiembre", 
+    "Octubre", 
+    "Noviembre", 
+    "Diciembre" 
 ];
 
 })(jQuery);

@@ -7,10 +7,13 @@ use App\Models\Patient;
 use App\Models\Cita;
 use App\Models\Receta;
 use App\Models\Secretarie;
+use App\Models\User;
 use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class CitasController extends Controller
 {
@@ -19,6 +22,17 @@ class CitasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        // $this->middleware('can:citas.index')  ->only('index');
+        // $this->middleware('can:citas.create') ->only('create', 'store');
+        // $this->middleware('can:citas.edit')   ->only('edit', 'update');
+        // $this->middleware('can:citas.show')   ->only('show');
+        // $this->middleware('can:citas.destroy')->only('destroy');
+        // $this->middleware('can:citas.citasDoctor')->only('citasDoctor');
+        // $this->middleware('can:citas.citasPaciente')->only('citasPaciente');
+    }
+
     public function index()
     {
         $doctors=Doctor::all();
@@ -59,40 +73,34 @@ class CitasController extends Controller
      }
      $hoy = Carbon::now('America/La_Paz')->subMinutes(15);
      $citas=Cita::where('doctor_id',$doctor_id->id)->where('fecha_hora','>=',$hoy)->get();
+
      
-     return view('Doctor.agenda',['citas'=>$citas, 'dataJson'=>json_encode($this->loadDataJsonCitasDoctor())]);
-
+     return view('Doctor.agenda',['citas'=>$citas, 'dataJson'=>json_encode($this->loadDataJsonCitasDoctor($citas))]);
+    
     }
-
-    public function loadDataJsonCitasDoctor(){
-        return [
-            "events" => [
-                [
-                    "occasion" => "OBED ESTA ENFERMO ",
-                    "invited_count"=> 120,
-                    "year"=> 2022,
-                    "month"=> 6,
-                    "day"=> 8,
-                    "cancelled"=> true
-                ],
-                [
-                    "occasion"=> " Repeated Test Event ",
-                    "invited_count"=> 120,
-                    "year"=> 2022,
-                    "month"=> 6,
-                    "day"=> 8,
-                    "cancelled"=> false
-                ],
-                [
-                    "occasion"=> " Repeated Test Alvaro ",
-                    "invited_count"=> 120,
-                    "year"=> 2022,
-                    "month"=> 6,
-                    "day"=> 10,
-                    "cancelled"=> false
-                ],
-            ]
-        ];
+   
+    public function loadDataJsonCitasDoctor($citas){
+    $array = [];
+     foreach($citas as $cita){
+        $patient = Patient::find($cita->patient_id);
+        $usuario = User::find($patient->user_id);
+        $originalDate =  $cita->fecha_hora;
+        $date = Carbon::parse($originalDate, 'UTC');
+        array_push( $array, [
+                         "id"=>$cita->id,  
+                         "name"=>$usuario->name,
+                         "occasion" => $cita->description,
+                         "invited_count"=> 0,
+                         "year"=>  (int)$date->isoFormat('Y'),
+                         "month"=> (int)$date->isoFormat('M'),
+                         "day"=>   (int)$date->isoFormat('D'),
+                         "cancelled"=> true
+                        ]
+                    );
+     };
+     return [
+         "events" => $array
+     ];
     }
     // //todas las citas de un paciente que se recibe el id del paciente pasadas y futuras
     // public function citasPacienteAll($id){
@@ -141,6 +149,13 @@ class CitasController extends Controller
         $cita->secretarie_id = $request->input('secretarie_id');
         $cita->patient_id    = $request->input('patient_id');
         $cita->save();
+        
+        $paciente = Patient::find($cita->patient_id);
+        $usuario = User::find($paciente->user_id);
+        $mytime = Carbon::now('America/La_Paz');
+        DB::statement('CALL insertar_bitacora(?,?,?,?,?,?)',['Cita', 'Crear',$usuario->name,$mytime->toDateTimeString(),auth()->user()->id,
+        auth()->user()->name]);
+        
         return redirect()->route('citas.index');
       }
       return redirect()->route('citas.create')
@@ -192,6 +207,12 @@ class CitasController extends Controller
     {
         $cita = Cita::findorFail($id);
         $cita->delete();
+
+        $paciente = Patient::find($cita->patient_id);
+        $usuario = User::find($paciente->user_id);
+        $mytime = Carbon::now('America/La_Paz');
+        DB::statement('CALL insertar_bitacora(?,?,?,?,?,?)',['Cita', 'Eliminar',$usuario->name,$mytime->toDateTimeString(),auth()->user()->id,
+        auth()->user()->name]);
         return redirect()->route('citas.index');
 
     }
