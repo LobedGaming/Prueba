@@ -195,7 +195,7 @@ function show_events(events, month, day) {
             var event_id = $("<div class='event-id'>"+"</div>");
             var event_count = $("<div class='event-count'>"+events[i]["invited_count"]+" Invited</div>");
             var id=events[i]["id"];
-            var event_buttonAtencion=$( "<a class='btn btn-success ml-3' href='/receta/create/"+id+"'>Atender</a>");
+           
             var event_button=$( "<a class='btn btn-info' href='/receta/create/"+id+"'>Crear Receta</a>");
             var event_buttonShow=$("<a class='btn btn-warning ml-3' href='/receta/"+id+"'>Ver Receta</a>");
             if(events[i]["cancelled"]===true) {
@@ -208,7 +208,6 @@ function show_events(events, month, day) {
             $(event_card).append(event_name).append(event_id);
             $(event_card).append(event_button);
             $(event_card).append(event_buttonShow);
-            $(event_card).append(event_buttonAtencion);
             $(".events-container").append(event_card);
             
         }
