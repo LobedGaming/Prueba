@@ -188,10 +188,14 @@
         </main>
 
     </div>
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script src="{{asset("js/app.js")}}"></script>
     <script src="{{ asset('scripts/personalizacion.js') }}"></script>   
     <script src="{{ asset('scripts/main.js') }}"></script> 
-    <script src="{{asset("scripts/toPDF.js")}}"></script> 
+    {{-- <script src="{{asset("scripts/toPDF.js")}}"></script>
+    <script src="{{asset("scripts/reportBitacora.js")}}"></script>  --}}
 
     <script src="{{asset("library-js/Sortable.min.js")}}"></script>
     <script src="{{asset("scripts/op-reportes-receta.js")}}"></script> 

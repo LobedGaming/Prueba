@@ -98,4 +98,6 @@
         <a href="{{route('citas.citasPaciente',Auth::user()->id)}}" class="btn btn-secondary col-2">Atras</a>
         @endif
         <br> <br> <br>
+        
+        <script src="{{asset("scripts/toPDF.js")}}"></script>
 @endsection
