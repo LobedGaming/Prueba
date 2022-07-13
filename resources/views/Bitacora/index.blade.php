@@ -5,23 +5,25 @@
     <table class="table table-striped">
       <thead>
         <tr>
-            <th scope="col">Apartado</th>
-            <th scope="col">Accion</th>
-            <th scope="col">Implicado</th>
-            <th scope="col">Fecha</th>
-            <th scope="col">Usuario</th>
+            
+            <th scope="col" id="thApartado" >Apartado  <input type="checkbox" id="checkApartado"></th>
+            <th scope="col" id="thAccion"   >Accion    <input type="checkbox" id="checkAccion"></th>
+            <th scope="col" id="thImplicado">Implicado <input type="checkbox" id="checkImplicado"></th>
+            <th scope="col" id="thFecha"    >Fecha     <input type="checkbox" id="checkFecha"></th>
+            <th scope="col" id="thUsuario"  >Usuario   <input type="checkbox" id="checkUsuario"></th>
         </tr>
      </thead>
         <tbody>
-                @foreach ($bitacoras as $bitacora)
+            @foreach ($bitacoras as $bitacora)
             <tr>
-                <td>{{$bitacora->apartado}}</td>
-                <td>{{$bitacora->accion}}</td>
-                <td>{{$bitacora->implicado}}</td>
-                <td>{{$bitacora->fecha}}</td>
-                <td>{{$bitacora->nombre_usuario}}</td>
+                
+                <td style="display: all;" id="tbApartado" >{{$bitacora->apartado}}</td>  
+                <td style="display: all;" id="tbAccion"   >{{$bitacora->accion}}</td>
+                <td style="display: all;" id="tbImplicado">{{$bitacora->implicado}}</td>
+                <td style="display: all;" id="tbFecha"    >{{$bitacora->fecha}}</td>
+                <td style="display: all;" id="tbUsuario"  >{{$bitacora->nombre_usuario}}</td>
             </tr>
-                @endforeach
+            @endforeach
         </tbody>
     </table>
 </div>
