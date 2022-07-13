@@ -23,13 +23,14 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 Route::get('/', function () {
-    if (Auth::check()) {
-       return view('home');
-    }else{
-    return view('auth.login');
-    }
+    return view('home');
 });
-
+Route::get('/login', function () {
+    return view('auth.login');
+});
+Route::get('/register', function () {
+    return view('auth.register');
+});
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/logout', [App\Http\Controllers\HomeController::class, 'logout'])->name('logout');
