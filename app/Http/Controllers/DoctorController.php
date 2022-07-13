@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Doctor;
 use App\Models\User;
 use Carbon\Carbon;
+use ESolution\DBEncryption\Encrypter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -75,9 +76,10 @@ class DoctorController extends Controller
         $doctor->user_id = $user->id;
         $doctor->save();
 
+        $user = $user->name;
         $mytime = Carbon::now('America/La_Paz');
-        DB::statement('CALL insertar_bitacora(?,?,?,?,?,?)',['Doctor', 'Crear',$user->name,$mytime->toDateTimeString(),auth()->user()->id,
-        auth()->user()->name]);
+        DB::statement('CALL insertar_bitacora(?,?,?,?,?,?)',['Doctor', 'Crear',Encrypter::encrypt($user),$mytime->toDateTimeString(),auth()->user()->id,
+        Encrypter::encrypt(auth()->user()->name)]);
         
         return redirect()->route('doctors.index');
     }
@@ -141,9 +143,10 @@ class DoctorController extends Controller
         $doctor->user_id = $user->id;
         $doctor->save();
 
+        $user = $user->name;
         $mytime = Carbon::now('America/La_Paz');
-        DB::statement('CALL insertar_bitacora(?,?,?,?,?,?)',['Doctor', 'Modificar',$user->name,$mytime->toDateTimeString(),auth()->user()->id,
-        auth()->user()->name]);
+        DB::statement('CALL insertar_bitacora(?,?,?,?,?,?)',['Doctor', 'Modificar',Encrypter::encrypt($user),$mytime->toDateTimeString(),auth()->user()->id,
+        Encrypter::encrypt(auth()->user()->name)]);
 
         return redirect()->route('doctors.index');
     }
@@ -160,10 +163,11 @@ class DoctorController extends Controller
         $user   = User::findorFail($doctor->user_id);
         $doctor->delete();
         $user->delete();
-
+        
+        $user = $user->name;
         $mytime = Carbon::now('America/La_Paz');
-        DB::statement('CALL insertar_bitacora(?,?,?,?,?,?)',['Doctor', 'Eliminar',$user->name,$mytime->toDateTimeString(),auth()->user()->id,
-        auth()->user()->name]);
+        DB::statement('CALL insertar_bitacora(?,?,?,?,?,?)',['Doctor', 'Eliminar',Encrypter::encrypt($user),$mytime->toDateTimeString(),auth()->user()->id,
+        Encrypter::encrypt(auth()->user()->name)]);
 
         return redirect()->route('doctors.index');
     }

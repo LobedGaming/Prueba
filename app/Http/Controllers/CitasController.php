@@ -12,6 +12,8 @@ use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use ESolution\DBEncryption\Encrypter;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
@@ -24,13 +26,13 @@ class CitasController extends Controller
      */
     public function __construct()
     {
-        // $this->middleware('can:citas.index')  ->only('index');
-        // $this->middleware('can:citas.create') ->only('create', 'store');
-        // $this->middleware('can:citas.edit')   ->only('edit', 'update');
-        // $this->middleware('can:citas.show')   ->only('show');
-        // $this->middleware('can:citas.destroy')->only('destroy');
-        // $this->middleware('can:citas.citasDoctor')->only('citasDoctor');
-        // $this->middleware('can:citas.citasPaciente')->only('citasPaciente');
+        $this->middleware('can:citas.index')  ->only('index');
+        $this->middleware('can:citas.create') ->only('create', 'store');
+        $this->middleware('can:citas.edit')   ->only('edit', 'update');
+        $this->middleware('can:citas.show')   ->only('show');
+        $this->middleware('can:citas.destroy')->only('destroy');
+        $this->middleware('can:citas.citasDoctor')->only('citasDoctor');
+        $this->middleware('can:citas.citasPaciente')->only('citasPaciente');
     }
 
     public function index()
@@ -152,9 +154,9 @@ class CitasController extends Controller
         
         $paciente = Patient::find($cita->patient_id);
         $usuario = User::find($paciente->user_id);
+        $usuario = $usuario -> name;
         $mytime = Carbon::now('America/La_Paz');
-        DB::statement('CALL insertar_bitacora(?,?,?,?,?,?)',['Cita', 'Crear',$usuario->name,$mytime->toDateTimeString(),auth()->user()->id,
-        auth()->user()->name]);
+        DB::statement('CALL insertar_bitacora(?,?,?,?,?,?)',['Cita', 'Crear',$usuario = Encrypter::encrypt($usuario),$mytime->toDateTimeString(),auth()->user()->id,Encrypter::encrypt(auth()->user()->name)]);
         
         return redirect()->route('citas.index');
       }
@@ -210,9 +212,10 @@ class CitasController extends Controller
 
         $paciente = Patient::find($cita->patient_id);
         $usuario = User::find($paciente->user_id);
+        $usuario = $usuario -> name;
         $mytime = Carbon::now('America/La_Paz');
-        DB::statement('CALL insertar_bitacora(?,?,?,?,?,?)',['Cita', 'Eliminar',$usuario->name,$mytime->toDateTimeString(),auth()->user()->id,
-        auth()->user()->name]);
+        DB::statement('CALL insertar_bitacora(?,?,?,?,?,?)',['Cita', 'Eliminar',Encrypter::encrypt($usuario),$mytime->toDateTimeString(),auth()->user()->id,
+        Encrypter::encrypt(auth()->user()->name)]);
         return redirect()->route('citas.index');
 
     }
