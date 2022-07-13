@@ -8,6 +8,7 @@ use App\Models\Patient;
 use App\Models\Receta;
 use App\Models\User;
 use Carbon\Carbon;
+use ESolution\DBEncryption\Encrypter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -78,9 +79,10 @@ class RecetaController extends Controller
         $cita = Cita::find($receta->cita_id);
         $paciente = Patient::find($cita->patient_id);
         $usuario = User::find($paciente->user_id);
+        $usuario = $usuario->name;
         $mytime = Carbon::now('America/La_Paz');
-        DB::statement('CALL insertar_bitacora(?,?,?,?,?,?)',['Receta', 'Crear',$usuario->name,$mytime->toDateTimeString(),auth()->user()->id,
-        auth()->user()->name]);
+        DB::statement('CALL insertar_bitacora(?,?,?,?,?,?)',['Receta', 'Crear',Encrypter::encrypt($usuario),$mytime->toDateTimeString(),auth()->user()->id,
+        Encrypter::encrypt(auth()->user()->name)]);
         
         return redirect()->route('receta.show', $request->input('cita_id'))->with('info', 'Receta agregada');
     }

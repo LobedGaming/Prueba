@@ -135,8 +135,6 @@
                 </div>
             </div>
 
-           
-
             <div class="mb-3 sombra-claro">        
                 <button class="btn btn-info collapsed boton-collapsed" style="width: 100%;" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTemas" aria-expanded="false" aria-controls="collapseTemas">
                     CONFIGURACIONES
