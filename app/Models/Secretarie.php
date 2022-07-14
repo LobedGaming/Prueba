@@ -18,4 +18,7 @@ class Secretarie extends Model
     public function cita(){
         return $this->hasMany(Cita::class);
     }
+    public function admins(){
+        return $this->belongsTo(Admin::class,'admin_id');
+    }
 }

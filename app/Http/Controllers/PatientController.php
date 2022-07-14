@@ -9,7 +9,8 @@ use ESolution\DBEncryption\Encrypter;
 use GuzzleHttp\Middleware;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Auth;
+use Spatie\Permission\Traits\HasRoles;
 class PatientController extends Controller
 {
     /**
@@ -27,8 +28,35 @@ class PatientController extends Controller
     }
     public function index()
     {
-        $patient = Patient::paginate(5);
-        return view('Paciente.index',['patients'=>$patient]);
+        $id="";
+        if(Auth::user()->hasRole('Administrador'))
+        {
+            $patients_id = DB::table('admins')
+            ->select('admins.*')
+            ->where('user_id',Auth::user()->id)
+            ->get();
+            foreach($patients_id as $patient_id)
+            {
+                $id=$patient_id->id;
+            }
+        } 
+        else
+        {
+            $id= Auth::user()->admin_id;
+        }
+        $patients_use= Patient::paginate(5);
+        $cont=0;
+        $patients = DB::table('patients')
+        ->select('patients.*')
+        ->where('admin_id',$id)
+        ->get();
+        if(Auth::user()->plan=='basico'){
+            foreach ($patients as $patient)
+            {
+                $cont=$cont+1;
+            }
+        }
+        return view('Paciente.index',['patients'=>$patients_use,'contador'=>$cont,'id'=>$id]);
     }
 
     /**
@@ -67,13 +95,29 @@ class PatientController extends Controller
         $usuario->email = $request->input('email');
         $usuario->password = bcrypt($request->input('password'));
         $usuario->fecha_nacimiento = $request->input('fecha_nacimiento');
-        
+        $usuario->plan = Auth::user()->plan;
         $usuario->save();
 
         $patient = new Patient();
         $patient->user_id = $usuario->id;
+        $id="";
+        if(Auth::user()->hasRole('Administrador'))
+        {
+            $patients_id = DB::table('admins')
+            ->select('admins.*')
+            ->where('user_id',Auth::user()->id)
+            ->get();
+            foreach($patients_id as $patient_id)
+            {
+                $id=$patient_id->id;
+            }
+        } 
+        else
+        {
+            $id= Auth::user()->admin_id;
+        }
+        $patient->admin_id=$id;
         $patient->save();
-
         $usuario=$usuario->name;
         $mytime = Carbon::now('America/La_Paz');
         DB::statement('CALL insertar_bitacora(?,?,?,?,?,?)',['Paciente', 'Crear',Encrypter::encrypt($usuario),$mytime->toDateTimeString(),auth()->user()->id,

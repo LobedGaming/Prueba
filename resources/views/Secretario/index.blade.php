@@ -1,7 +1,15 @@
 @extends('Layouts.dashboard')
 @section('contenido')
     <h1>Gestionar Secretarios</h1>
-    <a href="{{ route('secretario.create')}}"  class="btn btn-info mb-3">Nuevo Secretario</a>
+    @if(Auth::user()->plan=='basico' && $contador<1)
+<a href="{{ route('secretario.create') }}"  class="btn btn-info mb-3" >Nuevo Secretario</a>
+@else
+@if(Auth::user()->plan=='basico')
+<a href=""  class="btn btn-warning mb-3" >Solicite un nuevo Plan</a>
+@else
+<a href="{{ route('secretario.create') }}"  class="btn btn-info mb-3" >Nuevo Secretario</a>
+@endif
+@endif
     <table class="table table-striped">
         <thead>
             <tr>
@@ -14,6 +22,7 @@
         </thead>
         <tbody>
             @foreach ($Secretarios as $secretario)
+            @if ($id==$secretario->admin_id)
             <tr>
                 <td>{{$secretario->id}}</td>
                 <td>{{$secretario->user->name}}</td>
@@ -31,6 +40,7 @@
                     </div>
                 </td>    
             </tr>
+            @endif
         @endforeach
         </tbody>
     </table>

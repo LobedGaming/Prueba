@@ -15,8 +15,10 @@ return new class extends Migration
     {
         Schema::create('secretaries', function (Blueprint $table) {
             $table->id();
+           $table->unsignedBigInteger('admin_id')->nullable(true);
             $table->unsignedBigInteger('user_id')->nullable(false);
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('admin_id')->references('id')->on('admins')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->date('fecha_nacimiento')->nullable();
+            $table->string('plan')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

@@ -2,7 +2,16 @@
 
 @section('contenido')
 <h1>Gestionar Doctores</h1>
+@if(Auth::user()->plan=='basico' && $contador<1)
 <a href="{{ route('doctors.create') }}"  class="btn btn-info mb-3" >Nuevo Doctor</a>
+@else
+@if(Auth::user()->plan=='basico')
+<a href=""  class="btn btn-warning mb-3" >Solicite un nuevo Plan</a>
+@else
+<a href="{{ route('doctors.create') }}"  class="btn btn-info mb-3" >Nuevo Doctor</a>
+@endif
+@endif
+
 <table  class="table table-striped">
     <thead>
         <tr>
@@ -17,6 +26,7 @@
     </thead>
     <tbody>
         @foreach($doctors as $doctor)
+        @if ($id==$doctor->admin_id)
         <tr>
             <td>{{ $doctor->id}}</td>
             <td>{{ $doctor->user->name}}</td>
@@ -35,6 +45,7 @@
                 </div>
             </td>
         </tr>
+        @endif
         @endforeach
     </tbody>
 </table>  

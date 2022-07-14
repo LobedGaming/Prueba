@@ -1,6 +1,9 @@
 @extends('Layouts.dashboard')
 
 @section('contenido')
+@if (Auth::user()->plan!='basico')
+    
+
     <h1>Agregar Receta</h1>
     <br><br>
     <div class="container">
@@ -21,4 +24,7 @@
             </form>
         </div>
     </div>
+@else
+<a href=""  class="btn btn-warning mb-3" >Solicite un nuevo Plan</a>    
+@endif
 @endsection
