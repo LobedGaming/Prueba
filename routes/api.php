@@ -26,3 +26,9 @@ Route::get('/recetas/{id}', [CitasController::class, 'getAllRecetas']);
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::group(['middleware' => 'auth:sanctum'], function(){
+    Route::get('/citas/recetas/{idCita}', [CitasController::class, 'getRecetaCita']);
+    Route::get('/citas/{id}', [CitasController::class, 'getAllCitas']);
+    Route::get('/recetas/{id}', [CitasController::class, 'getAllRecetas']);
+});
