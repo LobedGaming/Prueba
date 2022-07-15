@@ -111,7 +111,7 @@
         </p>
         <p>
            <a href="/login" class="btn btn-success my-2">Iniciar sesion</a>
-          <a href="/register/1" class="btn btn-warning my-2">Registrarse</a>
+          
         </p>
       </div>
     </div>

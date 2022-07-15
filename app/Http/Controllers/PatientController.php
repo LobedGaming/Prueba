@@ -96,6 +96,7 @@ class PatientController extends Controller
         $usuario->password = bcrypt($request->input('password'));
         $usuario->fecha_nacimiento = $request->input('fecha_nacimiento');
         $usuario->plan = Auth::user()->plan;
+        $usuario->assignRole('Paciente');
         $usuario->save();
 
         $patient = new Patient();
