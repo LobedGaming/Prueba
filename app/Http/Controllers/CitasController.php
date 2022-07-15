@@ -120,9 +120,26 @@ class CitasController extends Controller
         $recetas=Receta::all();
         return view('Historico.show',['citas'=>$citas,'recetas'=>$recetas]);
       }
-    
 
-    
+      //FUNCION (API) PARA CITA Y RECETA DEL PACIENTE
+      public function citasPacienteApi($id){
+        $paciente_ids=Patient::where('user_id',$id)->get();
+        foreach($paciente_ids as $paciente_id)
+        {
+            $patient_id=$paciente_id;
+        }
+        $citas= Cita::where('patient_id',$patient_id->id)->get();
+
+        $cont=0;
+        foreach($citas as $cita)
+        {
+            $recetas[$cont]=Receta::where('cita_id',$cita->id)->get();
+            $cont=$cont+1;
+        }
+        return [
+            $citas,$recetas
+        ];
+      }
     //FUNCION INCOMPLETA, TERMINAR
     public function store(Request $request){
     //dd( $horaAct=Carbon::now('America/La_Paz'));

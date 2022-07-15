@@ -107,7 +107,9 @@ class SecretarioController extends Controller
         $usuario->password = bcrypt($request->input('password'));
         $usuario->fecha_nacimiento = $request->input('fecha_nacimiento');
         $usuario->plan = Auth::user()->plan;
+        $usuario->assignRole('Secretario');
         $usuario->save();
+
         if(Auth::user()->hasRole('Administrador'))
         {
             $Secretaries_id = DB::table('admins')

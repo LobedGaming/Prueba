@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CitasController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +17,7 @@ use App\Http\Controllers\UserController;
 */
 Route::post('/auth/register', [UserController::class, 'register']);
 Route::post('/auth/login', [UserController::class, 'login']);
+Route::get('/citas/paciente/{id}',[CitasController::class, 'citasPacienteApi'])->name('citas.citasPacienteApi');
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

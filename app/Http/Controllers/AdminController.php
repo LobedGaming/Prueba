@@ -57,6 +57,7 @@ class AdminController extends Controller
         $usuario->email = $request->input('email');
         $usuario->password = bcrypt($request->input('password'));
         $usuario->plan = Auth::user()->plan;
+        $usuario->assignRole('Administrador');
         $usuario->save();
         $admin = new Admin();
         $admin->user_id = $usuario->id;
