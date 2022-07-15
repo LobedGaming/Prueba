@@ -16,4 +16,7 @@ class Patient extends Model
     public function user(){
         return $this->belongsTo(User::class,'user_id');
     }
+    public function admins(){
+        return $this->belongsTo(Admin::class,'admin_id');
+    }
 }

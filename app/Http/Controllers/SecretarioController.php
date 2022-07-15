@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Secretarie;
 use App\Models\User;
 use Carbon\Carbon;
+use ESolution\DBEncryption\Encrypter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use Spatie\Permission\Traits\HasRoles;
 
 class SecretarioController extends Controller
 {
@@ -26,8 +29,45 @@ class SecretarioController extends Controller
 
     public function index()
     {
-        $Secretarios = Secretarie::paginate(5);
-        return view("Secretario.index")->with('Secretarios',$Secretarios);
+        $id="";
+        if(Auth::user()->hasRole('Administrador'))
+        {
+            $Secretaries_id = DB::table('admins')
+            ->select('admins.*')
+            ->where('user_id',Auth::user()->id)
+            ->get();
+            foreach($Secretaries_id as $Secretarie_id)
+            {
+                $id=$Secretarie_id->id;
+            }
+        } 
+        else
+        {
+            $id= Auth::user()->admin_id;
+        }
+        $Secretarios= Secretarie::paginate(5);
+        $cont=0;
+        $Secretaries = DB::table('secretaries')
+        ->select('secretaries.*')
+        ->where('admin_id',$id)
+        ->get();
+        if(Auth::user()->plan=='basico'){
+            foreach ($Secretaries as $Secretarie)
+            {
+                $cont=$cont+1;
+            }
+        }
+        // $Secretarios = Secretarie::paginate(5);
+        // $cont=0;
+        // $doctores = DB::table('secretaries')
+        // ->select('secretaries.*')
+        // ->where('admin_id', Auth::user()->admins->admin_id)
+        // ->get();
+        // foreach ($doctores as $doctorin)
+        // {
+        //     $cont=$cont+1;
+        // }
+        return view("Secretario.index")->with('Secretarios',$Secretarios)->with('contador',$cont)->with('id',$id);
     }
 
     /**
@@ -66,14 +106,34 @@ class SecretarioController extends Controller
         $usuario->email = $request->input('email');
         $usuario->password = bcrypt($request->input('password'));
         $usuario->fecha_nacimiento = $request->input('fecha_nacimiento');
+        $usuario->plan = Auth::user()->plan;
+        $usuario->assignRole('Secretario');
         $usuario->save();
+
+        if(Auth::user()->hasRole('Administrador'))
+        {
+            $Secretaries_id = DB::table('admins')
+            ->select('admins.*')
+            ->where('user_id',Auth::user()->id)
+            ->get();
+            foreach($Secretaries_id as $Secretarie_id)
+            {
+                $id=$Secretarie_id->id;
+            }
+        } 
+        else
+        {
+            $id= Auth::user()->admin_id;
+        }
         $secretario = new Secretarie();
         $secretario->user_id = $usuario->id;
+        $secretario->admin_id=$id;
         $secretario->save();
 
+        $usuario = $usuario->name;
         $mytime = Carbon::now('America/La_Paz');
-        DB::statement('CALL insertar_bitacora(?,?,?,?,?,?)',['Secretario', 'Crear',$usuario->name,$mytime->toDateTimeString(),auth()->user()->id,
-        auth()->user()->name]);
+        DB::statement('CALL insertar_bitacora(?,?,?,?,?,?)',['Secretario', 'Crear',Encrypter::encrypt($usuario),$mytime->toDateTimeString(),auth()->user()->id,
+        Encrypter::encrypt(auth()->user()->name)]);
         return redirect()->route('secretario.index');
 
     }
@@ -126,9 +186,10 @@ class SecretarioController extends Controller
         $usuario->fecha_nacimiento = $request->input('fecha_nacimiento');
         $usuario->update();
 
+        $usuario = $usuario->name;
         $mytime = Carbon::now('America/La_Paz');
-        DB::statement('CALL insertar_bitacora(?,?,?,?,?,?)',['Secretario', 'Modificar',$usuario->name,$mytime->toDateTimeString(),auth()->user()->id,
-        auth()->user()->name]);
+        DB::statement('CALL insertar_bitacora(?,?,?,?,?,?)',['Secretario', 'Modificar',Encrypter::encrypt($usuario),$mytime->toDateTimeString(),auth()->user()->id,
+        Encrypter::encrypt(auth()->user()->name)]);
 
         return redirect()->route('secretario.index');
     }
@@ -145,9 +206,10 @@ class SecretarioController extends Controller
         $secretario->delete();
         $usuario->delete();
 
+        $usuario = $usuario->name;
         $mytime = Carbon::now('America/La_Paz');
-        DB::statement('CALL insertar_bitacora(?,?,?,?,?,?)',['Secretario', 'Eliminar',$usuario->name,$mytime->toDateTimeString(),auth()->user()->id,
-        auth()->user()->name]);
+        DB::statement('CALL insertar_bitacora(?,?,?,?,?,?)',['Secretario', 'Eliminar',Encrypter::encrypt($usuario),$mytime->toDateTimeString(),auth()->user()->id,
+        Encrypter::encrypt(auth()->user()->name)]);
 
         return redirect()->route('secretario.index');
     }

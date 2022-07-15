@@ -30,6 +30,7 @@ class UserSeeder extends Seeder
             'email'=>'alvaro@gmail.com',
             'password'=>bcrypt('12345678'),
             'fecha_nacimiento'=>'11/02/2022',
+            'plan'=>'estandar'
          ])->assignRole('Doctor');
          Doctor::create([
             'user_id'=>'1',
@@ -43,6 +44,7 @@ class UserSeeder extends Seeder
             'email'=>'obed@gmail.com',
             'password'=>bcrypt('12345678'),
             'fecha_nacimiento'=>'11/02/2022',
+            'plan'=>'estandar'
          ])->assignRole('Doctor');
          Doctor::create([
             'user_id'=>'2',
@@ -56,6 +58,7 @@ class UserSeeder extends Seeder
             'email'=>'esteban@gmail.com',
             'password'=>bcrypt('12345678'),
             'fecha_nacimiento'=>'12/05/1999',
+            'plan'=>'estandar'
          ])->assignRole('Doctor');
          Doctor::create([
             'user_id'=>'3',
@@ -73,6 +76,7 @@ class UserSeeder extends Seeder
             'email'=>'mirko@gmail.com',
             'password'=>bcrypt('12345678'),
             'fecha_nacimiento'=>'12/05/1999',
+            'plan'=>'basico'
          ])->assignRole('Secretario');
          Secretarie::create([
             'user_id'=>'4'
@@ -89,6 +93,7 @@ class UserSeeder extends Seeder
             'email'=>'fadua@gmail.com',
             'password'=>bcrypt('12345678'),
             'fecha_nacimiento'=>'12/05/1999',
+            'plan'=>'basico'
          ])->assignRole('Paciente');
          Patient::create([
             'user_id'=>'5'
@@ -101,6 +106,7 @@ class UserSeeder extends Seeder
             'email'=>'luisfernando@gmail.com',
             'password'=>bcrypt('12345678'),
             'fecha_nacimiento'=>'12/05/1999',
+            'plan'=>'profesional'
          ])->assignRole('Paciente');
          Patient::create([
             'user_id'=>'6'
@@ -113,6 +119,7 @@ class UserSeeder extends Seeder
             'email'=>'luchito@gmail.com',
             'password'=>bcrypt('12345678'),
             'fecha_nacimiento'=>'12/05/1999',
+            'plan'=>'profesional'
          ])->assignRole('Paciente');
          Patient::create([
             'user_id'=>'7'
@@ -125,6 +132,7 @@ class UserSeeder extends Seeder
             'email'=>'mariagalindo@gmail.com',
             'password'=>bcrypt('12345678'),
             'fecha_nacimiento'=>'12/05/1999',
+            'plan'=>'profesional'
          ])->assignRole('Paciente');
          Patient::create([
             'user_id'=>'8'
@@ -139,6 +147,7 @@ class UserSeeder extends Seeder
          'email'=>'administrador@gmail.com',
          'password'=>bcrypt('12345678'),
          'fecha_nacimiento'=>'11/02/2022',
+         'plan'=>'basico'
       ])->assignRole('Administrador');
     }
 }

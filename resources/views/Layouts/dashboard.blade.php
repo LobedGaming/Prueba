@@ -49,7 +49,11 @@
                     <div class="list-group list-group-custom card-body">
                       <a class="list-group-item list-group-item-action mb-2" href="{{ route('doctors.index') }}">Gestionar Doctores</a> 
                       <a class="list-group-item list-group-item-action mb-2" href="{{ route('secretario.index') }}">Gestionar Secretarios</a>
+                     
+                      @if(Auth::user()->plan!='basico')
                       <a class="list-group-item list-group-item-action" href="{{ route('admin.index') }}">Gestionar Administrador</a>
+                     @endif
+                     
                     </div>
                 </div>
             </div>
@@ -118,6 +122,7 @@
             
             <div class="mb-3 sombra-claro">
             @can('receta.index')
+            @if (Auth::user()->plan!='basico'||Auth::user()->plan!='estandar')           
                 <button class="btn btn-info collapsed boton-collapsed" style="width: 100%;" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePaciente" aria-expanded="false" aria-controls="collapsePaciente">
                     PACIENTE
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-circle" width="32" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -127,15 +132,14 @@
                       <path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855" />
                     </svg>
                 </button>
-                @endcan
+            @endif
+            @endcan
                 <div class="collapse " id="collapsePaciente">
                 <div class="list-group list-group-custom card-body">
                     <a class="list-group-item list-group-item-action mb-2" href="{{route('citas.citasPaciente',Auth::user()->id)}}">Mis Citas</a>
                     </div>
                 </div>
             </div>
-
-           
 
             <div class="mb-3 sombra-claro">        
                 <button class="btn btn-info collapsed boton-collapsed" style="width: 100%;" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTemas" aria-expanded="false" aria-controls="collapseTemas">

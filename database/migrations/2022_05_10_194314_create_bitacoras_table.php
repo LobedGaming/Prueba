@@ -30,8 +30,8 @@ return new class extends Migration
 
         DB::unprepared('
         create or replace procedure insertar_bitacora(
-            d_apartado CHARACTER VARYING,
-            d_accion CHARACTER VARYING,
+            d_apartado  CHARACTER VARYING,
+            d_accion    CHARACTER VARYING,
             d_implicado CHARACTER VARYING,
             d_fecha timestamp WITHOUT TIME ZONE,
             d_user_id bigint,

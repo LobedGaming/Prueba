@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Admin;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
@@ -55,6 +56,8 @@ class AdminController extends Controller
         $usuario->name = $request->input('name');
         $usuario->email = $request->input('email');
         $usuario->password = bcrypt($request->input('password'));
+        $usuario->plan = Auth::user()->plan;
+        $usuario->assignRole('Administrador');
         $usuario->save();
         $admin = new Admin();
         $admin->user_id = $usuario->id;

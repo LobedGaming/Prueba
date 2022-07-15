@@ -1,7 +1,15 @@
 @extends('Layouts.dashboard')
 @section('contenido')
     <h1>Gestionar Pacientes</h1>
-    <a href="{{ route('patient.create')}}" class="btn btn-info mb-3" >Nuevo Paciente</a>
+@if(Auth::user()->plan=='basico' && $contador<1)
+<a href="{{ route('patient.create') }}"  class="btn btn-info mb-3" >Nuevo Paciente</a>
+@else
+@if(Auth::user()->plan=='basico')
+<a href=""  class="btn btn-warning mb-3" >Solicite un nuevo Plan</a>
+@else
+<a href="{{ route('patient.create') }}"  class="btn btn-info mb-3" >Nuevo Paciente</a>
+@endif
+@endif
     <table class="table table-striped">
         <thead>
             <tr>
@@ -14,6 +22,7 @@
         </thead>
         <tbody>
             @foreach ($patients as $patient)
+            @if ($id==$patient->admin_id)
             <tr>
                 <td>{{$patient->id}}</td>
                 <td>{{$patient->user->name}}</td>
@@ -32,7 +41,7 @@
                     
                 </td>    
             </tr>
-            
+        @endif
         @endforeach
         </tbody>
     </table>

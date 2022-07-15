@@ -4,9 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Doctor;
 use App\Models\User;
+use App\Models\Admin;
 use Carbon\Carbon;
+use ESolution\DBEncryption\Encrypter;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Spatie\Permission\Traits\HasRoles;
 
 class DoctorController extends Controller
 {
@@ -27,9 +31,35 @@ class DoctorController extends Controller
 
     public function index()
     {
-        
+        $id="";
+        if(Auth::user()->hasRole('Administrador'))
+        {
+            $doctors_id = DB::table('admins')
+            ->select('admins.*')
+            ->where('user_id',Auth::user()->id)
+            ->get();
+            foreach($doctors_id as $doctor_id)
+            {
+                $id=$doctor_id->id;
+            }
+        } 
+        else
+        {
+            $id= Auth::user()->admin_id;
+        }
         $doctor = Doctor::paginate(5);
-        return view('doctor.index')->with('doctors',$doctor);
+        $cont=0;
+        $doctores = DB::table('doctors')
+        ->select('doctors.*')
+        ->where('admin_id',$id)
+        ->get();
+        if(Auth::user()->plan=='basico'){
+            foreach ($doctores as $doctorin)
+            {
+                $cont=$cont+1;
+            }
+        }
+        return view('doctor.index',['doctors'=>$doctor,'contador'=> $cont,'id'=>$id]);
     }
 
     /**
@@ -50,7 +80,6 @@ class DoctorController extends Controller
      */
     public function store(Request $request)
     {
-
         $request->validate([
             'name' => 'required',
             'ci' => 'required',
@@ -68,16 +97,35 @@ class DoctorController extends Controller
         $user->email            = $request->input('email');
         $user->password         = bcrypt($request->input('password'));
         $user->fecha_nacimiento = $request->input('fecha_nacimiento');
+        $user->plan = Auth::user()->plan;
         $user->assignRole('Doctor');
         $user->save();
         $doctor = new Doctor();
         $doctor->especialidad = $request->input('especialidad');
         $doctor->user_id = $user->id;
+        $id="";
+        if(Auth::user()->hasRole('Administrador'))
+        {
+            $doctors_id = DB::table('admins')
+            ->select('admins.*')
+            ->where('user_id',Auth::user()->id)
+            ->get();
+            foreach($doctors_id as $doctor_id)
+            {
+                $id=$doctor_id->id;
+            }
+        } 
+        else
+        {
+            $id= Auth::user()->admin_id;
+        }
+        $doctor->admin_id = $id;
         $doctor->save();
-
+        $user = $user->name;
         $mytime = Carbon::now('America/La_Paz');
-        DB::statement('CALL insertar_bitacora(?,?,?,?,?,?)',['Doctor', 'Crear',$user->name,$mytime->toDateTimeString(),auth()->user()->id,
-        auth()->user()->name]);
+        DB::statement('CALL insertar_bitacora(?,?,?,?,?,?)',['Doctor', 'Crear',Encrypter::encrypt($user),$mytime->toDateTimeString(),auth()->user()->id,
+        Encrypter::encrypt(auth()->user()->name)]);
+        
         
         return redirect()->route('doctors.index');
     }
@@ -141,9 +189,10 @@ class DoctorController extends Controller
         $doctor->user_id = $user->id;
         $doctor->save();
 
+        $user = $user->name;
         $mytime = Carbon::now('America/La_Paz');
-        DB::statement('CALL insertar_bitacora(?,?,?,?,?,?)',['Doctor', 'Modificar',$user->name,$mytime->toDateTimeString(),auth()->user()->id,
-        auth()->user()->name]);
+        DB::statement('CALL insertar_bitacora(?,?,?,?,?,?)',['Doctor', 'Modificar',Encrypter::encrypt($user),$mytime->toDateTimeString(),auth()->user()->id,
+        Encrypter::encrypt(auth()->user()->name)]);
 
         return redirect()->route('doctors.index');
     }
@@ -160,10 +209,11 @@ class DoctorController extends Controller
         $user   = User::findorFail($doctor->user_id);
         $doctor->delete();
         $user->delete();
-
+        
+        $user = $user->name;
         $mytime = Carbon::now('America/La_Paz');
-        DB::statement('CALL insertar_bitacora(?,?,?,?,?,?)',['Doctor', 'Eliminar',$user->name,$mytime->toDateTimeString(),auth()->user()->id,
-        auth()->user()->name]);
+        DB::statement('CALL insertar_bitacora(?,?,?,?,?,?)',['Doctor', 'Eliminar',Encrypter::encrypt($user),$mytime->toDateTimeString(),auth()->user()->id,
+        Encrypter::encrypt(auth()->user()->name)]);
 
         return redirect()->route('doctors.index');
     }

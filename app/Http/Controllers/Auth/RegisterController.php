@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -63,15 +64,31 @@ class RegisterController extends Controller
      * @return \App\Models\User
      */
     protected function create(array $data)
-    {
-        return User::create([
-            'name' => $data['name'],
-            'ci' => $data['ci'],
-            'phone' => $data['phone'],
-            'address' => $data['address'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-            'fecha_nacimiento' => $data['fecha_nacimiento'],
-        ])->assignRole('Administrador');
+    { 
+        
+        $usuario = new User();
+        $usuario->name = $data['name'];
+        $usuario->ci = $data['ci'];
+        $usuario->address = $data['address'];
+        $usuario->phone = $data['phone'];
+        $usuario->email = $data['email'];
+        $usuario->password = bcrypt($data['password']);
+        $usuario->fecha_nacimiento =$data['fecha_nacimiento'];
+        if($data['plan']==1){
+            $usuario->plan='basico';  
+        }
+        if($data['plan']==2){
+            $usuario->plan='estandar';  
+        }
+        if($data['plan']==3){
+            $usuario->plan='profesional';  
+        }
+        $usuario->assignRole('Administrador');
+        $usuario->save();
+        $administrador = new Admin();
+        $administrador->admin_id= $administrador->id;
+        $administrador->user_id= $usuario->id;
+        $administrador->save();
+        return $usuario;
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Bitacora;
+use ESolution\DBEncryption\Encrypter;
 use Illuminate\Http\Request;
 
 class BitacoraController extends Controller
@@ -12,7 +13,7 @@ class BitacoraController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $bitacoras = Bitacora::all();
         return view('bitacora.index')->with('bitacoras',$bitacoras);
