@@ -22,6 +22,9 @@
     </thead>
     <tbody>
         @foreach ($patients as $patient)
+        @if ($patient->admin_id == $id)
+            
+       
         <tr>
             <td>{{$patient->id}}</td>
             <td>{{$patient->user->name}}</td>
@@ -36,7 +39,7 @@
                 
             </td>    
         </tr>
-        
+        @endif
     @endforeach
     </tbody>
     

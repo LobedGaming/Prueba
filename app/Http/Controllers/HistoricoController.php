@@ -6,6 +6,8 @@ use App\Models\Cita;
 use App\Models\Historico;
 use App\Models\Patient;
 use App\Models\Receta;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class HistoricoController extends Controller
@@ -24,8 +26,35 @@ class HistoricoController extends Controller
     public function index()
     {
         //
-        $patient = Patient::all();
-        return view('Historico.index',['patients'=>$patient]);
+        $id="";
+        if(Auth::user()->hasRole('Administrador'))
+        {
+            $patients_id = DB::table('admins')
+            ->select('admins.*')
+            ->where('user_id',Auth::user()->id)
+            ->get();
+            foreach($patients_id as $patient_id)
+            {
+                $id=$patient_id->id;
+            }
+        } 
+        else
+        {
+            $id= Auth::user()->admin_id;
+        }
+        $patients_use= Patient::paginate(5);
+        $cont=0;
+        $patients = DB::table('patients')
+        ->select('patients.*')
+        ->where('admin_id',$id)
+        ->get();
+        if(Auth::user()->plan=='basico'){
+            foreach ($patients as $patient)
+            {
+                $cont=$cont+1;
+            }
+        }
+        return view('Historico.index',['patients'=> $patients_use,'id'=>$id]);
     }
 
     /**
