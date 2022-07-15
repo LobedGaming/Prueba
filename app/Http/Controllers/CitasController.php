@@ -140,6 +140,30 @@ class CitasController extends Controller
             $citas,$recetas
         ];
       }
+
+      public function getRecetaCita($idCita){
+        $recetas = Receta::where('cita_id', $idCita)->get();
+        return $recetas;
+      }
+
+      public function getAllCitas($id){
+        $idPatient = Patient::where('user_id', $id)->get();
+        return Cita::where('patient_id', $idPatient[0]["id"])->get();
+      }
+
+      public function getAllRecetas($id){
+        $idPatient = Patient::where('user_id', $id)->get();
+        $citas = Cita::where('patient_id', $idPatient[0]["id"])->get();
+        $cont=0;
+        foreach($citas as $cita)
+        {
+            $recetas[$cont]=Receta::where('cita_id',$cita->id)->get();
+            $cont=$cont+1;
+        }
+
+        return $recetas;
+      }
+
     //FUNCION INCOMPLETA, TERMINAR
     public function store(Request $request){
     //dd( $horaAct=Carbon::now('America/La_Paz'));

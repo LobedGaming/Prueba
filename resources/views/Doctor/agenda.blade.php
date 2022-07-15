@@ -1,6 +1,6 @@
 @extends('Layouts.dashboard')
 @section('contenido')
-<!-- <h1>Ver Cita</h1>
+{{-- <h1>Ver Cita</h1>
 @foreach ($citas as $cita)
     <div class="contenedor-show">
         <div class="show-dato">
@@ -23,7 +23,7 @@
         <span>-----------------------------</span>
         <span>-----------------------------</span>
     </div>
-    @endforeach -->
+    @endforeach --}}
 
     {{-- <script>
       var btnReceta = document.getElementById("recetaBtn")
