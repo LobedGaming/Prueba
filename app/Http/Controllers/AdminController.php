@@ -26,7 +26,7 @@ class AdminController extends Controller
     public function index()
     {
         $admin = Admin::all();
-        return view('admin.index')->with('admins',$admin);
+        return view('Admin.index')->with('admins',$admin);
     }
 
     /**
@@ -36,7 +36,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        return view('admin.create');
+        return view('Admin.create');
     }
 
     /**
@@ -86,7 +86,7 @@ class AdminController extends Controller
     {
         $admin = Admin::findorFail($id);
         $admin->load('user');
-        return view('admin.edit',['admin' => $admin]);
+        return view('Admin.edit',['admin' => $admin]);
     }
 
     /**
@@ -113,7 +113,7 @@ class AdminController extends Controller
         $admin->user_id = $user->id;
         $admin->save();
 
-        return redirect()->route('admin.index');
+        return redirect()->route('Admin.index');
     }
 
     /**
@@ -128,6 +128,6 @@ class AdminController extends Controller
         $user   = User::findorFail($admin->user_id);
         $admin->delete();
         $user->delete();
-        return redirect()->route('admin.index');
+        return redirect()->route('Admin.index');
     }
 }

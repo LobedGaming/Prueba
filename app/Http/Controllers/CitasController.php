@@ -55,7 +55,7 @@ class CitasController extends Controller
         $doctors=Doctor::all();
         $pacientes=Patient::all();
         $citas=Cita::all();
-        return view('citas.create',['citas'=>$citas,'doctors'=>$doctors,'patients'=>$pacientes]);
+        return view('Citas.create',['citas'=>$citas,'doctors'=>$doctors,'patients'=>$pacientes]);
     }
 
     /**
@@ -257,7 +257,7 @@ class CitasController extends Controller
         $mytime = Carbon::now('America/La_Paz');
         DB::statement('CALL insertar_bitacora(?,?,?,?,?,?)',['Cita', 'Eliminar',Encrypter::encrypt($usuario),$mytime->toDateTimeString(),auth()->user()->id,
         Encrypter::encrypt(auth()->user()->name)]);
-        return redirect()->route('citas.index');
+        return redirect()->route('Citas.index');
 
     }
 }

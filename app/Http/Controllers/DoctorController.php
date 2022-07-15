@@ -59,7 +59,7 @@ class DoctorController extends Controller
                 $cont=$cont+1;
             }
         }
-        return view('doctor.index',['doctors'=>$doctor,'contador'=> $cont,'id'=>$id]);
+        return view('Doctor.index',['doctors'=>$doctor,'contador'=> $cont,'id'=>$id]);
     }
 
     /**
@@ -69,7 +69,7 @@ class DoctorController extends Controller
      */
     public function create()
     {
-        return view('doctor.create');
+        return view('Doctor.create');
     }
 
     /**
@@ -140,7 +140,7 @@ class DoctorController extends Controller
     {
         $doctor = Doctor::findorFail($id);
         $doctor->load('user');
-        return view('doctor.show',['doctor' => $doctor]);
+        return view('Doctor.show',['doctor' => $doctor]);
     }
 
     /**
@@ -153,7 +153,7 @@ class DoctorController extends Controller
     {
         $doctor = Doctor::findorFail($id);
         $doctor->load('user');
-        return view('doctor.edit',['doctor' => $doctor]);
+        return view('Doctor.edit',['doctor' => $doctor]);
     }
 
     /**

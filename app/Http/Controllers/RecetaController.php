@@ -34,7 +34,7 @@ class RecetaController extends Controller
         $doctors=Doctor::all();
         $pacientes=Patient::all();
         $citas=Cita::all();
-        return view('receta.index',['receta'=>$recetas,'citas'=>$citas,'doctors'=>$doctors,'patients'=>$pacientes]);
+        return view('Receta.index',['receta'=>$recetas,'citas'=>$citas,'doctors'=>$doctors,'patients'=>$pacientes]);
     }
 
     /**
@@ -56,7 +56,7 @@ class RecetaController extends Controller
         // $pacientes=Patient::all();
         // $citas=Cita::all();
         // return $cita;
-        return view('receta.create', compact('cita'));
+        return view('Receta.create', compact('cita'));
         // return view('receta.create',['citas'=>$citas,'doctors'=>$doctors,'patients'=>$pacientes]);
     }
 
@@ -97,7 +97,7 @@ class RecetaController extends Controller
         $recetas = Receta::where('cita_id', $id)->get();
         $doctor = $this->getDoctor(Cita::where('id', $id)->get()[0]->doctor_id);
         $patient = User::find(Patient::find(Cita::where('id', $id)->get()[0]->patient_id)->user_id);
-        return view('receta.show', compact('recetas', 'doctor', 'patient'));
+        return view('Receta.show', compact('recetas', 'doctor', 'patient'));
     }
 
     public function getDoctor($id){

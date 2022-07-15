@@ -16,7 +16,7 @@ class BitacoraController extends Controller
     public function index(Request $request)
     {
         $bitacoras = Bitacora::all();
-        return view('bitacora.index')->with('bitacoras',$bitacoras);
+        return view('Bitacora.index')->with('bitacoras',$bitacoras);
     }
 
     /**
